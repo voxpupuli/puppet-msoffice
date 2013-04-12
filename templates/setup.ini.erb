@@ -1,0 +1,69 @@
+; Microsoft Office SETUP.EXE settings file.
+
+[MSI]
+MSI=PRO11.MSI
+
+[Product]
+ProductCode={90110409-6000-11D3-8CFE-0150048383C9}
+ProductName=Microsoft Office 2003
+ProductVersion=11.0.5614.0
+Recache=1
+
+[MST]
+
+[Options]
+USERNAME=Mimecast
+COMPANYNAME=Mimecast Ltd
+ARPNOMODIFY=0
+ARPNOREMOVE=0
+ARPNOREPAIR=0
+NOCANCEL=1
+ACCEPTEULA=1
+
+<% $product_hash = { "Word" => "WORDFiles", "Excel" => "EXCELFiles", "Powerpoint" => "PPTFiles",
+	                 "Outlook" => "OUTLOOKFiles", "Publisher" => "PubPrimary", 
+					 "Access" => "ACCESSFiles", "InfoPath" => "XDOCSFiles"
+				   }
+%>
+<% $products_install = []
+   $products_uninstall = []
+   $product_hash.each do |key, value|
+	   if scope.lookupvar('msoffice::products').include? key
+		   $products_install << value
+	   end
+   end
+   $product_hash.each do |key, value|
+	   if !scope.lookupvar('msoffice::products').include? key
+		   $products_uninstall << value
+	   end
+   end
+%>
+
+ADDDEFAULT="<%= $products_install.join(',') %>"
+REMOVE="<%= $products_uninstall.join(',') %>"
+
+PIDKEY="<%= scope.lookupvar('msoffice::license_key').gsub!(/-/,"") %>"
+REBOOT=ReallySuppress
+SETUPDW=0
+
+[Display]
+Display=None
+CompletionNotice=No
+
+[Logging]
+Type=vpiwaeo
+Path=C:\Program Files\
+Template=office_install.log
+
+[MinOSRequirement]
+VersionNT_1=500
+WindowsBuild_1=2195
+ServicePackLevel_1=3
+
+[Cache]
+CDCACHE=0
+DELETABLECACHE=1
+PURGE=0
+
+[OfficeWebComponents]
+MSI=OWC11.MSI

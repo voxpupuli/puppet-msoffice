@@ -1,0 +1,35 @@
+<Configuration>
+
+	<AddLanguage Id="en-us" ShellTransform="Yes" />
+	<ARP ARPNOMODIFY="No" ARPNOREMOVE="No" />
+	<COMPANYNAME Value="Mimecast Ltd" />
+    <Display Level="None" CompletionNotice="No" SupressModal="Yes" NoCancel="Yes" AcceptEula="Yes" />
+	
+	<% if scope.lookupvar('msoffice::package::version') == "2007" %>
+	<CCP_DRIVE Value="<%= scope.lookupvar('msoffice::package::office_root') %>" />
+	<% end %>
+	<DistributionPoint Location="<%= scope.lookupvar('msoffice::package::office_root') %>" />
+	
+	<Logging Type="Verbose" Path="<%= scope.lookupvar('msoffice::package::temp_dir') %>" Template="office_install.log" />	
+	<% $product_hash = { "Access" => "ACCESSFiles", "Excel" => "EXCELFiles", "Groove" => "GrooveFiles",
+		                 "SkyDrive" => "GrooveFiles2", "OneNote" => "OneNoteFiles", "Outlook" => "OUTLOOKFiles", 
+						 "Powerpoint" => "PPTFiles", "Publisher" => "PubPrimary", "Word" => "WORDFiles", 
+						 "InfoPath" => "XDOCSFiles", "Lync" => "LyncCoreFiles", 
+						 "Shared" => "SHAREDFiles", "Tools" => "TOOLSFiles"
+					   }
+	%>
+	<% $product_hash.each do |key, value|
+	     if scope.lookupvar('msoffice::package::products').include? key				
+	%>
+	<OptionState Id="<%= value %>" State="Local" Children="force" />
+	<%
+	     else
+	%>
+	<OptionState Id="<%= value %>" State="Absent" Children="force" />
+	<%	 end
+	   end
+	%>
+	<PIDKEY Value="<%= scope.lookupvar('msoffice::package::license_key') %>" />
+	<USERNAME Value="Mimecast" />
+	<Setting Id="SETUP_REBOOT" Value="NEVER" />
+</Configuration>
