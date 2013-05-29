@@ -1,10 +1,10 @@
 ; Microsoft Office SETUP.EXE settings file.
 
 [MSI]
-MSI=PRO11.MSI
+MSI=<%= office_product.upcase %>.MSI
 
 [Product]
-ProductCode={90110409-6000-11D3-8CFE-0150048383C9}
+ProductCode=<%= product_key %>
 ProductName=Microsoft Office 2003
 ProductVersion=11.0.5614.0
 Recache=1
@@ -12,8 +12,8 @@ Recache=1
 [MST]
 
 [Options]
-USERNAME=Mimecast
-COMPANYNAME=Mimecast Ltd
+USERNAME=<%= scope.lookupvar('msoffice::params::user_name') %>
+COMPANYNAME=<%= scope.lookupvar('msoffice::params::comp_name') %>
 ARPNOMODIFY=0
 ARPNOREMOVE=0
 ARPNOREPAIR=0
@@ -28,12 +28,12 @@ ACCEPTEULA=1
 <% $products_install = []
    $products_uninstall = []
    $product_hash.each do |key, value|
-	   if scope.lookupvar('msoffice::products').include? key
+	   if products.include? key
 		   $products_install << value
 	   end
    end
    $product_hash.each do |key, value|
-	   if !scope.lookupvar('msoffice::products').include? key
+	   if !products.include? key
 		   $products_uninstall << value
 	   end
    end
@@ -42,7 +42,7 @@ ACCEPTEULA=1
 ADDDEFAULT="<%= $products_install.join(',') %>"
 REMOVE="<%= $products_uninstall.join(',') %>"
 
-PIDKEY="<%= scope.lookupvar('msoffice::license_key').gsub!(/-/,"") %>"
+PIDKEY="<%= license_key.gsub!(/-/,"") %>"
 REBOOT=ReallySuppress
 SETUPDW=0
 
