@@ -7,16 +7,21 @@
 #   [*edition*]         - The edition of office
 #   [*license_key*]     - The license key required to install
 #   [*arch*]            - The architecture version of office
-#   [*lang_code*]	    - The language code of the default install language
+#   [*lang_code*]       - The language code of the default install language
 #   [*products*]        - The list of products to install as part of the office suite
 #   [*sp]               - The service pack version that will be installed
 #   [*ensure*]          - Control the existence of office
 #
-# Actions:
-#
-# Requires:
-#
 # Usage:
+#
+#   msoffice::package { 'core package for office 2010':
+#     version     => '2010',
+#     edition     => 'Professional Pro',
+#     license_key => 'XXX-XXX-XXX-XXX-XXX',
+#     products    => ['Word,'Excel],
+#     sp          => '3'
+#     ensure      => present,
+#   }
 #
 define msoffice::package(
   $version, 
@@ -33,13 +38,13 @@ define msoffice::package(
   
   validate_re($version,'^(2003|2007|2010|2013)$', 'The version agrument specified does not match a valid version of office')
   
-  $edition_regex = join(keys($msoffice::params::office_versions[$version]['editions']), "|")  
+  $edition_regex = join(keys($msoffice::params::office_versions[$version]['editions']), '|')
   validate_re($edition,"^${edition_regex}$", 'The edition argument does not match a valid edition for the specified version of office')
   
   validate_re($license_key,'^[a-zA-Z]{5}-[a-zA-Z]{5}-[a-zA-Z]{5}-[a-zA-Z]{5}-[a-zA-Z]{5}$', 'The license_key argument speicifed is not correctly formatted')
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
   
-  $lang_regex = join($msoffice::params::lcid_strings, "|")
+  $lang_regex = join(keys($msoffice::params::lcid_strings), '|')
   validate_re($lang_code,"^${lang_regex}$", 'The lang_code argument does not specifiy a valid language identifier')
   
   validate_re($ensure,'^(present|absent)$', 'The ensure argument does not match present or absent')
@@ -52,7 +57,7 @@ define msoffice::package(
   $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
   $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
 
-  if $version == "2010" {
+  if $version == '2010' {
     $office_root = "${msoffice::params::deployment_root}\\OFFICE${office_num}\\${edition}\\${arch}"
   } else {
     $office_root = "${msoffice::params::deployment_root}\\OFFICE${office_num}\\${edition}"

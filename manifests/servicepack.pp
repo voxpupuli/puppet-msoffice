@@ -7,11 +7,13 @@
 #   [*sp*]              - The service pack update to install
 #   [*arch*]            - The architecture version of office
 #
-# Actions:
-#
-# Requires:
-#
 # Usage:
+#
+#   msoffice::servicepack { 'SP2 for office 2010':
+#     version => '2010',
+#     sp      => '2',
+#     arch    => 'x64'
+#   }
 #
 define msoffice::servicepack(
   $version,

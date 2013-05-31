@@ -1,6 +1,7 @@
 # Define msoffice
 #
-# This definition installs the Microsoft Office on windows with a specified service pack
+# This definition installs the Microsoft Office on windows with a specified
+# service pack and language interface pack
 #
 # Parameters:
 #   [*version*]         - The version of office to install
@@ -12,19 +13,17 @@
 #   [*lang_code]        - The language code of the default install language
 #   [*ensure*]          - Control the existence of office
 #
-# Actions:
-#
-# Requires:
-#
 # Usage:
 #
 #   msoffice { 'office 2010':
-#     ensure      => present,
 #     version     => '2010',
 #     edition     => 'Professional Pro',
 #     sp          => '1'
-#     license_key => 'XXX-XXX-XXX-XXX-XXX'
+#     license_key => 'XXX-XXX-XXX-XXX-XXX',
+#     products    => ['Word,'Excel]
+#     ensure      => present,
 #   }
+#
 define msoffice(
   $version,
   $edition,
@@ -40,7 +39,7 @@ define msoffice(
 
   validate_re($version,'^(2003|2007|2010|2013)$', 'The version agrument specified does not match a valid version of office')
 
-  $edition_regex = join(keys($msoffice::params::office_versions[$version]['editions']), "|")
+  $edition_regex = join(keys($msoffice::params::office_versions[$version]['editions']), '|')
   validate_re($edition,"^${edition_regex}$", 'The edition argument does not match a valid edition for the specified version of office')
 
   validate_re($sp,'^[0-3]$', 'The service pack specified does not match 0-3')
@@ -48,12 +47,13 @@ define msoffice(
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
   validate_array($products)
 
-  $lang_regex = join($msoffice::params::lcid_strings, "|")
+  $lang_regex = join(keys($msoffice::params::lcid_strings), '|')
   validate_re($lang_code,"^${lang_regex}$", 'The lang_code argument does not specifiy a valid language identifier')
 
   validate_re($ensure,'^(present|absent)$', 'The ensure argument does not match present or absent')
 
   msoffice::package { "microsoft office ${version}":
+    ensure      => $ensure,
     version     => $version,
     edition     => $edition,
     license_key => $license_key,
@@ -61,13 +61,18 @@ define msoffice(
     lang_code   => $lang_code,
     products    => $products,
     sp          => $sp,
-    ensure      => $ensure,
   }
 
   if $ensure == 'present' {
     msoffice::servicepack { "microsoft office ${version} servicepack ${sp}":
       version     => $version,
       sp          => $sp,
+      arch        => $arch,
+    }
+
+    msoffice::lip { "microsoft lip ${lang_code}":
+      version     => $version,
+      lang_code   => $lang_code,
       arch        => $arch,
     }
   }
