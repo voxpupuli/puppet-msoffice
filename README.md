@@ -48,7 +48,7 @@ Some basic information, for more read the [Wiki](https://github.com/liamjbennett
 
 msoffice::package     - the core office suite installation <br/>
 msoffice::servicepack - the service pack update for office <br/>
-msoffice::lip         - the language interfact pack for office <br/>
+msoffice::lip         - the language interface pack for office <br/>
 
 
 ##Limitations
