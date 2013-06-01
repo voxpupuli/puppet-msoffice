@@ -5,7 +5,16 @@
 
 Puppet module to manage Microsoft Office on Windows (2003-2013)
 
+This module is also available on the [Puppet Forge](https://forge.puppetlabs.com/liamjbennett/msoffice)
+
+[![Build
+Status](https://secure.travis-ci.org/liamjbennett/puppet-msoffice.png)](http://travis-ci.org/liamjbennett/puppet-msoffice)
+[![Dependency
+Status](https://gemnasium.com/liamjbennett/puppet-msoffice.png)](http://gemnasium.com/liamjbennett/puppet-msoffice)
+
 ##Module Description
+
+The purpose of this module is to install the Microsoft Office suite and configure it's many service packs, tools, utilities and registry options.
 
 ##Setup
 
