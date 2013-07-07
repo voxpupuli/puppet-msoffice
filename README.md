@@ -62,15 +62,6 @@ Distributed under the terms of the Apache 2 license - see LICENSE file for detai
 Further contributions and testing reports are extremely welcome - please submit a pull request or issue on [GitHub](https://github.com/liamjbennett/puppet-msoffice) <br/>
 Please read the [Wiki](https://github.com/liamjbennett/puppet-msoffice/wiki) as there is a lot of useful information and links that will help you understand this module <br/>
 
-###TODO
-* More fine grained feature installation/un-installation
-* Office products not part of the default suite (Viso, Lync etc)
-* Office viewers
-* Compatibility packs
-* Manage desktop and quick launch toolbar shortcuts
-* Allow easy tweaking of office registry settings
-* Support older (pre 2003) versions of Office - just for fun!
-
 ##Release Notes
 
 __0.0.2__ <br/>
