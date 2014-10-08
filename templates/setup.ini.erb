@@ -12,8 +12,8 @@ Recache=1
 [MST]
 
 [Options]
-USERNAME=<%= scope.lookupvar('msoffice::params::user_name') %>
-COMPANYNAME=<%= scope.lookupvar('msoffice::params::comp_name') %>
+USERNAME=<%= @user_name %>
+COMPANYNAME=<%= @company_name %>
 ARPNOMODIFY=0
 ARPNOREMOVE=0
 ARPNOREPAIR=0
@@ -21,7 +21,7 @@ NOCANCEL=1
 ACCEPTEULA=1
 
 <% $product_hash = { "Word" => "WORDFiles", "Excel" => "EXCELFiles", "Powerpoint" => "PPTFiles",
-	                 "Outlook" => "OUTLOOKFiles", "Publisher" => "PubPrimary", 
+	                 "Outlook" => "OUTLOOKFiles", "Publisher" => "PubPrimary",
 					 "Access" => "ACCESSFiles", "InfoPath" => "XDOCSFiles"
 				   }
 %>

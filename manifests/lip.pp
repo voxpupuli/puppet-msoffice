@@ -22,6 +22,9 @@
 # [*arch*]
 # The architecture version of office
 #
+# [*deployment_root*]
+# The network location where the office installation media is stored
+#
 # === Examples
 #
 #  Install the French Language Pack:
@@ -36,6 +39,7 @@ define msoffice::lip(
   $version,
   $lang_code,
   $arch = 'x86',
+  $deployment_root = ''
 ) {
 
   include msoffice::params
@@ -47,7 +51,7 @@ define msoffice::lip(
   validate_re($lang_code,"^${lang_regex}$", 'The lang_code argument does not specifiy a valid language identifier')
 
   $office_num = $msoffice::params::office_versions[$version]['version']
-  $lip_root = "${msoffice::params::deployment_root}\\OFFICE${office_num}\\LIPs"
+  $lip_root = "${deployment_root}\\OFFICE${office_num}\\LIPs"
   $lip_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\LanguageResources\\InstalledUIs"
   $lang_id = $msoffice::params::lcid_strings[$lang_code]
   $setup = "languageinterfacepack-${arch}-${lang_code}.exe"

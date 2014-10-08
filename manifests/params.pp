@@ -10,7 +10,6 @@
 class msoffice::params {
 
   $temp_dir = 'C:\\Windows\\Temp'
-  $deployment_root = ''
   $comp_name = ''
   $user_name = ''
 

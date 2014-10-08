@@ -17,6 +17,9 @@
 # [*arch*]
 # The architecture version of office
 #
+# [*deployment_root*]
+# The network location where the office installation media is stored
+#
 # === Examples
 #
 #   Install service pack 2 for Office 2010:
@@ -30,7 +33,8 @@
 define msoffice::servicepack(
   $version,
   $sp,
-  $arch = 'x86'
+  $arch = 'x86',
+  $deployment_root = ''
 ) {
 
   include msoffice::params
@@ -45,10 +49,10 @@ define msoffice::servicepack(
 
   if $version == '2010' {
     $setup = $msoffice::params::office_versions[$version]['service_packs'][$sp]['setup']
-    $sp_root = "${msoffice::params::deployment_root}\\OFFICE${office_num}\\SPs\\${arch}"
+    $sp_root = "${deployment_root}\\OFFICE${office_num}\\SPs\\${arch}"
   } else {
     $setup = $msoffice::params::office_versions[$version]['service_packs'][$sp]['setup']
-    $sp_root = "${msoffice::params::deployment_root}\\OFFICE${office_num}\\SPs"
+    $sp_root = "${deployment_root}\\OFFICE${office_num}\\SPs"
   }
 
   exec { 'install-sp':

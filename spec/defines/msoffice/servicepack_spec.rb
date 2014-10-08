@@ -55,9 +55,11 @@ describe 'msoffice::servicepack', :type => :define do
     setup = $office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
-      let :params do
-        { :version => version, :sp => sp }
-      end
+      let(:params) {{
+        :version => version,
+        :sp => sp,
+        :deployment_root => "\\test-server\\packages"
+      }}
 
       it { should contain_exec('install-sp').with(
         'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
@@ -74,9 +76,11 @@ describe 'msoffice::servicepack', :type => :define do
     setup = $office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
-      let :params do
-        { :version => version, :sp => sp }
-      end
+      let(:params) {{
+        :version => version,
+        :sp => sp,
+        :deployment_root => '\\test-server\packages'
+      }}
 
       it { should contain_exec('install-sp').with(
         'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
@@ -93,9 +97,12 @@ describe 'msoffice::servicepack', :type => :define do
     setup = $office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
-      let :params do
-        { :arch => "x86", :version => version, :sp => sp }
-      end
+      let(:params) {{
+        :arch => "x86",
+        :version => version,
+        :sp => sp,
+        :deployment_root => '\\test-server\packages'
+      }}
 
       it { should contain_exec('install-sp').with(
         'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",

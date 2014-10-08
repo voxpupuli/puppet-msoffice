@@ -2,7 +2,7 @@
 
 	<AddLanguage Id="<%= lang_code %>" ShellTransform="Yes" />
 	<ARP ARPNOMODIFY="No" ARPNOREMOVE="No" />
-	<COMPANYNAME Value="<%= scope.lookupvar('msoffice::params::comp_name') %>" />
+	<COMPANYNAME Value="<%= @company_name %>" />
     <Display Level="None" CompletionNotice="No" SupressModal="Yes" NoCancel="Yes" AcceptEula="Yes" />
 
 	<% if version == "2007" %>
@@ -19,7 +19,7 @@
 					   }
 	%>
 	<% $product_hash.each do |key, value|
-	     if products.include? key				
+	     if products.include? key
 	%>
 	<OptionState Id="<%= value %>" State="Local" Children="force" />
 	<%
@@ -30,6 +30,6 @@
 	   end
 	%>
 	<PIDKEY Value="<%= license_key %>" />
-	<USERNAME Value="<%= scope.lookupvar('msoffice::params::user_name') %>" />
+	<USERNAME Value="<%= @user_name %>" />
 	<Setting Id="SETUP_REBOOT" Value="NEVER" />
 </Configuration>

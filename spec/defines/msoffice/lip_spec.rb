@@ -28,19 +28,14 @@ describe 'msoffice::lip', :type => :define do
       'ur' => '1056', 'uz-uz' => '2115', 'vi' => '1066', 'cy' => '1106', 'xh' => '1076', 'yi' => '1085', 'zu' => '1077'
   }
 
-  let :hiera_data do
-    {
-        :windows_deployment_root => '\\test-server\packages',
-        :company_name => 'Example Inc',
-        :office_username => 'Joe'
-    }
-  end
-
   describe "installing with unknown version" do
     let :title do "lip with unknown version" end
-    let :params do
-      { :version => 'xxx', :lang_code => 'en-us', :arch => 'x86' }
-    end
+    let(:params) {{
+      :version => 'xxx',
+      :lang_code => 'en-us',
+      :arch => 'x86',
+      :deployment_root => '\\test-server\packages'
+    }}
 
     it do
       expect {
@@ -51,9 +46,12 @@ describe 'msoffice::lip', :type => :define do
 
   describe "incorrect arch" do
     let :title do "lip with incorrect arch" end
-    let :params do
-      { :version => '2010', :lang_code => 'en-us', :arch => 'fubar' }
-    end
+    let(:params) {{
+      :version => '2010',
+      :lang_code => 'en-us',
+      :arch => 'fubar',
+      :deployment_root => '\\test-server\packages'
+    }}
 
     it do
       expect {
@@ -66,11 +64,14 @@ describe 'msoffice::lip', :type => :define do
     lip_root = "\\test-server\\packages\\OFFICE14\\LIPs"
     lip_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\14.0\\Common\\LanguageResources\\InstalledUIs"
     setup = "languageinterfacepack-x86-#{lang_code}.exe"
-    describe "valid countries" do
+    describe "valid country: #{lang_code}" do
       let :title do "lip with valid countries" end
-      let :params do
-        { :version => '2010', :lang_code => lang_code, :arch => 'x86' }
-      end
+      let(:params) {{
+        :version => '2010',
+        :lang_code => lang_code,
+        :arch => 'x86',
+        :deployment_root => '\\test-server\packages'
+      }}
 
       it { should contain_exec('install-lip').with(
          'command' => "& \"#{lip_root}\\#{setup}\" /q /norestart",

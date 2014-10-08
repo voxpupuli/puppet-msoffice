@@ -32,6 +32,9 @@
 # [*ensure*]
 # Ensure the existence of the office installation
 #
+# [*deployment_root*]
+# The network location where the office installation media is stored
+#
 # === Examples
 #
 #  To install Word and Excel packages from Office 2010 SP1:
@@ -54,6 +57,9 @@ define msoffice::package(
   $products = ['Word','Excel','Powerpoint','Outlook'],
   $sp = '0',
   $ensure = 'present',
+  $deployment_root = '',
+  $company_name = '',
+  $user_name = '',
 ) {
 
   include msoffice::params
@@ -80,9 +86,9 @@ define msoffice::package(
   $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
 
   if $version == '2010' {
-    $office_root = "${msoffice::params::deployment_root}\\OFFICE${office_num}\\${edition}\\${arch}"
+    $office_root = "${deployment_root}\\OFFICE${office_num}\\${edition}\\${arch}"
   } else {
-    $office_root = "${msoffice::params::deployment_root}\\OFFICE${office_num}\\${edition}"
+    $office_root = "${deployment_root}\\OFFICE${office_num}\\${edition}"
   }
 
   if $ensure == 'present' {

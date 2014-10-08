@@ -65,6 +65,9 @@ The language code of the default install language
 #####`ensure`
 Ensure the existence of the office installation
 
+#####`deployment_root`
+The network location where the office installation media is stored
+
 ####Defined Type: `msoffice::package`
 The definition which installs the main office products.
 
@@ -93,6 +96,9 @@ The service pack update to apply
 #####`ensure`
 Ensure the existence of the office installation
 
+#####`deployment_root`
+The network location where the office installation media is stored
+
 ####Defined Type: `msoffice::lip`
 The definition which installs language interface packs into an existing office installation
 
@@ -106,6 +112,9 @@ The language code of the language to install
 #####`arch`
 The architecture version of office
 
+#####`deployment_root`
+The network location where the office installation media is stored
+
 ####Defined Type: `msoffice::servicepack`
 The definition which installs service packs into an existing office installation
 
@@ -118,6 +127,9 @@ The service pack update to install
 
 #####`arch`
 The architecture version of office
+
+#####`deployment_root`
+The network location where the office installation media is stored
 
 ##Reference
 
