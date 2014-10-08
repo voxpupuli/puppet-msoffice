@@ -1,19 +1,18 @@
-# Class msoffice::params
+# Author::    Liam Bennett (mailto:liamjbennett@gmail.com)
+# Copyright:: Copyright (c) 2014 Liam Bennett
+# License::   MIT
+
+# == Class msoffice::params
 #
-# This contains contains all the parameters for customizing the office installation in addition to
-# all the information about office versions, service packs and language interface packs.
-#
-# Parameters:
-#
-# Usage:
-#
-#   include msoffice::params
+# This privtae class is meant to be called from `msoffice::package`
+# It sets variables according to platform
 #
 class msoffice::params {
+
   $temp_dir = 'C:\\Windows\\Temp'
-  $deployment_root = hiera('windows_deployment_root')
-  $comp_name = hiera('company_name')
-  $user_name = hiera('office_username')
+  $deployment_root = ''
+  $comp_name = ''
+  $user_name = ''
 
   $office_versions = {
     '2003' => {

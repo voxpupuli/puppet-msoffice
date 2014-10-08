@@ -1,16 +1,10 @@
-#Microsoft Office module for Puppet
-
+# puppet-msoffice
 
 ##Overview
 
 Puppet module to manage Microsoft Office on Windows (2003-2013)
 
-This module is also available on the [Puppet Forge](https://forge.puppetlabs.com/liamjbennett/msoffice)
-
-[![Build
-Status](https://secure.travis-ci.org/liamjbennett/puppet-msoffice.png)](http://travis-ci.org/liamjbennett/puppet-msoffice)
-[![Dependency
-Status](https://gemnasium.com/liamjbennett/puppet-msoffice.png)](http://gemnasium.com/liamjbennett/puppet-msoffice)
+[![Build Status](https://secure.travis-ci.org/liamjbennett/puppet-msoffice.png)](http://travis-ci.org/liamjbennett/puppet-msoffice)
 
 ##Module Description
 
@@ -18,19 +12,17 @@ The purpose of this module is to install the Microsoft Office suite and configur
 
 ##Setup
 
-####How Office is installed
+###What msoffice affects
 
-Installation will be performed from files stored on a pre-defined network shared in a known structure. This is described in more detail [Here]()
-It will install the core office suite in addition to the service pack and a default language interface pack.
-Language Interfact Packs (LIPs) and Service Packs (SPs) can only be installed and the whole office installation will need to be removed to change that configuration
+* Installs packages for each office product
+* Installs package for the Service Pack (if configured)
+* Installs packages for each language pack (if configured)
 
-####Setup Requirements
-Office version 2003-2013 on all versions of Windows are supported
+###Beginning with msoffice
 
-##Usage
-First please read the [Wiki](https://github.com/liamjbennett/puppet-msoffice/wiki) regarding how we assume your network
-share should be configured. Then installing office is as simple as:
+  To install Word and Excel packages from Office 2010 SP1:
 
+```puppet
     msoffice { 'office 2010':
       version     => '2010',
       edition     => 'Professional Pro',
@@ -39,33 +31,115 @@ share should be configured. Then installing office is as simple as:
       products    => ['Word,'Excel]
       ensure      => present,
     }
+```
 
+##Usage
+
+###Classes and Defined Types:
+
+####Defined Type: `msoffice`
+The primary definition of the msoffice module. It will install office products, language packs and updates.
+
+**Parameters within `msoffice`:**
+#####`version`
+The version of office to install
+
+#####`edition`
+The edition of office to install
+
+#####`sp`
+The service pack update to apply
+
+#####`license_key`
+The license key required to install
+
+#####`arch`
+The architecture version of office
+
+#####`products`
+The list of products to install as part of the office suite
+
+#####`lang_code`
+The language code of the default install language
+
+#####`ensure`
+Ensure the existence of the office installation
+
+####Defined Type: `msoffice::package`
+The definition which installs the main office products.
+
+**Parameters within `msoffice::package`:**
+#####`version`
+The version of office to install
+
+#####`edition`
+The edition of office to install
+
+#####`license_key`
+The license key required to install
+
+#####`arch`
+The architecture version of office
+
+#####`lang_code`
+The language code of the default install language
+
+#####`products`
+The list of products to install as part of the office suite
+
+#####`sp`
+The service pack update to apply
+
+#####`ensure`
+Ensure the existence of the office installation
+
+####Defined Type: `msoffice::lip`
+The definition which installs language interface packs into an existing office installation
+
+**Parameters within `msoffice::lip`:**
+#####`version`
+The version of office that was installed
+
+#####`lang_code`
+The language code of the language to install
+
+#####`arch`
+The architecture version of office
+
+####Defined Type: `msoffice::servicepack`
+The definition which installs service packs into an existing office installation
+
+**Parameters within `msoffice::servicepack`:**
+#####`version`
+The version of office
+
+#####`sp`
+The service pack update to install
+
+#####`arch`
+The architecture version of office
 
 ##Reference
-Some basic information, for more read the [Wiki](https://github.com/liamjbennett/puppet-msoffice/wiki)
 
-###Defintions:
-
-msoffice::package     - the core office suite installation <br/>
-msoffice::servicepack - the service pack update for office <br/>
-msoffice::lip         - the language interface pack for office <br/>
-
+###Defined Types:
+#####Public Defined Types
+* [`msoffice`](#define_package): The core office suite installation
+* [`msoffice::package`](#define_package): The core office suite installation
+* [`msoffice::servicepack`](#define_servicepack): The service pack update for office
+* [`msoffice::lip`](#define_lip): The language interface pack for office
 
 ##Limitations
-Support for only RTM versions <br/>
-Support for only Retail/Volume editions <br/>
+This module is tested on the following platforms:
 
+* Windows 2008 R2
+
+It is tested with the OSS version of Puppet only.
+
+Support for only RTM versions
+Support for only Retail/Volume editions
 
 ##Development
-Copyright (C) 2013 Liam Bennett - <liamjbennett@gmail.com> <br/>
-Distributed under the terms of the Apache 2 license - see LICENSE file for details. <br/>
-Further contributions and testing reports are extremely welcome - please submit a pull request or issue on [GitHub](https://github.com/liamjbennett/puppet-msoffice) <br/>
-Please read the [Wiki](https://github.com/liamjbennett/puppet-msoffice/wiki) as there is a lot of useful information and links that will help you understand this module <br/>
 
-##Release Notes
+###Contributing
 
-__0.0.2__ <br/>
-Added lots of testing and support for installing LIPs.
-
-__0.0.1__ <br/>
-The initial proof-of-concept version
+Please read CONTRIBUTING.md for full details on contributing to this project.

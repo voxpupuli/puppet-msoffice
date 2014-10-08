@@ -1,20 +1,36 @@
-#
-# Define msoffice::lip
+# Author::    Liam Bennett (mailto:liamjbennett@gmail.com)
+# Copyright:: Copyright (c) 2014 Liam Bennett
+# License::   MIT
+
+# == Define msoffice::lip
 #
 # The define installs a language interface pack
 #
-# Parameters:
-#   [*version*]         - The version of office that was installed
-#   [*lang_code]        - The language code of the language to install
-#   [*arch*]            - The architecture version of office
+# === Requirements/Dependencies
 #
-# Usage:
+# Currently reequires the puppetlabs/stdlib module on the Puppet Forge in
+# order to validate much of the the provided configuration.
 #
-#   msoffice::lip {
-#     version   => '2010',
-#     lang_code => 'fr-fr',
-#     arch      => 'x64'
-#   }
+# === Parameters
+#
+# [*version*]
+# The version of office that was installed
+#
+# [*lang_code]
+# The language code of the language to install
+#
+# [*arch*]
+# The architecture version of office
+#
+# === Examples
+#
+#  Install the French Language Pack:
+#
+#    msoffice::lip {
+#      version   => '2010',
+#      lang_code => 'fr-fr',
+#      arch      => 'x64'
+#    }
 #
 define msoffice::lip(
   $version,
@@ -23,10 +39,10 @@ define msoffice::lip(
 ) {
 
   include msoffice::params
-  
+
   validate_re($version,'^(2003|2007|2010|2013)$', 'The version agrument specified does not match a valid version of office')
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
-  
+
   $lang_regex = join(keys($msoffice::params::lcid_strings), '|')
   validate_re($lang_code,"^${lang_regex}$", 'The lang_code argument does not specifiy a valid language identifier')
 
@@ -42,5 +58,5 @@ define msoffice::lip(
     logoutput => true,
     onlyif    => "if (Get-Item -LiteralPath \'\\${lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${lang_id}\')) { exit 1 }"
   }
-  
+
 }

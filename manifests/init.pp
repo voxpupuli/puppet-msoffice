@@ -1,19 +1,45 @@
-# Define msoffice
+# Author::    Liam Bennett (mailto:liamjbennett@gmail.com)
+# Copyright:: Copyright (c) 2014 Liam Bennett
+# License::   MIT
+
+# == Define msoffice
 #
-# This definition installs the Microsoft Office on windows with a specified
-# service pack and language interface pack
+# Module to manage the installation and configuration of Microsoft Office
 #
-# Parameters:
-#   [*version*]         - The version of office to install
-#   [*edition*]         - The edition of office
-#   [*sp*]              - The service pack update to apply
-#   [*license_key*]     - The license key required to install
-#   [*arch*]            - The architecture version of office
-#   [*products*]        - The list of products to install as part of the office suite
-#   [*lang_code]        - The language code of the default install language
-#   [*ensure*]          - Control the existence of office
+# === Requirements/Dependencies
 #
-# Usage:
+# Currently reequires the puppetlabs/stdlib module on the Puppet Forge in
+# order to validate much of the the provided configuration.
+#
+# === Parameters
+#
+# [*version*]
+# The version of office to install
+#
+# [*edition*]
+# The edition of office to install
+#
+# [*sp*]
+# The service pack update to apply
+#
+# [*license_key*]
+# The license key required to install
+#
+# [*arch*]
+# The architecture version of office
+#
+# [*products*]
+# The list of products to install as part of the office suite
+#
+# [*lang_code]
+# The language code of the default install language
+#
+# [*ensure*]
+# Ensure the existence of the office installation
+#
+# === Examples
+#
+#  To install Word and Excel packages from Office 2010 SP1:
 #
 #   msoffice { 'office 2010':
 #     version     => '2010',
