@@ -83,29 +83,29 @@ define msoffice(
   validate_re($ensure,'^(present|absent)$', 'The ensure argument does not match present or absent')
 
   msoffice::package { "microsoft office ${version}":
-    ensure      => $ensure,
-    version     => $version,
-    edition     => $edition,
-    license_key => $license_key,
-    arch        => $arch,
-    lang_code   => $lang_code,
-    products    => $products,
-    sp          => $sp,
+    ensure          => $ensure,
+    version         => $version,
+    edition         => $edition,
+    license_key     => $license_key,
+    arch            => $arch,
+    lang_code       => $lang_code,
+    products        => $products,
+    sp              => $sp,
     deployment_root => $deployment_root
   }
 
   if $ensure == 'present' {
     msoffice::servicepack { "microsoft office ${version} servicepack ${sp}":
-      version     => $version,
-      sp          => $sp,
-      arch        => $arch,
+      version         => $version,
+      sp              => $sp,
+      arch            => $arch,
       deployment_root => $deployment_root
     }
 
     msoffice::lip { "microsoft lip ${lang_code}":
-      version     => $version,
-      lang_code   => $lang_code,
-      arch        => $arch
+      version   => $version,
+      lang_code => $lang_code,
+      arch      => $arch
     }
   }
 

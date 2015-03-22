@@ -402,7 +402,7 @@ describe 'msoffice::package', :type => :define do
     it do
       expect {
         should contain_exec('install-office')
-      }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The version agrument specified does not match a valid version of office' }
+      }.to raise_error
     end
   end
 
@@ -420,7 +420,7 @@ describe 'msoffice::package', :type => :define do
     it do
       expect {
         should contain_exec('uninstall-office')
-      }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The version agrument specified does not match a valid version of office' }
+      }.to raise_error
     end
   end
 
@@ -438,7 +438,7 @@ describe 'msoffice::package', :type => :define do
       it do
         expect {
           should contain_exec('install-office')
-        }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The edition argument does not match a valid edition for the specified version of office' }
+        }.to raise_error
       end
     end
   end
@@ -456,7 +456,7 @@ describe 'msoffice::package', :type => :define do
     it do
       expect {
         should contain_exec('install-office')
-      }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The license_key argument speicifed is not correctly formatted' }
+      }.to raise_error
     end
   end
 
@@ -474,7 +474,7 @@ describe 'msoffice::package', :type => :define do
     it do
       expect {
         should contain_exec('install-office')
-      }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The arch argument specified does not match x86 or x64' }
+      }.to raise_error
     end
   end
 
@@ -492,7 +492,7 @@ describe 'msoffice::package', :type => :define do
     it do
       expect {
         should contain_exec('install-office')
-      }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The ensure argument does not match present or absent' }
+      }.to raise_error
     end
   end
 
@@ -511,7 +511,7 @@ describe 'msoffice::package', :type => :define do
       it do
         expect {
           should contain_exec('install-office')
-        }.to_not raise_error(Puppet::Error)
+        }.to_not raise_error
       end
     end
   end
@@ -530,7 +530,7 @@ describe 'msoffice::package', :type => :define do
     it do
       expect {
         should contain_exec('install-office')
-      }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The lang_code argument does not specifiy a valid language identifier' }
+      }.to raise_error
     end
   end
 
@@ -548,7 +548,7 @@ describe 'msoffice::package', :type => :define do
     it do
       expect {
         should contain_exec('install-office')
-      }.to raise_error(Puppet::Error) {|e| expect(e.to_s).to match 'The service pack specified does not match 0-3' }
+      }.to raise_error
     end
   end
 end
