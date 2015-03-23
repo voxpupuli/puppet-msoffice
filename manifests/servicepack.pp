@@ -43,12 +43,13 @@ define msoffice::servicepack(
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
   validate_re($sp,'^([1-3])$','The service pack specified does not match 1-3')
 
+
+  $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
   $office_num = $msoffice::params::office_versions[$version]['version']
   $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
-  $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
 
   if $version == '2010' {
-    $setup = $msoffice::params::office_versions[$version]['service_packs'][$sp]['setup']
+    $setup = $msoffice::params::office_versions[$version]['service_packs'][$sp]['setup'][$arch]
     $sp_root = "${deployment_root}\\OFFICE${office_num}\\SPs\\${arch}"
   } else {
     $setup = $msoffice::params::office_versions[$version]['service_packs'][$sp]['setup']

@@ -54,7 +54,8 @@ class msoffice::params {
           'setup' => 'Office2003SP3-KB923618-FullFile-ENU',
           'build' => '11.0.8173.0'
         }
-      }
+      },
+      'prod_key' => ''
     },
     '2007' => {
       'version' => '12',

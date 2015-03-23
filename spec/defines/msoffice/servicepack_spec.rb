@@ -94,7 +94,7 @@ describe 'msoffice::servicepack', :type => :define do
     version = '2010'
     office_num = $office_versions[version]['version']
     build = $office_versions[version]['service_packs'][sp]['build']
-    setup = $office_versions[version]['service_packs'][sp]['setup']
+    setup = $office_versions[version]['service_packs'][sp]['setup']['x86']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
