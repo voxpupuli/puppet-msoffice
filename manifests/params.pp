@@ -9,7 +9,7 @@
 #
 class msoffice::params {
 
-  $temp_dir = 'C:\\Windows\\Temp'
+  $temp_dir = 'C:\Windows\Temp'
   $comp_name = ''
   $user_name = ''
 

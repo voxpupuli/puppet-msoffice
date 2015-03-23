@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'msoffice::package', :type => :define do
 
-  $temp_dir = 'C:\\Windows\\Temp'
+  $temp_dir = 'C:\Windows\Temp'
 
   $office_versions = { "2003" => {
       "version" => "11",
@@ -220,16 +220,16 @@ describe 'msoffice::package', :type => :define do
         :edition => edition,
         :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        :deployment_root => "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
-        'command' => "\"\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /config \"C:\\\\Windows\\\\Temp\\office_config.xml\"",
+        'command' => "\"\\\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /config \"C:\\Windows\\Temp\\office_config.xml\"",
         'provider' => 'windows'
       )}
 
       it { should contain_exec('upgrade-office').with(
-        'command' => "\"\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /modify #{product} /config \"C:\\\\Windows\\\\Temp\\office_config.xml\""
+        'command' => "\"\\\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /modify #{product} /config \"C:\\Windows\\Temp\\office_config.xml\""
       )}
     end
 
@@ -244,11 +244,11 @@ describe 'msoffice::package', :type => :define do
           :sp => sp,
           :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
           :products => ['Word'],
-          :deployment_root => '\\test-server\packages'
+          :deployment_root => "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
-          'command' => "& \"\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /uninstall #{product} /config \"C:\\\\Windows\\\\Temp\\office_config.xml\"",
+          'command' => "& \"\\\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /uninstall #{product} /config \"C:\\Windows\\Temp\\office_config.xml\"",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\15.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
         )}
@@ -266,16 +266,16 @@ describe 'msoffice::package', :type => :define do
         :edition => edition,
         :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        :deployment_root => "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
-        'command' => "\"\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /config \"C:\\\\Windows\\\\Temp\\office_config.xml\"",
+        'command' => "\"\\\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /config \"C:\\Windows\\Temp\\office_config.xml\"",
         'provider' => 'windows'
       )}
 
       it { should contain_exec('upgrade-office').with(
-        'command' => "\"\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /modify #{product} /config \"C:\\\\Windows\\\\Temp\\office_config.xml\""
+        'command' => "\"\\\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /modify #{product} /config \"C:\\Windows\\Temp\\office_config.xml\""
       )}
     end
 
@@ -290,11 +290,11 @@ describe 'msoffice::package', :type => :define do
           :sp => sp,
           :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
           :products => ['Word'],
-          :deployment_root => '\\test-server\packages'
+          :deployment_root => "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
-          'command' => "& \"\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /uninstall #{product} /config \"C:\\\\Windows\\\\Temp\\office_config.xml\"",
+          'command' => "& \"\\\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /uninstall #{product} /config \"C:\\Windows\\Temp\\office_config.xml\"",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\14.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
         )}
@@ -312,16 +312,16 @@ describe 'msoffice::package', :type => :define do
         :edition => edition,
         :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        :deployment_root => "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
-        'command' => "\"\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /config \"C:\\\\Windows\\\\Temp\\office_config.xml\"",
+        'command' => "\"\\\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /config \"C:\\Windows\\Temp\\office_config.xml\"",
         'provider' => 'windows'
       )}
 
       it { should contain_exec('upgrade-office').with(
-        'command' => "\"\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /modify #{product} /config \"C:\\\\Windows\\\\Temp\\office_config.xml\""
+        'command' => "\"\\\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /modify #{product} /config \"C:\\Windows\\Temp\\office_config.xml\""
       )}
     end
 
@@ -336,11 +336,11 @@ describe 'msoffice::package', :type => :define do
           :sp => sp,
           :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
           :products => ['Word'],
-          :deployment_root => '\\test-server\packages'
+          :deployment_root => "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
-          'command' => "& \"\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /uninstall #{product} /config \"C:\\\\Windows\\\\Temp\\office_config.xml\"",
+          'command' => "& \"\\\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /uninstall #{product} /config \"C:\\Windows\\Temp\\office_config.xml\"",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\12.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
         )}
@@ -357,11 +357,11 @@ describe 'msoffice::package', :type => :define do
         :edition => edition,
         :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        :deployment_root => "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
-        'command' => "\"\\test-server\\packages\\OFFICE11\\#{edition}\\SETUP.EXE\" /settings \"C:\\\\Windows\\\\Temp\\office_config.ini\"",
+        'command' => "\"\\\\test-server\\packages\\OFFICE11\\#{edition}\\SETUP.EXE\" /settings \"C:\\Windows\\Temp\\office_config.ini\"",
         'provider' => 'windows'
       )}
     end
@@ -377,11 +377,11 @@ describe 'msoffice::package', :type => :define do
           :edition => edition,
           :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
           :products => ['Word'],
-          :deployment_root => '\\test-server\packages'
+          :deployment_root => "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
-          'command' => "& \"\\test-server\\packages\\OFFICE11\\#{edition}\\setup.exe\" /x #{product}.msi /qb",
+          'command' => "& \"\\\\test-server\\packages\\OFFICE11\\#{edition}\\setup.exe\" /x #{product}.msi /qb",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\11.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
         )}
@@ -396,7 +396,7 @@ describe 'msoffice::package', :type => :define do
       :edition => "Standard",
       :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      :deployment_root => "\\\\test-server\\packages"
     }}
 
     it do
@@ -414,7 +414,7 @@ describe 'msoffice::package', :type => :define do
       :edition => "Standard",
       :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      :deployment_root => "\\\\test-server\\packages"
     }}
 
     it do
@@ -432,7 +432,7 @@ describe 'msoffice::package', :type => :define do
         :edition => "fubar",
         :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        :deployment_root => "\\\\test-server\\packages"
       }}
 
       it do
@@ -450,7 +450,7 @@ describe 'msoffice::package', :type => :define do
       :edition => "Standard",
       :license_key => 'XXXXX-XXXXX-XXXX-XXXXX-XXXXX',
       :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      :deployment_root => "\\\\test-server\\packages"
     }}
 
     it do
@@ -468,7 +468,7 @@ describe 'msoffice::package', :type => :define do
       :edition => "Standard",
       :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      :deployment_root => "\\\\test-server\\packages"
     }}
 
     it do
@@ -486,7 +486,7 @@ describe 'msoffice::package', :type => :define do
       :edition => "Standard",
       :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      :deployment_root => "\\\\test-server\\packages"
     }}
 
     it do
@@ -505,7 +505,7 @@ describe 'msoffice::package', :type => :define do
         :edition => "Standard",
         :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        :deployment_root => "\\\\test-server\\packages"
       }}
 
       it do
@@ -524,7 +524,7 @@ describe 'msoffice::package', :type => :define do
       :edition => "Standard",
       :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      :deployment_root => "\\\\test-server\\packages"
     }}
 
     it do
@@ -542,7 +542,7 @@ describe 'msoffice::package', :type => :define do
       :edition => "Standard",
       :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      :deployment_root => "\\\\test-server\\packages"
     }}
 
     it do
