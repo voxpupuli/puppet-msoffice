@@ -56,9 +56,9 @@
 define msoffice(
   $version,
   $edition,
-  $sp,
   $license_key,
   $deployment_root,
+  $sp = '0',
   $arch = 'x86',
   $products = [],
   $lang_code = 'en-us',
@@ -95,11 +95,13 @@ define msoffice(
   }
 
   if $ensure == 'present' {
-    msoffice::servicepack { "microsoft office ${version} servicepack ${sp}":
-      version         => $version,
-      sp              => $sp,
-      arch            => $arch,
-      deployment_root => $deployment_root
+    if $sp != '0' {
+      msoffice::servicepack { "microsoft office ${version} servicepack ${sp}":
+        version         => $version,
+        sp              => $sp,
+        arch            => $arch,
+        deployment_root => $deployment_root
+      }
     }
 
     msoffice::lip { "microsoft lip ${lang_code}":
