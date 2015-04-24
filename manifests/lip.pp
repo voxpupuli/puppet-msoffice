@@ -56,7 +56,7 @@ define msoffice::lip(
   $lang_id = $msoffice::params::lcid_strings[$lang_code]
   $setup = "languageinterfacepack-${arch}-${lang_code}.exe"
 
-  file { "${msoffice::params::temp_dir}\\${setup}":
+  file { "${msoffice::params::temp_dir}\\office${office_num}-${setup}":
     source => "${lip_root}\\${setup}",
     mode   => '0777',
     owner  => 'Administrator',
@@ -65,7 +65,7 @@ define msoffice::lip(
   ->
   exec { 'install-lip':
     path      => $::path,
-    command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\${setup}\" /q /norestart",
+    command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office${office_num}-${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
     timeout   => 0,

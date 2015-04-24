@@ -93,7 +93,7 @@ define msoffice::package(
   }
 
   if $office_root {
-    file { "${msoffice::params::temp_dir}\\office":
+    file { "${msoffice::params::temp_dir}\\office${office_num}":
       ensure  => directory,
       source  => $office_root,
       recurse => true,
@@ -106,44 +106,44 @@ define msoffice::package(
 
   if $ensure == 'present' {
     if $version == '2003' {
-      file { "${msoffice::params::temp_dir}\\office_config.ini":
+      file { "${msoffice::params::temp_dir}\\office${office_num}_config.ini":
         content => template('msoffice/setup.ini.erb'),
         mode    => '0755',
         owner   => 'Administrator',
         group   => 'Administrators',
       }
 
-      exec { 'install-office':
+      exec { "install-office${office_num}":
         path      => $::path,
-        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /settings \"${msoffice::params::temp_dir}\\office_config.ini\"",
+        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office${office_num}\\setup.exe\" /settings \"${msoffice::params::temp_dir}\\office${office_num}_config.ini\"",
         provider  => powershell,
         logoutput => true,
         timeout   => 0,
-        subscribe => File["${msoffice::params::temp_dir}\\office_config.ini"],
-        require   => [File["${msoffice::params::temp_dir}\\office_config.ini"],
-                      File["${msoffice::params::temp_dir}\\office"]],
+        subscribe => File["${msoffice::params::temp_dir}\\office${office_num}_config.ini"],
+        require   => [File["${msoffice::params::temp_dir}\\office${office_num}_config.ini"],
+                      File["${msoffice::params::temp_dir}\\office${office_num}"]],
       }
     } else {
-      file { "${msoffice::params::temp_dir}\\office_config.xml":
+      file { "${msoffice::params::temp_dir}\\office${office_num}_config.xml":
         content => template('msoffice/config.erb'),
         mode    => '0755',
         owner   => 'Administrator',
         group   => 'Administrators',
       }
 
-      exec { 'install-office':
+      exec { "install-office${office_num}":
         path      => $::path,
-        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
+        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office${office_num}\\setup.exe\" /config \"${msoffice::params::temp_dir}\\office${office_num}_config.xml\"",
         provider  => powershell,
         logoutput => true,
         timeout   => 0,
         creates   => 'C:\\Program Files\\Microsoft Office',
-        require   => [File["${msoffice::params::temp_dir}\\office_config.xml"],
-                      File["${msoffice::params::temp_dir}\\office"]],
+        require   => [File["${msoffice::params::temp_dir}\\office${office_num}_config.xml"],
+                      File["${msoffice::params::temp_dir}\\office${office_num}"]],
       }
 
       # exec { 'upgrade-office':
-      #   command   => "& \"${office_root}\\office\\setup.exe\" /modify ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
+      #   command   => "& \"${office_root}\\office${office_num}\\setup.exe\" /modify ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
       #   provider  => powershell,
       #   logoutput => true,
       #   subscribe => File["${msoffice::params::temp_dir}\\office_config.xml"],
@@ -153,29 +153,29 @@ define msoffice::package(
     }
   } elsif $ensure == 'absent' {
     if $version == '2003' {
-      exec { 'uninstall-office':
+      exec { "uninstall-office${office_num}":
         path      => $::path,
-        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /x ${office_product}.msi /qb",
+        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office${office_num}\\setup.exe\" /x ${office_product}.msi /qb",
         provider  => powershell,
         logoutput => true,
         timeout   => 0,
         onlyif    => template('msoffice/check_office_installed.ps1.erb'),
-        require   => File["${msoffice::params::temp_dir}\\office"],
+        require   => File["${msoffice::params::temp_dir}\\office${office_num}"],
       }
 
-      file { ["${msoffice::params::temp_dir}\\office_config.ini","${msoffice::params::temp_dir}\\office_install.log"]:
+      file { ["${msoffice::params::temp_dir}\\office${office_num}_config.ini","${msoffice::params::temp_dir}\\office_install.log"]:
         ensure  => absent,
-        require => Exec['uninstall-office']
+        require => Exec["uninstall-office${office_num}"]
       }
     } else {
-      exec { 'uninstall-office':
+      exec { "uninstall-office${office_num}":
         path      => $::path,
-        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
+        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office${office_num}\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office${office_num}_config.xml\"",
         provider  => powershell,
         logoutput => true,
         timeout   => 0,
         onlyif    => template('msoffice/check_office_installed.ps1.erb'),
-        require   => File["${msoffice::params::temp_dir}\\office"],
+        require   => File["${msoffice::params::temp_dir}\\office${office_num}"],
       }
     }
   } else { }
