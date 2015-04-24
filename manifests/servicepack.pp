@@ -68,6 +68,7 @@ define msoffice::servicepack(
     command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
+    timeout   => 0,
     unless    => template('msoffice/check_office_installed.ps1.erb'),
   }
 }

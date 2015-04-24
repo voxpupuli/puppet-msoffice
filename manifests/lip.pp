@@ -68,6 +68,7 @@ define msoffice::lip(
     command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
+    timeout   => 0,
     unless    => template('msoffice/check_officelip_installed.ps1.erb'),
   }
 

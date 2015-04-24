@@ -117,6 +117,7 @@ define msoffice::package(
         command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /settings \"${msoffice::params::temp_dir}\\office_config.ini\"",
         provider  => powershell,
         logoutput => true,
+        timeout   => 0,
         subscribe => File["${msoffice::params::temp_dir}\\office_config.ini"],
         require   => [File["${msoffice::params::temp_dir}\\office_config.ini"],
                       File["${msoffice::params::temp_dir}\\office"]],
@@ -134,6 +135,7 @@ define msoffice::package(
         command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
         provider  => powershell,
         logoutput => true,
+        timeout   => 0,
         creates   => 'C:\\Program Files\\Microsoft Office',
         require   => [File["${msoffice::params::temp_dir}\\office_config.xml"],
                       File["${msoffice::params::temp_dir}\\office"]],
@@ -151,9 +153,11 @@ define msoffice::package(
   } elsif $ensure == 'absent' {
     if $version == '2003' {
       exec { 'uninstall-office':
-        command   => "& \"${msoffice::params::temp_dir}\\office\\setup.exe\" /x ${office_product}.msi /qb",
+        path      => $::path,
+        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /x ${office_product}.msi /qb",
         provider  => powershell,
         logoutput => true,
+        timeout   => 0,
         onlyif    => template('msoffice/check_office_installed.ps1.erb'),
         require   => File["${msoffice::params::temp_dir}\\office"],
       }
@@ -164,9 +168,11 @@ define msoffice::package(
       }
     } else {
       exec { 'uninstall-office':
-        command   => "& \"${msoffice::params::temp_dir}\\office\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
+        path      => $::path,
+        command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\office\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
         provider  => powershell,
         logoutput => true,
+        timeout   => 0,
         onlyif    => template('msoffice/check_office_installed.ps1.erb'),
         require   => File["${msoffice::params::temp_dir}\\office"],
       }
