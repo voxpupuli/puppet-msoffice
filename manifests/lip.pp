@@ -60,7 +60,7 @@ define msoffice::lip(
     command   => "& \"${lip_root}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
-    onlyif    => "if (Get-Item -LiteralPath \'\\${lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${lang_id}\')) { exit 1 }"
+    unless    => "if (Get-Item -LiteralPath \'\\${lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${lang_id}\')) { exit 0 }"
   }
 
 }

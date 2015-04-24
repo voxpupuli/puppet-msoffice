@@ -56,10 +56,14 @@ define msoffice::servicepack(
     $sp_root = "${deployment_root}\\OFFICE${office_num}\\SPs"
   }
 
+  if ($setup && $sp_root) {
+
+  }
+
   exec { 'install-sp':
     command   => "& \"${sp_root}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
-    onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }"
+    unless    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 0 }"
   }
 }
