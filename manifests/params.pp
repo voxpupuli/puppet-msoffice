@@ -140,7 +140,7 @@ class msoffice::params {
         },
         'Professional Plus' => {
           'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Access','InfoPath','Sharepoint Workspace'],
-          'office_product' => 'ProPlus',
+          'office_product' => 'ProPlusr',
         },
       },
       'service_packs' => {

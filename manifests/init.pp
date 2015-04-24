@@ -104,10 +104,12 @@ define msoffice(
       }
     }
 
-    msoffice::lip { "microsoft lip ${lang_code}":
-      version   => $version,
-      lang_code => $lang_code,
-      arch      => $arch
+    if $lang_code != 'en-us' {
+      msoffice::lip { "microsoft lip ${lang_code}":
+        version   => $version,
+        lang_code => $lang_code,
+        arch      => $arch
+      }
     }
   }
 
