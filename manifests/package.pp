@@ -91,6 +91,15 @@ define msoffice::package(
     $office_root = "${deployment_root}\\OFFICE${office_num}\\${edition}"
   }
 
+  if $office_root {
+    file { "${msoffice::params::temp_dir}\\setup.exe":
+      source => "${office_root}\\setup.exe",
+      mode   => '0777',
+      owner  => 'Administrator',
+      group  => 'Administrators',
+    }
+  }
+
   if $ensure == 'present' {
     if $version == '2003' {
       if $office_root {
@@ -102,11 +111,12 @@ define msoffice::package(
         }
 
         exec { 'install-office':
-          command   => "\"${office_root}\\SETUP.EXE\" /settings \"${msoffice::params::temp_dir}\\office_config.ini\"",
-          provider  => windows,
+          command   => "& \"${msoffice::params::temp_dir}\\setup.exe\" /settings \"${msoffice::params::temp_dir}\\office_config.ini\"",
+          provider  => powershell,
           logoutput => true,
           subscribe => File["${msoffice::params::temp_dir}\\office_config.ini"],
-          require   => File["${msoffice::params::temp_dir}\\office_config.ini"]
+          require   => [File["${msoffice::params::temp_dir}\\office_config.ini"],
+                        File["${msoffice::params::temp_dir}\\setup.exe"]],
         }
       }
     } else {
@@ -119,29 +129,32 @@ define msoffice::package(
         }
 
         exec { 'install-office':
-          command   => "\"${office_root}\\setup.exe\" /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
-          provider  => windows,
+          command   => "& \"${msoffice::params::temp_dir}\\setup.exe\" /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
+          provider  => powershell,
           logoutput => true,
           creates   => 'C:\\Program Files\\Microsoft Office',
-          require   => File["${msoffice::params::temp_dir}\\office_config.xml"]
+          require   => [File["${msoffice::params::temp_dir}\\office_config.xml"],
+                        File["${msoffice::params::temp_dir}\\setup.exe"]],
         }
 
         exec { 'upgrade-office':
-          command   => "\"${office_root}\\setup.exe\" /modify ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
-          provider  => windows,
+          command   => "& \"${office_root}\\setup.exe\" /modify ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
+          provider  => powershell,
           logoutput => true,
           subscribe => File["${msoffice::params::temp_dir}\\office_config.xml"],
-          require   => File["${msoffice::params::temp_dir}\\office_config.xml"]
+          require   => [File["${msoffice::params::temp_dir}\\office_config.xml"],
+                        File["${msoffice::params::temp_dir}\\setup.exe"]],
         }
       }
     }
   } elsif $ensure == 'absent' {
     if $version == '2003' {
       exec { 'uninstall-office':
-        command   => "& \"${office_root}\\setup.exe\" /x ${office_product}.msi /qb",
+        command   => "& \"${msoffice::params::temp_dir}\\setup.exe\" /x ${office_product}.msi /qb",
         provider  => powershell,
         logoutput => true,
-        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }"
+        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }",
+        require   => File["${msoffice::params::temp_dir}\\setup.exe"],
       }
 
       file { ["${msoffice::params::temp_dir}\\office_config.ini","${msoffice::params::temp_dir}\\office_install.log"]:
@@ -150,10 +163,11 @@ define msoffice::package(
       }
     } else {
       exec { 'uninstall-office':
-        command   => "& \"${office_root}\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
+        command   => "& \"${msoffice::params::temp_dir}\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
         provider  => powershell,
         logoutput => true,
-        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }"
+        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }",
+        require   => File["${msoffice::params::temp_dir}\\setup.exe"],
       }
     }
   } else { }
