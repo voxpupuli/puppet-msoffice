@@ -145,7 +145,7 @@ class msoffice::params {
       },
       'service_packs' => {
         '0' => {
-          'build' => '14.0.4760.1000'
+          'build' => '14.0.4763.1000'
         },
         '1' => {
           'setup' => {
