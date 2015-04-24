@@ -113,6 +113,7 @@ class msoffice::params {
     },
     '2010' => {
       'version' => '14',
+      'hasMultipleArch' => true,
       'editions' => {
         'Starter' => {
           'products' => ['Word','Excel'],
@@ -165,6 +166,7 @@ class msoffice::params {
     },
     '2013' => {
       'version' => '15',
+      'hasMultipleArch' => true,
       'editions' => {
         'Home and Student' => {
           'products' => ['Word','Excel','Powerpoint','OneNote'],
@@ -189,7 +191,14 @@ class msoffice::params {
       },
       'service_packs' => {
         '0' => {
-          'build' => '15.0.4420.1027'
+          'build' => '15.0.4420.1017'
+        },
+        '1' => {
+          'setup' => {
+            'x86' => 'proplussp2013-kb2817430-fullfile-x86-en-us.exe',
+            'x64' => 'proplussp2013-kb2817430-fullfile-x64-en-us.exe',
+          },
+          'build' => '15.0.4569.1506'
         },
       }
     }

@@ -84,8 +84,9 @@ define msoffice::package(
   $product_key = $msoffice::params::office_versions[$version]['prod_key']
   $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
   $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
+  $office_hasMultipleArch = $msoffice::params::office_versions[$version]['hasMultipleArch']
 
-  if $version == '2010' {
+  if $office_hasMultipleArch {
     $office_root = "${deployment_root}\\OFFICE${office_num}\\${edition}\\${arch}"
   } else {
     $office_root = "${deployment_root}\\OFFICE${office_num}\\${edition}"
