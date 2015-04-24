@@ -1,0 +1,3 @@
+$key =  Get-Item -LiteralPath '<%= @office_reg_key %>' -ErrorAction SilentlyContinue
+if ($key -and $key.GetValue('<%= @office_build %>')) { exit 0 }
+exit 1

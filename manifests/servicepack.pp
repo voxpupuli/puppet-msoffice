@@ -64,6 +64,6 @@ define msoffice::servicepack(
     command   => "& \"${sp_root}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
-    unless    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 0 }"
+    unless    => template('msoffice/check_office_installed.ps1.erb'),
   }
 }

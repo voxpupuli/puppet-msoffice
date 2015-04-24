@@ -60,7 +60,7 @@ define msoffice::lip(
     command   => "& \"${lip_root}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
-    unless    => "if (Get-Item -LiteralPath \'\\${lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${lang_id}\')) { exit 0 }"
+    unless    => template('msoffice/check_officelip_installed.ps1.erb'),
   }
 
 }

@@ -152,7 +152,7 @@ define msoffice::package(
         command   => "& \"${msoffice::params::temp_dir}\\office\\setup.exe\" /x ${office_product}.msi /qb",
         provider  => powershell,
         logoutput => true,
-        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 0 }",
+        onlyif    => template('msoffice/check_office_installed.ps1.erb'),
         require   => File["${msoffice::params::temp_dir}\\office"],
       }
 
@@ -165,7 +165,7 @@ define msoffice::package(
         command   => "& \"${msoffice::params::temp_dir}\\office\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
         provider  => powershell,
         logoutput => true,
-        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 0 }",
+        onlyif    => template('msoffice/check_office_installed.ps1.erb'),
         require   => File["${msoffice::params::temp_dir}\\office"],
       }
     }
