@@ -153,14 +153,14 @@ class msoffice::params {
             'x86' => 'officesuite2010sp1-kb2460049-x86-fullfile-en-us.exe',
             'x64' => 'officesuite2010sp1-kb2460049-x64-fullfile-en-us.exe',
           },
-          'build' => '14.0.6023.1000'
+          'build' => '14.0.6029.1000'
         },
         '2' => {
           'setup' => {
             'x86' => 'officesp2010-kb2687455-fullfile-x86-en-us.exe',
             'x64' => 'officesp2010-kb2687455-fullfile-x64-en-us.exe',
           },
-          'build' => '14.0.7011.1000'
+          'build' => '14.0.7015.1000'
         },
       }
     },

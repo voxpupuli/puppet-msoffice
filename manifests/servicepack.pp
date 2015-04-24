@@ -47,8 +47,9 @@ define msoffice::servicepack(
   $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
   $office_num = $msoffice::params::office_versions[$version]['version']
   $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
+  $office_hasMultipleArch = $msoffice::params::office_versions[$version]['hasMultipleArch']
 
-  if $version == '2010' {
+  if $office_hasMultipleArch {
     $setup = $msoffice::params::office_versions[$version]['service_packs'][$sp]['setup'][$arch]
     $sp_root = "${deployment_root}\\OFFICE${office_num}\\SPs\\${arch}"
   } else {
