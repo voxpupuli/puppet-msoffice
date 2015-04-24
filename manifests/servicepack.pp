@@ -56,12 +56,16 @@ define msoffice::servicepack(
     $sp_root = "${deployment_root}\\OFFICE${office_num}\\SPs"
   }
 
-  if ($setup && $sp_root) {
-
+  file { "${msoffice::params::temp_dir}\\${setup}":
+    source => "${sp_root}\\${setup}",
+    mode   => '0777',
+    owner  => 'Administrator',
+    group  => 'Administrators',
   }
-
+  ->
   exec { 'install-sp':
-    command   => "& \"${sp_root}\\${setup}\" /q /norestart",
+    path      => $::path,
+    command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
     unless    => template('msoffice/check_office_installed.ps1.erb'),

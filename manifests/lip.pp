@@ -56,8 +56,16 @@ define msoffice::lip(
   $lang_id = $msoffice::params::lcid_strings[$lang_code]
   $setup = "languageinterfacepack-${arch}-${lang_code}.exe"
 
+  file { "${msoffice::params::temp_dir}\\${setup}":
+    source => "${lip_root}\\${setup}",
+    mode   => '0777',
+    owner  => 'Administrator',
+    group  => 'Administrators',
+  }
+  ->
   exec { 'install-lip':
-    command   => "& \"${lip_root}\\${setup}\" /q /norestart",
+    path      => $::path,
+    command   => "& cmd.exe /c start /w \"${msoffice::params::temp_dir}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
     unless    => template('msoffice/check_officelip_installed.ps1.erb'),
