@@ -186,7 +186,7 @@ class msoffice::params {
         },
         'Professional Plus' => {
           'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher','Access', 'InfoPath', 'Lync'],
-          'office_product' => 'ProPlus',
+          'office_product' => 'ProPlusr',
         }
       },
       'service_packs' => {
