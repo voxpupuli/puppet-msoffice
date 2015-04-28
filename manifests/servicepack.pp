@@ -46,7 +46,12 @@ define msoffice::servicepack(
 
   $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
   $office_num = $msoffice::params::office_versions[$version]['version']
-  $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
+  if ($::architecture=='x64' and $arch=='x86') {
+    $office_reg_key = "HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
+  } 
+  else {
+    $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
+  }
   $office_hasMultipleArch = $msoffice::params::office_versions[$version]['hasMultipleArch']
 
   if $office_hasMultipleArch {
@@ -70,6 +75,6 @@ define msoffice::servicepack(
     provider  => powershell,
     logoutput => true,
     timeout   => 0,
-    unless    => template('msoffice/check_office_installed.ps1.erb'),
+    unless    => template('msoffice/check_officesp_installed.ps1.erb'),
   }
 }

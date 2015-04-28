@@ -82,7 +82,13 @@ define msoffice::package(
   $office_num = $msoffice::params::office_versions[$version]['version']
   $office_product = $msoffice::params::office_versions[$version]['editions'][$edition]['office_product']
   $product_key = $msoffice::params::office_versions[$version]['prod_key']
-  $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
+  
+  if ($::architecture=='x64' and $arch=='x86') {
+    $office_reg_key = "HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Office\\${office_num}.0\\Common\\InstallRoot"
+  } 
+  else {
+    $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\InstallRoot"
+  }
   $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
   $office_hasMultipleArch = $msoffice::params::office_versions[$version]['hasMultipleArch']
 

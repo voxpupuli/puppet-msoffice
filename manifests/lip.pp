@@ -52,7 +52,12 @@ define msoffice::lip(
 
   $office_num = $msoffice::params::office_versions[$version]['version']
   $lip_root = "${deployment_root}\\OFFICE${office_num}\\LIPs"
-  $lip_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\LanguageResources\\InstalledUIs"
+  if ($::architecture=='x64' and $arch=='x86') {
+    $lip_reg_key = "HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Office\\${office_num}.0\\Common\\LanguageResources\\InstalledUIs"
+  } 
+  else {
+    $lip_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\LanguageResources\\InstalledUIs"
+  }
   $lang_id = $msoffice::params::lcid_strings[$lang_code]
   $setup = "languageinterfacepack-${arch}-${lang_code}.exe"
 
