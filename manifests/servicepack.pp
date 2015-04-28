@@ -48,7 +48,7 @@ define msoffice::servicepack(
   $office_num = $msoffice::params::office_versions[$version]['version']
   if ($::architecture=='x64' and $arch=='x86') {
     $office_reg_key = "HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
-  } 
+  }
   else {
     $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\ProductVersion"
   }

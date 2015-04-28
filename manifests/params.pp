@@ -136,11 +136,11 @@ class msoffice::params {
           'office_product' => 'Standardr',
         },
         'Professional' => {
-          'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Access'],
+          'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Publisher','Access'],
           'office_product' => 'Pro',
         },
         'Professional Plus' => {
-          'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Access','InfoPath','Sharepoint Workspace'],
+          'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Publisher','Access','InfoPath','Sharepoint Workspace'],
           'office_product' => 'ProPlusr',
         },
       },
