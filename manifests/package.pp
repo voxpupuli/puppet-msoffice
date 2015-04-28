@@ -119,6 +119,7 @@ define msoffice::package(
         provider  => powershell,
         logoutput => true,
         timeout   => 0,
+        unless    => template('msoffice/check_office_installed.ps1.erb'),
         subscribe => File["${msoffice::params::temp_dir}\\office${office_num}_config.ini"],
         require   => [File["${msoffice::params::temp_dir}\\office${office_num}_config.ini"],
                       File["${msoffice::params::temp_dir}\\office${office_num}"]],
@@ -137,7 +138,7 @@ define msoffice::package(
         provider  => powershell,
         logoutput => true,
         timeout   => 0,
-        creates   => 'C:\\Program Files\\Microsoft Office',
+        unless    => template('msoffice/check_office_installed.ps1.erb'),
         require   => [File["${msoffice::params::temp_dir}\\office${office_num}_config.xml"],
                       File["${msoffice::params::temp_dir}\\office${office_num}"]],
       }
