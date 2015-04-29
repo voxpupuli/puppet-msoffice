@@ -100,7 +100,8 @@ define msoffice(
         version         => $version,
         sp              => $sp,
         arch            => $arch,
-        deployment_root => $deployment_root
+        deployment_root => $deployment_root,
+        require         => Msoffice::Package["microsoft office ${version}"],
       }
     }
 
@@ -108,7 +109,8 @@ define msoffice(
       msoffice::lip { "microsoft lip ${lang_code}":
         version   => $version,
         lang_code => $lang_code,
-        arch      => $arch
+        arch      => $arch,
+        require   => Msoffice::Package["microsoft office ${version}"],
       }
     }
   }
