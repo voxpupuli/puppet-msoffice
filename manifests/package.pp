@@ -85,7 +85,7 @@ define msoffice::package(
   
   if ($::architecture=='x64' and $arch=='x86') {
     $office_reg_key = "HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Office\\${office_num}.0\\Common\\InstallRoot"
-  } 
+  }
   else {
     $office_reg_key = "HKLM:\\SOFTWARE\\Microsoft\\Office\\${office_num}.0\\Common\\InstallRoot"
   }
@@ -99,14 +99,12 @@ define msoffice::package(
   }
 
   if $office_root {
-    file { "${msoffice::params::temp_dir}\\office${office_num}":
-      ensure  => directory,
-      source  => $office_root,
-      recurse => true,
-      purge   => true,
-      mode    => '0777',
-      owner   => 'Administrator',
-      group   => 'Administrators',
+    exec { "retrieve office${office_num} files":
+      path      => $::path,
+      command   => "robocopy \"${office_root}\" \"${msoffice::params::temp_dir}\\office${office_num}\" /e",
+      logoutput => true,
+      returns   => [0,1,2,3,4,5,6,7],
+      creates   => "${msoffice::params::temp_dir}\\office${office_num}",
     }
   }
 
@@ -128,7 +126,7 @@ define msoffice::package(
         unless    => template('msoffice/check_office_installed.ps1.erb'),
         subscribe => File["${msoffice::params::temp_dir}\\office${office_num}_config.ini"],
         require   => [File["${msoffice::params::temp_dir}\\office${office_num}_config.ini"],
-                      File["${msoffice::params::temp_dir}\\office${office_num}"]],
+                      Exec["retrieve office${office_num} files"]],
       }
     } else {
       file { "${msoffice::params::temp_dir}\\office${office_num}_config.xml":
@@ -146,7 +144,7 @@ define msoffice::package(
         timeout   => 0,
         unless    => template('msoffice/check_office_installed.ps1.erb'),
         require   => [File["${msoffice::params::temp_dir}\\office${office_num}_config.xml"],
-                      File["${msoffice::params::temp_dir}\\office${office_num}"]],
+                      Exec["retrieve office${office_num} files"]],
       }
 
       # exec { 'upgrade-office':
@@ -167,7 +165,7 @@ define msoffice::package(
         logoutput => true,
         timeout   => 0,
         onlyif    => template('msoffice/check_office_installed.ps1.erb'),
-        require   => File["${msoffice::params::temp_dir}\\office${office_num}"],
+        require   => Exec["retrieve office${office_num} files"],
       }
 
       file { ["${msoffice::params::temp_dir}\\office${office_num}_config.ini","${msoffice::params::temp_dir}\\office_install.log"]:
@@ -182,7 +180,7 @@ define msoffice::package(
         logoutput => true,
         timeout   => 0,
         onlyif    => template('msoffice/check_office_installed.ps1.erb'),
-        require   => File["${msoffice::params::temp_dir}\\office${office_num}"],
+        require   => Exec["retrieve office${office_num} files"],
       }
     }
   } else { }
