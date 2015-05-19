@@ -1,0 +1,3 @@
+$key = '<%= @excel_vbawarnings_key %>'
+Set-ItemProperty -Path $key -Name <%= @excel_vbawarnings_name %> -Value <%= @excel_vbawarnings_value %> -ErrorAction SilentlyContinue
+exit 0
