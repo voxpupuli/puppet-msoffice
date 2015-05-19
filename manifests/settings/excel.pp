@@ -54,8 +54,8 @@ define msoffice::settings::excel (
   exec { 'Excel VBAWarnings HKCU':
     path     => $::path,
     provider => powershell,
-    command  => template('msoffice/set_excel_vbawaranings.ps1.erb'),
-    unless   => template('winnetdrive/check_excel_vbawaranings.ps1.erb'),
+    command  => template('msoffice/set_excel_vbawarnings.ps1.erb'),
+    unless   => template('msoffice/check_excel_vbawarnings.ps1.erb'),
   }
 
   registry::value { 'AccessVBOM':
