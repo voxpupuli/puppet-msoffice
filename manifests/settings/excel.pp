@@ -16,8 +16,9 @@
 # Values: x86;x64
 #
 # [*VBAWarnings*]
-# Enable or disable VBA Warning messages
-# Values: 0;1
+# Set security level for VBA Warning messages
+# Values: 1;2;3;4 
+# Please refer to: https://technet.microsoft.com/en-us/library/cc178946(v=office.12).aspx
 #
 # [*AccessVBOM*]
 # Enable or disable access to VB Object Model
@@ -34,15 +35,27 @@ define msoffice::settings::excel (
   
   if ($::architecture=='x64' and $arch=='x86') {
     $office_reg_key = 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office'
+    $office_reg_hkcu_key = 'HKCU:\SOFTWARE\Wow6432Node\Microsoft\Office'
   }
   else {
     $office_reg_key = 'HKLM:\SOFTWARE\Microsoft\Office'
+    $office_reg_hkcu_key = 'HKCU:\SOFTWARE\Microsoft\Office'
   }
 
   registry::value { 'VBAWarnings':
     key  => "${office_reg_key}\\${office_num}.0\\Excel\\Security",
     type => 'dword',
     data => $vbaWarnings,
+  }
+  # VBAWarnings does not seem to work system-wide. Must use HKCU.
+  $excel_vbawarnings_key = "${office_reg_hkcu_key}\\${office_num}.0\\Excel\\Security"
+  $excel_vbawarnings_name = 'VBAWarnings'
+  $excel_vbawarnings_value = $vbaWarnings
+  exec { 'Excel VBAWarnings HKCU':
+    path     => $::path,
+    provider => powershell,
+    command  => template('msoffice/set_excel_vbawaranings.ps1.erb'),
+    unless   => template('winnetdrive/check_excel_vbawaranings.ps1.erb'),
   }
 
   registry::value { 'AccessVBOM':

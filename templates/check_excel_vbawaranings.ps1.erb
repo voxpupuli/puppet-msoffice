@@ -1,0 +1,3 @@
+$key = '<%= @excel_vbawarnings_key %>'
+$entry = (Get-ItemProperty -Path $key -Name <%= @excel_vbawarnings_name %> -ErrorAction SilentlyContinue)
+if($entry.'<%= @excel_vbawarnings_name %>' -ne <%= @excel_vbawarnings_value %>) { exit 1 }

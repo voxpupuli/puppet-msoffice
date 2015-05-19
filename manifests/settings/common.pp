@@ -22,7 +22,8 @@
 # [*ufiControls*]
 # UFI Controls for ActiveX components
 # Values: 1;2;3;4;5;6
-# Please refer to: https://support.microsoft.com/en-us/kb/827742 
+# Please refer to: https://support.microsoft.com/en-us/kb/827742
+# or https://technet.microsoft.com/en-us/library/cc178946(v=office.12).aspx
 #
 define msoffice::settings::common (
   $version,
