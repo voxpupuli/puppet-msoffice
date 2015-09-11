@@ -48,15 +48,15 @@ define msoffice::settings::excel (
     data => $vbaWarnings,
   }
   # VBAWarnings does not seem to work system-wide. Must use HKCU.
-  $excel_vbawarnings_key = "${office_reg_hkcu_key}\\${office_num}.0\\Excel\\Security"
-  $excel_vbawarnings_name = 'VBAWarnings'
-  $excel_vbawarnings_value = $vbaWarnings
-  exec { 'Excel VBAWarnings HKCU':
-    path     => $::path,
-    provider => powershell,
-    command  => template('msoffice/set_excel_vbawarnings.ps1.erb'),
-    unless   => template('msoffice/check_excel_vbawarnings.ps1.erb'),
-  }
+  #$excel_vbawarnings_key = "${office_reg_hkcu_key}\\${office_num}.0\\Excel\\Security"
+  #$excel_vbawarnings_name = 'VBAWarnings'
+  #$excel_vbawarnings_value = $vbaWarnings
+  #exec { 'Excel VBAWarnings HKCU':
+  #  path     => $::path,
+  #  provider => powershell,
+  #  command  => template('msoffice/set_excel_vbawarnings.ps1.erb'),
+  #  unless   => template('msoffice/check_excel_vbawarnings.ps1.erb'),
+  #}
 
   registry::value { 'AccessVBOM':
     key  => "${office_reg_key}\\${office_num}.0\\Excel\\Security",
