@@ -1,4 +1,6 @@
-﻿$osbitness = (Get-WmiObject Win32_OperatingSystem -computername .).OSArchitecture
+﻿# Author::    Jean Duprat (mailto:jean.duprat@thomsonreuters.com)
+
+$osbitness = (Get-WmiObject Win32_OperatingSystem -computername .).OSArchitecture
 
 #Works only on .Net >= 3
 function NetFrameworkVersion()
@@ -124,7 +126,7 @@ $netframework = NetFrameworkVersion
 $officeVersion = OfficeFullVersion
 $officeBitness = OfficeBitness
 
-Write-Host "os=$os $osbitness"
-Write-Host "culture=$culture"
-Write-Host "dotNET=$netframework"
-Write-Host "office=$officeVersion $officeBitness"
+Write-Host "msoffice_os=$os $osbitness"
+Write-Host "msoffice_culture=$culture"
+Write-Host "msoffice_dotNET=$netframework"
+Write-Host "msoffice_version=$officeVersion $officeBitness"
