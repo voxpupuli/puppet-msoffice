@@ -48,15 +48,28 @@ define msoffice::settings::excel (
     data => $vbaWarnings,
   }
   # VBAWarnings does not seem to work system-wide. Must use HKCU.
-  #$excel_vbawarnings_key = "${office_reg_hkcu_key}\\${office_num}.0\\Excel\\Security"
-  #$excel_vbawarnings_name = 'VBAWarnings'
-  #$excel_vbawarnings_value = $vbaWarnings
-  #exec { 'Excel VBAWarnings HKCU':
-  #  path     => $::path,
-  #  provider => powershell,
-  #  command  => template('msoffice/set_excel_vbawarnings.ps1.erb'),
-  #  unless   => template('msoffice/check_excel_vbawarnings.ps1.erb'),
-  #}
+  # $excel_vbawarnings_key = "${office_reg_hkcu_key}\\${office_num}.0\\Excel\\Security"
+  # $excel_vbawarnings_name = 'VBAWarnings'
+  # $excel_vbawarnings_value = $vbaWarnings
+  # $excel_vbawarnings_scriptpath = "${msoffice::params::temp_dir}\\office${office_num}_set_excel_vbawarnings.ps1"
+  # # exec { 'Excel VBAWarnings HKCU':
+  # #   path     => $::path,
+  # #   provider => powershell,
+  # #   command  => template('msoffice/set_excel_vbawarnings.ps1.erb'),
+  # #   unless   => template('msoffice/check_excel_vbawarnings.ps1.erb'),
+  # # }
+  # file { 'set excel vba warnings script':
+  #   ensure             => present,
+  #   path               => $excel_vbawarnings_scriptpath,
+  #   source_permissions => ignore,
+  #   content            => template('msoffice/set_excel_vbawarnings.ps1.erb'),
+  # }
+  # ->
+  # exec { 'set excel vba warnings':
+  #   path        => $::path,
+  #   command     => "${devxexec::path} /user:${devxexec::username} /password:${devxexec::password} /sessionid:1 \"powershell -ExecutionPolicy unrestricted ${iescript_path}\"",
+  #   refreshonly => true,
+  # }
 
   registry::value { 'AccessVBOM':
     key  => "${office_reg_key}\\${office_num}.0\\Excel\\Security",
