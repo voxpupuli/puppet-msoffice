@@ -39,11 +39,11 @@ function OfficeBitness()
     }
     else
     {
-        $outlookx64 = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Nod\Microsoft\Office\$version.0\Outlook"
+        $outlookx64 = "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office\$version.0\Outlook"
 
         if(Test-Path $outlookx64)
         {
-            $outlookBitness = "HKLM:\SOFTWARE\Wow6432Nod\Microsoft\Office\$version.0\Outlook"
+            $outlookBitness = "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office\$version.0\Outlook"
         }
         else
         {
@@ -67,7 +67,23 @@ function OfficeFullVersion()
         #x86 Office  
         if((OfficeBitness) -eq "x86")
         {
-            $msodll = "C:\Program Files (x86)\Common Files\microsoft shared\OFFICE$excelNb\mso.dll"
+            #Office >= 2016
+            if($excelNb -ge 16)
+            {
+                $msodll = "C:\Program Files (x86)\Microsoft Office\root\VFS\ProgramFilesCommonX86\Microsoft Shared\OFFICE$excelNb\mso.dll"
+            }
+            else
+            {
+                $msodll = "C:\Program Files (x86)\Common Files\microsoft shared\OFFICE$excelNb\mso.dll"
+            }
+        }
+        else
+        {
+            #Office >= 2016
+            if($excelNb -ge 16)
+            {
+                $msodll = "C:\Program Files\Microsoft Office\root\VFS\ProgramFilesCommonX86\Microsoft Shared\OFFICE$excelNb\mso.dll"
+            }
         }
     }
 
