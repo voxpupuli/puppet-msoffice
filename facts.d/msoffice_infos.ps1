@@ -39,11 +39,11 @@ function OfficeBitness()
     }
     else
     {
-        $outlookx64 = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Nod\Microsoft\Office\$version.0\Outlook"
+        $outlookx64 = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Office\$version.0\Outlook"
 
         if(Test-Path $outlookx64)
         {
-            $outlookBitness = "HKLM:\SOFTWARE\Wow6432Nod\Microsoft\Office\$version.0\Outlook"
+            $outlookBitness = "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Office\$version.0\Outlook"
         }
         else
         {
