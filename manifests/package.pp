@@ -69,7 +69,7 @@ define msoffice::package(
   $edition_regex = join(keys($msoffice::params::office_versions[$version]['editions']), '|')
   validate_re($edition,"^${edition_regex}$", 'The edition argument does not match a valid edition for the specified version of office')
 
-  validate_re($license_key,'^[a-zA-Z]{5}-[a-zA-Z]{5}-[a-zA-Z]{5}-[a-zA-Z]{5}-[a-zA-Z]{5}$', 'The license_key argument speicifed is not correctly formatted')
+  validate_re($license_key,'^[a-zA-Z0-9]{5}(-[a-zA-Z0-9]{5}){4}$', 'The license_key argument speicifed is not correctly formatted')
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
 
   $lang_regex = join(keys($msoffice::params::lcid_strings), '|')
