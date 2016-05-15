@@ -76,7 +76,8 @@ describe 'msoffice::lip', type: :define do
          'command' => "& \"#{lip_root}\\#{setup}\" /q /norestart",
          'provider' => 'powershell',
          'onlyif' => "if (Get-Item -LiteralPath \'\\#{lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'1031\')) { exit 1 }"
-      )}
+      )
+      }
     end
   end
 end

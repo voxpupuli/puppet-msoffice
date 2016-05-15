@@ -65,7 +65,8 @@ describe 'msoffice::servicepack', type: :define do
         'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
         'provider' => 'powershell',
         'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-      )}
+      )
+      }
     end
   end
 
@@ -86,7 +87,8 @@ describe 'msoffice::servicepack', type: :define do
         'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
         'provider' => 'powershell',
         'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-      )}
+      )
+      }
     end
   end
 
@@ -108,7 +110,8 @@ describe 'msoffice::servicepack', type: :define do
         'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",
         'provider' => 'powershell',
         'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-      )}
+      )
+      }
     end
   end
 end
