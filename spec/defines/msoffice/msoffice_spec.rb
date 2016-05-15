@@ -153,7 +153,7 @@ describe 'msoffice', type: :define do
       it do
         expect {
           should contain_msoffice__package('microsoft office 2010')
-        }.to_not raise_error
+        }.not_to raise_error
       end
     end
   end

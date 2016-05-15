@@ -521,7 +521,7 @@ describe 'msoffice::package', type: :define do
       it do
         expect {
           should contain_exec('install-office')
-        }.to_not raise_error
+        }.not_to raise_error
       end
     end
   end
