@@ -12,7 +12,7 @@ describe 'msoffice::servicepack', type: :define do
   describe 'installing with unknown version' do
     let :title do 'servicepack for unknown version' end
     let :params do
-      { version: 'xxx', sp: '1'}
+      { version: 'xxx', sp: '1' }
     end
 
     it do
@@ -25,7 +25,7 @@ describe 'msoffice::servicepack', type: :define do
   describe 'installing with unknown sp' do
     let :title do 'servicepack for unknown sp version' end
     let :params do
-      { version: '2010', sp: '5'}
+      { version: '2010', sp: '5' }
     end
 
     it do
@@ -38,7 +38,7 @@ describe 'msoffice::servicepack', type: :define do
   describe 'incorrect arch' do
     let :title do 'servicepack with incorrect arch' end
     let :params do
-      { arch: 'fubar', version: '2010', sp: '1'}
+      { arch: 'fubar', version: '2010', sp: '1' }
     end
 
     it do
