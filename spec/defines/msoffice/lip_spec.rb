@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'msoffice::lip', :type => :define do
+describe 'msoffice::lip', type: :define do
 
   $lcid_strings = {
       'af' => '1078', 'sq' => '1052', 'am' => '1118', 'ar-dz' => '5121', 'ar-bh' => '15361', 'ar-eg' => '3073', 'ar-iq' => '2049',
@@ -31,10 +31,10 @@ describe 'msoffice::lip', :type => :define do
   describe "installing with unknown version" do
     let :title do "lip with unknown version" end
     let(:params) {{
-      :version => 'xxx',
-      :lang_code => 'en-us',
-      :arch => 'x86',
-      :deployment_root => '\\test-server\packages'
+      version: 'xxx',
+      lang_code: 'en-us',
+      arch: 'x86',
+      deployment_root: '\\test-server\packages'
     }}
 
     it do
@@ -47,10 +47,10 @@ describe 'msoffice::lip', :type => :define do
   describe "incorrect arch" do
     let :title do "lip with incorrect arch" end
     let(:params) {{
-      :version => '2010',
-      :lang_code => 'en-us',
-      :arch => 'fubar',
-      :deployment_root => '\\test-server\packages'
+      version: '2010',
+      lang_code: 'en-us',
+      arch: 'fubar',
+      deployment_root: '\\test-server\packages'
     }}
 
     it do
@@ -67,10 +67,10 @@ describe 'msoffice::lip', :type => :define do
     describe "valid country: #{lang_code}" do
       let :title do "lip with valid countries" end
       let(:params) {{
-        :version => '2010',
-        :lang_code => lang_code,
-        :arch => 'x86',
-        :deployment_root => '\\test-server\packages'
+        version: '2010',
+        lang_code: lang_code,
+        arch: 'x86',
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should contain_exec('install-lip').with(

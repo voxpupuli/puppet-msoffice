@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'msoffice::package', :type => :define do
+describe 'msoffice::package', type: :define do
 
   $temp_dir = 'C:\Windows\Temp'
 
@@ -216,11 +216,11 @@ describe 'msoffice::package', :type => :define do
     describe "installing office 2013 #{edition}" do
       let :title do 'msoffice for 2013' end
       let(:params) {{
-        :version => '2013',
-        :edition => edition,
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => "\\\\test-server\\packages"
+        version: '2013',
+        edition: edition,
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
@@ -238,13 +238,13 @@ describe 'msoffice::package', :type => :define do
       describe "uninstalling office 2013 #{edition} SP#{sp}" do
         let :title do 'msoffice for 2013' end
         let(:params) {{
-          :ensure => 'absent',
-          :version => '2013',
-          :edition => edition,
-          :sp => sp,
-          :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-          :products => ['Word'],
-          :deployment_root => "\\\\test-server\\packages"
+          ensure: 'absent',
+          version: '2013',
+          edition: edition,
+          sp: sp,
+          license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+          products: ['Word'],
+          deployment_root: "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
@@ -262,11 +262,11 @@ describe 'msoffice::package', :type => :define do
     describe "installing office 2010 #{edition}" do
       let :title do 'msoffice for 2010' end
       let(:params) {{
-        :version => '2010',
-        :edition => edition,
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => "\\\\test-server\\packages"
+        version: '2010',
+        edition: edition,
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
@@ -284,13 +284,13 @@ describe 'msoffice::package', :type => :define do
       describe "uninstalling office 2010 #{edition} SP#{sp}" do
         let :title do 'msoffice for 2010' end
         let(:params) {{
-          :ensure => 'absent',
-          :version => '2010',
-          :edition => edition,
-          :sp => sp,
-          :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-          :products => ['Word'],
-          :deployment_root => "\\\\test-server\\packages"
+          ensure: 'absent',
+          version: '2010',
+          edition: edition,
+          sp: sp,
+          license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+          products: ['Word'],
+          deployment_root: "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
@@ -308,11 +308,11 @@ describe 'msoffice::package', :type => :define do
     describe "installing office 2007 #{edition}" do
       let :title do 'msoffice for 2007' end
       let(:params) {{
-        :version => '2007',
-        :edition => edition,
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => "\\\\test-server\\packages"
+        version: '2007',
+        edition: edition,
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
@@ -330,13 +330,13 @@ describe 'msoffice::package', :type => :define do
       describe "uninstalling office 2007 #{edition}" do
         let :title do 'msoffice for 2007' end
         let(:params) {{
-          :ensure => 'absent',
-          :version => '2007',
-          :edition => edition,
-          :sp => sp,
-          :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-          :products => ['Word'],
-          :deployment_root => "\\\\test-server\\packages"
+          ensure: 'absent',
+          version: '2007',
+          edition: edition,
+          sp: sp,
+          license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+          products: ['Word'],
+          deployment_root: "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
@@ -353,11 +353,11 @@ describe 'msoffice::package', :type => :define do
     describe "installing office 2003 #{edition}" do
       let :title do 'msoffice for 2003' end
       let(:params) {{
-        :version => '2003',
-        :edition => edition,
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => "\\\\test-server\\packages"
+        version: '2003',
+        edition: edition,
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: "\\\\test-server\\packages"
       }}
 
       it { should contain_exec('install-office').with(
@@ -371,13 +371,13 @@ describe 'msoffice::package', :type => :define do
       describe "uninstalling office 2003 #{edition}" do
         let :title do 'msoffice for 2003' end
         let(:params) {{
-          :ensure => 'absent',
-          :version => '2003',
-          :sp => sp,
-          :edition => edition,
-          :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-          :products => ['Word'],
-          :deployment_root => "\\\\test-server\\packages"
+          ensure: 'absent',
+          version: '2003',
+          sp: sp,
+          edition: edition,
+          license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+          products: ['Word'],
+          deployment_root: "\\\\test-server\\packages"
         }}
 
         it { should contain_exec('uninstall-office').with(
@@ -392,11 +392,11 @@ describe 'msoffice::package', :type => :define do
   describe "installing unknown version" do
     let :title do "msoffice for unknown version" end
     let(:params) {{
-      :version => 'xxx',
-      :edition => "Standard",
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => "\\\\test-server\\packages"
+      version: 'xxx',
+      edition: "Standard",
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: "\\\\test-server\\packages"
     }}
 
     it do
@@ -409,12 +409,12 @@ describe 'msoffice::package', :type => :define do
   describe "uninstalling unknown version" do
     let :title do "msoffice for unknown version" end
     let(:params) {{
-      :ensure => 'absent',
-      :version => 'xxx',
-      :edition => "Standard",
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => "\\\\test-server\\packages"
+      ensure: 'absent',
+      version: 'xxx',
+      edition: "Standard",
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: "\\\\test-server\\packages"
     }}
 
     it do
@@ -428,11 +428,11 @@ describe 'msoffice::package', :type => :define do
     describe "installing #{version} with wrong edition" do
       let :title do "msoffice for #{version}" end
       let(:params) {{
-        :version => version,
-        :edition => "fubar",
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => "\\\\test-server\\packages"
+        version: version,
+        edition: "fubar",
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: "\\\\test-server\\packages"
       }}
 
       it do
@@ -446,11 +446,11 @@ describe 'msoffice::package', :type => :define do
   describe "incorrect license key" do
     let :title do "msoffice with incorrect license key" end
     let(:params) {{
-      :version => '2010',
-      :edition => "Standard",
-      :license_key => 'XXXXX-XXXXX-XXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => "\\\\test-server\\packages"
+      version: '2010',
+      edition: "Standard",
+      license_key: 'XXXXX-XXXXX-XXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: "\\\\test-server\\packages"
     }}
 
     it do
@@ -463,12 +463,12 @@ describe 'msoffice::package', :type => :define do
   describe "incorrect arch" do
     let :title do "msoffice with incorrect arch" end
     let(:params) {{
-      :arch => 'fubar',
-      :version => '2010',
-      :edition => "Standard",
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => "\\\\test-server\\packages"
+      arch: 'fubar',
+      version: '2010',
+      edition: "Standard",
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: "\\\\test-server\\packages"
     }}
 
     it do
@@ -481,12 +481,12 @@ describe 'msoffice::package', :type => :define do
   describe "incorrect ensure" do
     let :title do "msoffice with incorrect ensure" end
     let(:params) {{
-      :ensure => 'fubar',
-      :version => '2010',
-      :edition => "Standard",
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => "\\\\test-server\\packages"
+      ensure: 'fubar',
+      version: '2010',
+      edition: "Standard",
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: "\\\\test-server\\packages"
     }}
 
     it do
@@ -500,12 +500,12 @@ describe 'msoffice::package', :type => :define do
     describe "valid country: #{lang_code}" do
       let :title do "msoffice with valid countries" end
       let(:params) {{
-        :lang_code => lang_code,
-        :version => '2010',
-        :edition => "Standard",
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => "\\\\test-server\\packages"
+        lang_code: lang_code,
+        version: '2010',
+        edition: "Standard",
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: "\\\\test-server\\packages"
       }}
 
       it do
@@ -519,12 +519,12 @@ describe 'msoffice::package', :type => :define do
   describe "invalid country" do
     let :title do "msoffice with invalid countries" end
     let(:params) {{
-      :lang_code => 'fubar',
-      :version => '2010',
-      :edition => "Standard",
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => "\\\\test-server\\packages"
+      lang_code: 'fubar',
+      version: '2010',
+      edition: "Standard",
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: "\\\\test-server\\packages"
     }}
 
     it do
@@ -537,12 +537,12 @@ describe 'msoffice::package', :type => :define do
   describe "incorrect sp" do
     let :title do "msoffice with incorrect sp" end
     let(:params) {{
-      :sp => '5',
-      :version => '2010',
-      :edition => "Standard",
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => "\\\\test-server\\packages"
+      sp: '5',
+      version: '2010',
+      edition: "Standard",
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: "\\\\test-server\\packages"
     }}
 
     it do

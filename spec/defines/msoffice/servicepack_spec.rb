@@ -1,18 +1,18 @@
 require 'spec_helper'
 
-describe 'msoffice::servicepack', :type => :define do
+describe 'msoffice::servicepack', type: :define do
   let :hiera_data do
     {
-        :windows_deployment_root => '\\test-server\packages',
-        :company_name => 'Example Inc',
-        :office_username => 'Joe'
+        windows_deployment_root: '\\test-server\packages',
+        company_name: 'Example Inc',
+        office_username: 'Joe'
     }
   end
 
   describe "installing with unknown version" do
     let :title do "servicepack for unknown version" end
     let :params do
-      { :version => 'xxx', :sp => '1'}
+      { version: 'xxx', sp: '1'}
     end
 
     it do
@@ -25,7 +25,7 @@ describe 'msoffice::servicepack', :type => :define do
   describe "installing with unknown sp" do
     let :title do "servicepack for unknown sp version" end
     let :params do
-      { :version => '2010', :sp => '5'}
+      { version: '2010', sp: '5'}
     end
 
     it do
@@ -38,7 +38,7 @@ describe 'msoffice::servicepack', :type => :define do
   describe "incorrect arch" do
     let :title do "servicepack with incorrect arch" end
     let :params do
-      { :arch => 'fubar', :version => '2010', :sp => '1'}
+      { arch: 'fubar', version: '2010', sp: '1'}
     end
 
     it do
@@ -56,9 +56,9 @@ describe 'msoffice::servicepack', :type => :define do
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
-        :version => version,
-        :sp => sp,
-        :deployment_root => "\\test-server\\packages"
+        version: version,
+        sp: sp,
+        deployment_root: "\\test-server\\packages"
       }}
 
       it { should contain_exec('install-sp').with(
@@ -77,9 +77,9 @@ describe 'msoffice::servicepack', :type => :define do
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
-        :version => version,
-        :sp => sp,
-        :deployment_root => '\\test-server\packages'
+        version: version,
+        sp: sp,
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should contain_exec('install-sp').with(
@@ -98,10 +98,10 @@ describe 'msoffice::servicepack', :type => :define do
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
-        :arch => "x86",
-        :version => version,
-        :sp => sp,
-        :deployment_root => '\\test-server\packages'
+        arch: "x86",
+        version: version,
+        sp: sp,
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should contain_exec('install-sp').with(

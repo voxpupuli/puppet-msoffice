@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'msoffice', :type => :define do
+describe 'msoffice', type: :define do
 
   $lcid_strings = {
       'af' => '1078', 'sq' => '1052', 'am' => '1118', 'ar-dz' => '5121', 'ar-bh' => '15361', 'ar-eg' => '3073', 'ar-iq' => '2049',
@@ -31,11 +31,11 @@ describe 'msoffice', :type => :define do
   describe "installing with unknown version" do
     let :title do "msoffice with unknown version" end
     let(:params) {{
-      :version => 'xxx',
-      :edition => 'Standard',
-      :sp => '1',
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :deployment_root => '\\test-server\packages'
+      version: 'xxx',
+      edition: 'Standard',
+      sp: '1',
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      deployment_root: '\\test-server\packages'
     }}
 
     it do
@@ -49,12 +49,12 @@ describe 'msoffice', :type => :define do
     describe "installing #{version} with wrong edition" do
       let :title do "msoffice for #{version}" end
       let(:params) {{
-        :version => version,
-        :edition => "fubar",
-        :sp => '1',
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        version: version,
+        edition: "fubar",
+        sp: '1',
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: '\\test-server\packages'
       }}
 
       it do
@@ -68,11 +68,11 @@ describe 'msoffice', :type => :define do
   describe "installing with unknown sp" do
     let :title do "msoffice unknown sp version" end
     let(:params) {{
-      :version => '2010',
-      :edition => 'Standard',
-      :sp => '5',
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :deployment_root => '\\test-server\packages'
+      version: '2010',
+      edition: 'Standard',
+      sp: '5',
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      deployment_root: '\\test-server\packages'
     }}
 
     it do
@@ -85,12 +85,12 @@ describe 'msoffice', :type => :define do
   describe "incorrect license key" do
     let :title do "msoffice with incorrect license key" end
     let(:params) {{
-      :version => '2010',
-      :edition => "Standard",
-      :sp => '1',
-      :license_key => 'XXXXX-XXXXX-XXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      version: '2010',
+      edition: "Standard",
+      sp: '1',
+      license_key: 'XXXXX-XXXXX-XXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: '\\test-server\packages'
     }}
 
     it do
@@ -103,13 +103,13 @@ describe 'msoffice', :type => :define do
   describe "incorrect arch" do
     let :title do "msoffice with incorrect arch" end
     let(:params) {{
-      :arch => 'fubar',
-      :version => '2010',
-      :edition => "Standard",
-      :sp => '1',
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      arch: 'fubar',
+      version: '2010',
+      edition: "Standard",
+      sp: '1',
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: '\\test-server\packages'
     }}
 
     it do
@@ -122,13 +122,13 @@ describe 'msoffice', :type => :define do
   describe "incorrect ensure" do
     let :title do "msoffice with incorrect ensure" end
     let(:params) {{
-      :ensure => 'fubar',
-      :version => '2010',
-      :edition => "Standard",
-      :sp => '1',
-      :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-      :products => ['Word'],
-      :deployment_root => '\\test-server\packages'
+      ensure: 'fubar',
+      version: '2010',
+      edition: "Standard",
+      sp: '1',
+      license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+      products: ['Word'],
+      deployment_root: '\\test-server\packages'
     }}
 
     it do
@@ -142,13 +142,13 @@ describe 'msoffice', :type => :define do
     describe "valid country: #{lang_code}" do
       let :title do "msoffice with valid countries" end
       let(:params) {{
-        :lang_code => lang_code,
-        :version => '2010',
-        :edition => "Standard",
-        :sp => '1',
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        lang_code: lang_code,
+        version: '2010',
+        edition: "Standard",
+        sp: '1',
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: '\\test-server\packages'
       }}
 
       it do
@@ -163,12 +163,12 @@ describe 'msoffice', :type => :define do
     describe "installs the core package for #{version}" do
       let :title do "office #{version}" end
       let(:params) {{
-        :version => version,
-        :edition => 'Standard',
-        :sp => '1',
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        version: version,
+        edition: 'Standard',
+        sp: '1',
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should contain_msoffice__package("microsoft office #{version}")}
@@ -179,13 +179,13 @@ describe 'msoffice', :type => :define do
     describe "installs the service pack when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
-        :ensure => 'present',
-        :version => version,
-        :edition => 'Standard',
-        :sp => '1',
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        ensure: 'present',
+        version: version,
+        edition: 'Standard',
+        sp: '1',
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should contain_msoffice__servicepack("microsoft office #{version} servicepack 1")}
@@ -196,13 +196,13 @@ describe 'msoffice', :type => :define do
     describe "does not install the service pack when office #{version} absent" do
       let :title do "office #{version}" end
       let(:params) {{
-        :ensure => 'absent',
-        :version => version,
-        :edition => 'Standard',
-        :sp => '1',
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        ensure: 'absent',
+        version: version,
+        edition: 'Standard',
+        sp: '1',
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should_not contain_msoffice__servicepack("microsoft office #{version} servicepack 1")}
@@ -213,14 +213,14 @@ describe 'msoffice', :type => :define do
     describe "installs the lip when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
-        :lang_code => 'de-de',
-        :ensure => 'present',
-        :version => version,
-        :edition => 'Standard',
-        :sp => '1',
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        lang_code: 'de-de',
+        ensure: 'present',
+        version: version,
+        edition: 'Standard',
+        sp: '1',
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should contain_msoffice__lip("microsoft lip de-de")}
@@ -231,14 +231,14 @@ describe 'msoffice', :type => :define do
     describe "does not install the lip when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
-        :lang_code => 'de-de',
-        :ensure => 'absent',
-        :version => version,
-        :edition => 'Standard',
-        :sp => '1',
-        :license_key => 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
-        :products => ['Word'],
-        :deployment_root => '\\test-server\packages'
+        lang_code: 'de-de',
+        ensure: 'absent',
+        version: version,
+        edition: 'Standard',
+        sp: '1',
+        license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+        products: ['Word'],
+        deployment_root: '\\test-server\packages'
       }}
 
       it { should_not contain_msoffice__lip("microsoft lip de-de")}
