@@ -159,6 +159,9 @@ describe 'msoffice', type: :define do
   end
 
   [2003, 2007, 2010].each do |version|
+    # so we need version as a string
+    # rubocop yells at us when we put strings in the array
+    version = version.to_s
     describe "installs the core package for #{version}" do
       let :title do "office #{version}" end
       let(:params) {{
