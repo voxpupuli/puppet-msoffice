@@ -9,6 +9,6 @@ describe 'msoffice::params', type: :class do
     }
   end
 
-  #TODO: why doesn't this work?
-  #it { should have_resource_count(0) }
+  # TODO: why doesn't this work?
+  # it { should have_resource_count(0) }
 end

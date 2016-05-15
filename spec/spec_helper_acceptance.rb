@@ -20,7 +20,7 @@ Spec.configure do |c|
 	 c.formatter = :documentation
 
 	 c.before :suite do
- 		#The gets around a bug where windows can't validate the cert when using https
+ 		# The gets around a bug where windows can't validate the cert when using https
  		forge_repo = '--module_repository=http://forge.puppetlabs.com'
 
  		hosts.each do |host|
