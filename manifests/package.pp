@@ -106,7 +106,7 @@ define msoffice::package(
           provider  => windows,
           logoutput => true,
           subscribe => File["${msoffice::params::temp_dir}\\office_config.ini"],
-          require   => File["${msoffice::params::temp_dir}\\office_config.ini"]
+          require   => File["${msoffice::params::temp_dir}\\office_config.ini"],
         }
       }
     } else {
@@ -123,7 +123,7 @@ define msoffice::package(
           provider  => windows,
           logoutput => true,
           creates   => 'C:\\Program Files\\Microsoft Office',
-          require   => File["${msoffice::params::temp_dir}\\office_config.xml"]
+          require   => File["${msoffice::params::temp_dir}\\office_config.xml"],
         }
 
         exec { 'upgrade-office':
@@ -131,7 +131,7 @@ define msoffice::package(
           provider  => windows,
           logoutput => true,
           subscribe => File["${msoffice::params::temp_dir}\\office_config.xml"],
-          require   => File["${msoffice::params::temp_dir}\\office_config.xml"]
+          require   => File["${msoffice::params::temp_dir}\\office_config.xml"],
         }
       }
     }
@@ -141,19 +141,19 @@ define msoffice::package(
         command   => "& \"${office_root}\\setup.exe\" /x ${office_product}.msi /qb",
         provider  => powershell,
         logoutput => true,
-        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }"
+        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }",
       }
 
       file { ["${msoffice::params::temp_dir}\\office_config.ini","${msoffice::params::temp_dir}\\office_install.log"]:
         ensure  => absent,
-        require => Exec['uninstall-office']
+        require => Exec['uninstall-office'],
       }
     } else {
       exec { 'uninstall-office':
         command   => "& \"${office_root}\\setup.exe\" /uninstall ${office_product} /config \"${msoffice::params::temp_dir}\\office_config.xml\"",
         provider  => powershell,
         logoutput => true,
-        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }"
+        onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }",
       }
     }
   } else { }

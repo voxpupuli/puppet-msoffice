@@ -36,26 +36,26 @@ class msoffice::params {
         'Professional' => {
           'products' => ['Word','Excel','Outlook','Powerpoint','Publisher','InfoPath'],
           'office_product' => 'pro',
-        }
+        },
       },
       'service_packs' => {
         '0' => {
-          'build' => '11.0.5614.0'
+          'build' => '11.0.5614.0',
         },
         '1' => {
           'setup' => 'Office2003SP1-kb842532-fullfile-enu',
-          'build' => '11.0.6355.0'
+          'build' => '11.0.6355.0',
         },
         '2' => {
           'setup' => 'Office2003SP2-KB887616-FullFile-ENU',
-          'build' => '11.0.7969.0'
+          'build' => '11.0.7969.0',
         },
         '3' => {
           'setup' => 'Office2003SP3-KB923618-FullFile-ENU',
-          'build' => '11.0.8173.0'
-        }
+          'build' => '11.0.8173.0',
+        },
       },
-      'prod_key' => ''
+      'prod_key' => '',
     },
     '2007' => {
       'version' => '12',
@@ -91,25 +91,25 @@ class msoffice::params {
         'Enterprise' => {
           'products' => ['Word','Excel','Powerpoint','Outlook','Publisher','Access','InfoPath','Communicator','Groove','OneNote'],
           'office_product' => 'Enterpise',
-        }
+        },
       },
       'service_packs' => {
         '0' => {
-          'build' => '12.0.4518.1014'
+          'build' => '12.0.4518.1014',
         },
         '1' => {
           'setup' => 'office2007sp1-kb936982-fullfile-en-us.exe',
-          'build' => '12.0.6215.1000'
+          'build' => '12.0.6215.1000',
         },
         '2' => {
           'setup' => 'office2007sp2-kb953195-fullfile-en-us.exe',
-          'build' => '12.0.6425.1000'
+          'build' => '12.0.6425.1000',
         },
         '3' => {
           'setup' => 'office2007sp3-kb2526086-fullfile-en-us.exe',
-          'build' => '12.0.6612.1000'
-        }
-      }
+          'build' => '12.0.6612.1000',
+        },
+      },
     },
     '2010' => {
       'version' => '14',
@@ -145,23 +145,23 @@ class msoffice::params {
       },
       'service_packs' => {
         '0' => {
-          'build' => '14.0.4760.1000'
+          'build' => '14.0.4760.1000',
         },
         '1' => {
           'setup' => {
             'x86' => 'officesuite2010sp1-kb2460049-x86-fullfile-en-us.exe',
             'x64' => 'officesuite2010sp1-kb2460049-x64-fullfile-en-us.exe',
           },
-          'build' => '14.0.6023.1000'
+          'build' => '14.0.6023.1000',
         },
         '2' => {
           'setup' => {
             'x86' => 'officesp2010-kb2687455-fullfile-x86-en-us.exe',
             'x64' => 'officesp2010-kb2687455-fullfile-x64-en-us.exe',
           },
-          'build' => '14.0.7011.1000'
+          'build' => '14.0.7011.1000',
         },
-      }
+      },
     },
     '2013' => {
       'version' => '15',
@@ -185,14 +185,14 @@ class msoffice::params {
         'Professional Plus' => {
           'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher','Access', 'InfoPath', 'Lync'],
           'office_product' => 'ProPlus',
-        }
+        },
       },
       'service_packs' => {
         '0' => {
-          'build' => '15.0.4420.1027'
+          'build' => '15.0.4420.1027',
         },
-      }
-    }
+      },
+    },
   }
 
   $lcid_strings = {
@@ -218,6 +218,6 @@ class msoffice::params {
     'es-ni' => '19466', 'es-pa' => '6154', 'es-py' => '15370', 'es-pe' => '10250', 'es-pr' => '20490', 'es-es' => '1034',
     'es-uy' => '14346', 'es-ve' => '8202', 'sw' => '1089', 'sv-fi' => '2077', 'sv-se' => '1053', 'tg' => '1064', 'ta' => '1097',
     'tt' => '1092', 'te' => '1098', 'th' => '1054', 'bo' => '1105', 'ts' => '1073', 'tr' => '1055', 'tk' => '1090', 'uk' => '1058',
-    'ur' => '1056', 'uz-uz' => '2115', 'vi' => '1066', 'cy' => '1106', 'xh' => '1076', 'yi' => '1085', 'zu' => '1077'
+    'ur' => '1056', 'uz-uz' => '2115', 'vi' => '1066', 'cy' => '1106', 'xh' => '1076', 'yi' => '1085', 'zu' => '1077',
   }
 }

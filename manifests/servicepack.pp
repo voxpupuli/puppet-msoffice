@@ -60,6 +60,6 @@ define msoffice::servicepack(
     command   => "& \"${sp_root}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
-    onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }"
+    onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }",
   }
 }

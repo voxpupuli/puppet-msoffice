@@ -91,7 +91,7 @@ define msoffice(
     lang_code       => $lang_code,
     products        => $products,
     sp              => $sp,
-    deployment_root => $deployment_root
+    deployment_root => $deployment_root,
   }
 
   if $ensure == 'present' {
@@ -99,13 +99,13 @@ define msoffice(
       version         => $version,
       sp              => $sp,
       arch            => $arch,
-      deployment_root => $deployment_root
+      deployment_root => $deployment_root,
     }
 
     msoffice::lip { "microsoft lip ${lang_code}":
       version   => $version,
       lang_code => $lang_code,
-      arch      => $arch
+      arch      => $arch,
     }
   }
 
