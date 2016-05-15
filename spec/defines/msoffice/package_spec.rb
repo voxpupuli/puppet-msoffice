@@ -183,7 +183,7 @@ describe 'msoffice::package', type: :define do
                        }
   }
 
-  $lcid_strings = {
+  lcid_strings = {
     'af' => '1078', 'sq' => '1052', 'am' => '1118', 'ar-dz' => '5121', 'ar-bh' => '15361', 'ar-eg' => '3073', 'ar-iq' => '2049',
     'ar-jo' => '11265', 'ar-kw' => '13313', 'ar-lb' => '12289', 'ar-ly' => '4097', 'ar-ma' => '6145', 'ar-om' => '8193',
     'ar-qa' => '16385', 'ar-sa' => '1025', 'ar-sy' => '10241', 'ar-tn' => '7169', 'ar-ae' => '14337', 'ar-ye' => '9217',
@@ -506,7 +506,7 @@ describe 'msoffice::package', type: :define do
     end
   end
 
-  $lcid_strings.keys.each do |lang_code|
+  lcid_strings.keys.each do |lang_code|
     describe "valid country: #{lang_code}" do
       let :title do 'msoffice with valid countries' end
       let(:params) {{
