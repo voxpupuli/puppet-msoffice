@@ -158,7 +158,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  ['2003', '2007', '2010'].each do |version|
+  [2003, 2007, 2010].each do |version|
     describe "installs the core package for #{version}" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -172,9 +172,7 @@ describe 'msoffice', type: :define do
 
       it { should contain_msoffice__package("microsoft office #{version}") }
     end
-  end
 
-  ['2003', '2007', '2010'].each do |version|
     describe "installs the service pack when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -189,9 +187,7 @@ describe 'msoffice', type: :define do
 
       it { should contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
     end
-  end
 
-  ['2003', '2007', '2010'].each do |version|
     describe "does not install the service pack when office #{version} absent" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -206,9 +202,7 @@ describe 'msoffice', type: :define do
 
       it { should_not contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
     end
-  end
 
-  ['2003', '2007', '2010'].each do |version|
     describe "installs the lip when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -224,9 +218,7 @@ describe 'msoffice', type: :define do
 
       it { should contain_msoffice__lip('microsoft lip de-de') }
     end
-  end
 
-  ['2003', '2007', '2010'].each do |version|
     describe "does not install the lip when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
