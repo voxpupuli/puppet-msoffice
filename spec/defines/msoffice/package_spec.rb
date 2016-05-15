@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'msoffice::package', type: :define do
-
   $temp_dir = 'C:\Windows\Temp'
 
   $office_versions = { "2003" => {

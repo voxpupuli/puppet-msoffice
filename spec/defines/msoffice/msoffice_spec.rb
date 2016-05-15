@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'msoffice', type: :define do
-
   $lcid_strings = {
       'af' => '1078', 'sq' => '1052', 'am' => '1118', 'ar-dz' => '5121', 'ar-bh' => '15361', 'ar-eg' => '3073', 'ar-iq' => '2049',
       'ar-jo' => '11265', 'ar-kw' => '13313', 'ar-lb' => '12289', 'ar-ly' => '4097', 'ar-ma' => '6145', 'ar-om' => '8193',
@@ -244,5 +243,4 @@ describe 'msoffice', type: :define do
       it { should_not contain_msoffice__lip("microsoft lip de-de")}
     end
   end
-
 end
