@@ -4,187 +4,187 @@ describe 'msoffice::package', type: :define do
   $temp_dir = 'C:\Windows\Temp'
 
   $office_versions = { '2003' => {
-      'version' => '11',
+    'version' => '11',
       'editions' => {
-          'Basic' => {
-              'products' => ['Word', 'Excel', 'Outlook'],
-              'office_product' => 'basic11',
-          },
+        'Basic' => {
+          'products' => ['Word', 'Excel', 'Outlook'],
+            'office_product' => 'basic11',
+        },
           'Student and Teacher' => {
-              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint'],
+            'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint'],
               'office_product' => 'stdedu',
           },
           'Standard' => {
-              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint'],
+            'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint'],
               'office_product' => 'std11',
           },
           'Small Business' => {
-              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint', 'Publisher'],
+            'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint', 'Publisher'],
               'office_product' => 'sbe11',
           },
           'Professional' => {
-              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint', 'Publisher', 'InfoPath'],
+            'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint', 'Publisher', 'InfoPath'],
               'office_product' => 'pro',
           }
       },
       'service_packs' => {
-          '0' => {
-              'build' => '11.0.5614.0'
-          },
+        '0' => {
+          'build' => '11.0.5614.0'
+        },
           '1' => {
-              'setup' => 'Office2003SP1-kb842532-fullfile-enu',
+            'setup' => 'Office2003SP1-kb842532-fullfile-enu',
               'build' => '11.0.6355.0'
           },
           '2' => {
-              'setup' => 'Office2003SP2-KB887616-FullFile-ENU',
+            'setup' => 'Office2003SP2-KB887616-FullFile-ENU',
               'build' => '11.0.7969.0'
           },
           '3' => {
-              'setup' => 'Office2003SP3-KB923618-FullFile-ENU',
+            'setup' => 'Office2003SP3-KB923618-FullFile-ENU',
               'build' => '11.0.8173.0'
           }
       }
   },
                        '2007' => {
-                           'version' => '12',
+                         'version' => '12',
                            'editions' => {
-                               'Basic' => {
-                                   'products' => ['Word', 'Excel', 'Outlook'],
-                                   'office_product' => 'Basic',
-                               },
+                             'Basic' => {
+                               'products' => ['Word', 'Excel', 'Outlook'],
+                                 'office_product' => 'Basic',
+                             },
                                'Home and Student' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint'],
                                    'office_product' => 'Home and Student',
                                },
                                'Standard' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook'],
                                    'office_product' => 'Standard',
                                },
                                'Small Business' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher'],
                                    'office_product' => 'Small Business',
                                },
                                'Professional' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access'],
                                    'office_product' => 'Pro',
                                },
                                'Professional Plus' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Communicator'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Communicator'],
                                    'office_product' => 'ProPlus',
                                },
                                'Ultimate' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Groove', 'OneNote'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Groove', 'OneNote'],
                                    'office_product' => 'Ultimater',
                                },
                                'Enterprise' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Communicator', 'Groove', 'OneNote'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Communicator', 'Groove', 'OneNote'],
                                    'office_product' => 'Enterpise',
                                }
                            },
                            'service_packs' => {
-                               '0' => {
-                                   'build' => '12.0.4518.1014'
-                               },
+                             '0' => {
+                               'build' => '12.0.4518.1014'
+                             },
                                '1' => {
-                                   'setup' => 'office2007sp1-kb936982-fullfile-en-us.exe',
+                                 'setup' => 'office2007sp1-kb936982-fullfile-en-us.exe',
                                    'build' => '12.0.6215.1000'
                                },
                                '2' => {
-                                   'setup' => 'office2007sp2-kb953195-fullfile-en-us.exe',
+                                 'setup' => 'office2007sp2-kb953195-fullfile-en-us.exe',
                                    'build' => '12.0.6425.1000'
                                },
                                '3' => {
-                                   'setup' => 'office2007sp3-kb2526086-fullfile-en-us.exe',
+                                 'setup' => 'office2007sp3-kb2526086-fullfile-en-us.exe',
                                    'build' => '12.0.6612.1000'
                                }
                            }
                        },
                        '2010' => {
-                           'version' => '14',
+                         'version' => '14',
                            'editions' => {
-                               'Starter' => {
-                                   'products' => ['Word', 'Excel'],
-                                   'office_product' => 'Starter',
-                               },
+                             'Starter' => {
+                               'products' => ['Word', 'Excel'],
+                                 'office_product' => 'Starter',
+                             },
                                'Personal' => {
-                                   'products' => ['Word', 'Excel', 'Outlook'],
+                                 'products' => ['Word', 'Excel', 'Outlook'],
                                    'office_product' => 'Personal',
                                },
                                'Home and Student' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote'],
                                    'office_product' => 'Home and Student',
                                },
                                'Home and Business' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook'],
                                    'office_product' => 'Home and Business',
                                },
                                'Standard' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher'],
                                    'office_product' => 'Standardr',
                                },
                                'Professional' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Access'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Access'],
                                    'office_product' => 'Pro',
                                },
                                'Professional Plus' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Access', 'InfoPath', 'Sharepoint Workspace'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Access', 'InfoPath', 'Sharepoint Workspace'],
                                    'office_product' => 'ProPlus',
                                },
                            },
                            'service_packs' => {
-                               '0' => {
-                                   'build' => '14.0.4760.1000'
-                               },
+                             '0' => {
+                               'build' => '14.0.4760.1000'
+                             },
                                '1' => {
-                                   'setup' => {
-                                       'x86' => 'officesuite2010sp1-kb2460049-x86-fullfile-en-us.exe',
-                                       'x64' => 'officesuite2010sp1-kb2460049-x64-fullfile-en-us.exe',
-                                   },
+                                 'setup' => {
+                                   'x86' => 'officesuite2010sp1-kb2460049-x86-fullfile-en-us.exe',
+                                     'x64' => 'officesuite2010sp1-kb2460049-x64-fullfile-en-us.exe',
+                                 },
                                    'build' => '14.0.6023.1000'
                                },
                                '2' => {
-                                   'setup' => {
-                                       'x86' => 'officesp2010-kb2687455-fullfile-x86-en-us.exe',
-                                       'x64' => 'officesp2010-kb2687455-fullfile-x64-en-us.exe',
-                                   },
+                                 'setup' => {
+                                   'x86' => 'officesp2010-kb2687455-fullfile-x86-en-us.exe',
+                                     'x64' => 'officesp2010-kb2687455-fullfile-x64-en-us.exe',
+                                 },
                                    'build' => '14.0.7011.1000'
                                },
                            }
                        },
                        '2013' => {
-                           'version' => '15',
+                         'version' => '15',
                            'editions' => {
-                               'Home and Student' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote'],
-                                   'office_product' => 'Home and Student',
-                               },
+                             'Home and Student' => {
+                               'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote'],
+                                 'office_product' => 'Home and Student',
+                             },
                                'Home and Business' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook'],
                                    'office_product' => 'Home and Business',
                                },
                                'Standard' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher'],
                                    'office_product' => 'Standardr',
                                },
                                'Professional' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher', 'Access'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher', 'Access'],
                                    'office_product' => 'Pro',
                                },
                                'Professional Plus' => {
-                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Lync'],
+                                 'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Lync'],
                                    'office_product' => 'ProPlus',
                                }
                            },
                            'service_packs' => {
-                               '0' => {
-                                   'build' => '15.0.4420.1027'
-                               },
+                             '0' => {
+                               'build' => '15.0.4420.1027'
+                             },
                            }
                        }
   }
 
   $lcid_strings = {
-      'af' => '1078', 'sq' => '1052', 'am' => '1118', 'ar-dz' => '5121', 'ar-bh' => '15361', 'ar-eg' => '3073', 'ar-iq' => '2049',
+    'af' => '1078', 'sq' => '1052', 'am' => '1118', 'ar-dz' => '5121', 'ar-bh' => '15361', 'ar-eg' => '3073', 'ar-iq' => '2049',
       'ar-jo' => '11265', 'ar-kw' => '13313', 'ar-lb' => '12289', 'ar-ly' => '4097', 'ar-ma' => '6145', 'ar-om' => '8193',
       'ar-qa' => '16385', 'ar-sa' => '1025', 'ar-sy' => '10241', 'ar-tn' => '7169', 'ar-ae' => '14337', 'ar-ye' => '9217',
       'hy' => '1067', 'as' => '1101', 'az-az' => '2092', 'eu' => '1069', 'be' => '1059', 'bn' => '2117', 'bs' => '5146',

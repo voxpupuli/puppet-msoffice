@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'msoffice::servicepack', type: :define do
   let :hiera_data do
     {
-        windows_deployment_root: '\\test-server\packages',
+      windows_deployment_root: '\\test-server\packages',
         company_name: 'Example Inc',
         office_username: 'Joe'
     }
