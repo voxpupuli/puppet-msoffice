@@ -73,9 +73,9 @@ describe 'msoffice::lip', type: :define do
       }}
 
       it { should contain_exec('install-lip').with(
-         'command' => "& \"#{lip_root}\\#{setup}\" /q /norestart",
-         'provider' => 'powershell',
-         'onlyif' => "if (Get-Item -LiteralPath \'\\#{lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'1031\')) { exit 1 }"
+        'command' => "& \"#{lip_root}\\#{setup}\" /q /norestart",
+        'provider' => 'powershell',
+        'onlyif' => "if (Get-Item -LiteralPath \'\\#{lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'1031\')) { exit 1 }"
       )
       }
     end
