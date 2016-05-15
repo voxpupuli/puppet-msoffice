@@ -1,10 +1,10 @@
 ; Microsoft Office SETUP.EXE settings file.
 
 [MSI]
-MSI=<%= office_product.upcase %>.MSI
+MSI=<%= @office_product.upcase %>.MSI
 
 [Product]
-ProductCode=<%= product_key %>
+ProductCode=<%= @product_key %>
 ProductName=Microsoft Office 2003
 ProductVersion=11.0.5614.0
 Recache=1
@@ -28,12 +28,12 @@ ACCEPTEULA=1
 <% $products_install = []
    $products_uninstall = []
    $product_hash.each do |key, value|
-	   if products.include? key
+	   if @products.include? key
 		   $products_install << value
 	   end
    end
    $product_hash.each do |key, value|
-	   if !products.include? key
+	   unless @products.include? key
 		   $products_uninstall << value
 	   end
    end
@@ -42,7 +42,7 @@ ACCEPTEULA=1
 ADDDEFAULT="<%= $products_install.join(',') %>"
 REMOVE="<%= $products_uninstall.join(',') %>"
 
-PIDKEY="<%= license_key.gsub!(/-/,"") %>"
+PIDKEY="<%= @license_key.gsub!(/-/,"") %>"
 REBOOT=ReallySuppress
 SETUPDW=0
 
