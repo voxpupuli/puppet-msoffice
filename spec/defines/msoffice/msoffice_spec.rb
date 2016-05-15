@@ -170,7 +170,7 @@ describe 'msoffice', type: :define do
         deployment_root: '\\test-server\packages'
       }}
 
-      it { should contain_msoffice__package("microsoft office #{version}")}
+      it { should contain_msoffice__package("microsoft office #{version}") }
     end
   end
 
@@ -187,7 +187,7 @@ describe 'msoffice', type: :define do
         deployment_root: '\\test-server\packages'
       }}
 
-      it { should contain_msoffice__servicepack("microsoft office #{version} servicepack 1")}
+      it { should contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
     end
   end
 
@@ -204,7 +204,7 @@ describe 'msoffice', type: :define do
         deployment_root: '\\test-server\packages'
       }}
 
-      it { should_not contain_msoffice__servicepack("microsoft office #{version} servicepack 1")}
+      it { should_not contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
     end
   end
 
@@ -222,7 +222,7 @@ describe 'msoffice', type: :define do
         deployment_root: '\\test-server\packages'
       }}
 
-      it { should contain_msoffice__lip('microsoft lip de-de')}
+      it { should contain_msoffice__lip('microsoft lip de-de') }
     end
   end
 
@@ -240,7 +240,7 @@ describe 'msoffice', type: :define do
         deployment_root: '\\test-server\packages'
       }}
 
-      it { should_not contain_msoffice__lip('microsoft lip de-de')}
+      it { should_not contain_msoffice__lip('microsoft lip de-de') }
     end
   end
 end
