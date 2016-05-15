@@ -44,7 +44,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  ['2003','2007','2010','2013'].each do |version|
+  ['2003', '2007', '2010', '2013'].each do |version|
     describe "installing #{version} with wrong edition" do
       let :title do "msoffice for #{version}" end
       let(:params) {{
@@ -158,7 +158,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  ['2003','2007','2010'].each do |version|
+  ['2003', '2007', '2010'].each do |version|
     describe "installs the core package for #{version}" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -174,7 +174,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  ['2003','2007','2010'].each do |version|
+  ['2003', '2007', '2010'].each do |version|
     describe "installs the service pack when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -191,7 +191,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  ['2003','2007','2010'].each do |version|
+  ['2003', '2007', '2010'].each do |version|
     describe "does not install the service pack when office #{version} absent" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -208,7 +208,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  ['2003','2007','2010'].each do |version|
+  ['2003', '2007', '2010'].each do |version|
     describe "installs the lip when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{
@@ -226,7 +226,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  ['2003','2007','2010'].each do |version|
+  ['2003', '2007', '2010'].each do |version|
     describe "does not install the lip when office #{version} present" do
       let :title do "office #{version}" end
       let(:params) {{

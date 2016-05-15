@@ -7,23 +7,23 @@ describe 'msoffice::package', type: :define do
       'version' => '11',
       'editions' => {
           'Basic' => {
-              'products' => ['Word','Excel','Outlook'],
+              'products' => ['Word', 'Excel', 'Outlook'],
               'office_product' => 'basic11',
           },
           'Student and Teacher' => {
-              'products' => ['Word','Excel','Outlook','Powerpoint'],
+              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint'],
               'office_product' => 'stdedu',
           },
           'Standard' => {
-              'products' => ['Word','Excel','Outlook','Powerpoint'],
+              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint'],
               'office_product' => 'std11',
           },
           'Small Business' => {
-              'products' => ['Word','Excel','Outlook','Powerpoint','Publisher'],
+              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint', 'Publisher'],
               'office_product' => 'sbe11',
           },
           'Professional' => {
-              'products' => ['Word','Excel','Outlook','Powerpoint','Publisher','InfoPath'],
+              'products' => ['Word', 'Excel', 'Outlook', 'Powerpoint', 'Publisher', 'InfoPath'],
               'office_product' => 'pro',
           }
       },
@@ -49,35 +49,35 @@ describe 'msoffice::package', type: :define do
                            'version' => '12',
                            'editions' => {
                                'Basic' => {
-                                   'products' => ['Word','Excel','Outlook'],
+                                   'products' => ['Word', 'Excel', 'Outlook'],
                                    'office_product' => 'Basic',
                                },
                                'Home and Student' => {
-                                   'products' => ['Word','Excel','Powerpoint'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint'],
                                    'office_product' => 'Home and Student',
                                },
                                'Standard' => {
-                                   'products' => ['Word','Excel','Powerpoint','Outlook'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook'],
                                    'office_product' => 'Standard',
                                },
                                'Small Business' => {
-                                   'products' => ['Word','Excel','Powerpoint','Outlook','Publisher'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher'],
                                    'office_product' => 'Small Business',
                                },
                                'Professional' => {
-                                   'products' => ['Word','Excel','Powerpoint','Outlook','Publisher','Access'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access'],
                                    'office_product' => 'Pro',
                                },
                                'Professional Plus' => {
-                                   'products' => ['Word','Excel','Powerpoint','Outlook','Publisher','Access','InfoPath','Communicator'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Communicator'],
                                    'office_product' => 'ProPlus',
                                },
                                'Ultimate' => {
-                                   'products' => ['Word','Excel','Powerpoint','Outlook','Publisher','Access','InfoPath','Groove','OneNote'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Groove', 'OneNote'],
                                    'office_product' => 'Ultimater',
                                },
                                'Enterprise' => {
-                                   'products' => ['Word','Excel','Powerpoint','Outlook','Publisher','Access','InfoPath','Communicator','Groove','OneNote'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Communicator', 'Groove', 'OneNote'],
                                    'office_product' => 'Enterpise',
                                }
                            },
@@ -103,31 +103,31 @@ describe 'msoffice::package', type: :define do
                            'version' => '14',
                            'editions' => {
                                'Starter' => {
-                                   'products' => ['Word','Excel'],
+                                   'products' => ['Word', 'Excel'],
                                    'office_product' => 'Starter',
                                },
                                'Personal' => {
-                                   'products' => ['Word','Excel','Outlook'],
+                                   'products' => ['Word', 'Excel', 'Outlook'],
                                    'office_product' => 'Personal',
                                },
                                'Home and Student' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote'],
                                    'office_product' => 'Home and Student',
                                },
                                'Home and Business' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote','Outlook'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook'],
                                    'office_product' => 'Home and Business',
                                },
                                'Standard' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Publisher'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher'],
                                    'office_product' => 'Standardr',
                                },
                                'Professional' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Access'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Access'],
                                    'office_product' => 'Pro',
                                },
                                'Professional Plus' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote','Outlook','Access','InfoPath','Sharepoint Workspace'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Access', 'InfoPath', 'Sharepoint Workspace'],
                                    'office_product' => 'ProPlus',
                                },
                            },
@@ -155,23 +155,23 @@ describe 'msoffice::package', type: :define do
                            'version' => '15',
                            'editions' => {
                                'Home and Student' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote'],
                                    'office_product' => 'Home and Student',
                                },
                                'Home and Business' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook'],
                                    'office_product' => 'Home and Business',
                                },
                                'Standard' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher'],
                                    'office_product' => 'Standardr',
                                },
                                'Professional' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher','Access'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher', 'Access'],
                                    'office_product' => 'Pro',
                                },
                                'Professional Plus' => {
-                                   'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher','Access', 'InfoPath', 'Lync'],
+                                   'products' => ['Word', 'Excel', 'Powerpoint', 'OneNote', 'Outlook', 'Publisher', 'Access', 'InfoPath', 'Lync'],
                                    'office_product' => 'ProPlus',
                                }
                            },
@@ -434,7 +434,7 @@ describe 'msoffice::package', type: :define do
     end
   end
 
-  ['2003','2007','2010','2013'].each do |version|
+  ['2003', '2007', '2010', '2013'].each do |version|
     describe "installing #{version} with wrong edition" do
       let :title do "msoffice for #{version}" end
       let(:params) {{
