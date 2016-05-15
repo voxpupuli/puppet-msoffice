@@ -9,8 +9,8 @@ describe 'msoffice::servicepack', type: :define do
     }
   end
 
-  describe "installing with unknown version" do
-    let :title do "servicepack for unknown version" end
+  describe 'installing with unknown version' do
+    let :title do 'servicepack for unknown version' end
     let :params do
       { version: 'xxx', sp: '1'}
     end
@@ -22,8 +22,8 @@ describe 'msoffice::servicepack', type: :define do
     end
   end
 
-  describe "installing with unknown sp" do
-    let :title do "servicepack for unknown sp version" end
+  describe 'installing with unknown sp' do
+    let :title do 'servicepack for unknown sp version' end
     let :params do
       { version: '2010', sp: '5'}
     end
@@ -35,8 +35,8 @@ describe 'msoffice::servicepack', type: :define do
     end
   end
 
-  describe "incorrect arch" do
-    let :title do "servicepack with incorrect arch" end
+  describe 'incorrect arch' do
+    let :title do 'servicepack with incorrect arch' end
     let :params do
       { arch: 'fubar', version: '2010', sp: '1'}
     end
@@ -58,7 +58,7 @@ describe 'msoffice::servicepack', type: :define do
       let(:params) {{
         version: version,
         sp: sp,
-        deployment_root: "\\test-server\\packages"
+        deployment_root: '\\test-server\\packages'
       }}
 
       it { should contain_exec('install-sp').with(
@@ -98,7 +98,7 @@ describe 'msoffice::servicepack', type: :define do
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
-        arch: "x86",
+        arch: 'x86',
         version: version,
         sp: sp,
         deployment_root: '\\test-server\packages'

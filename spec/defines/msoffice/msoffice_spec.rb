@@ -27,8 +27,8 @@ describe 'msoffice', type: :define do
       'ur' => '1056', 'uz-uz' => '2115', 'vi' => '1066', 'cy' => '1106', 'xh' => '1076', 'yi' => '1085', 'zu' => '1077'
   }
 
-  describe "installing with unknown version" do
-    let :title do "msoffice with unknown version" end
+  describe 'installing with unknown version' do
+    let :title do 'msoffice with unknown version' end
     let(:params) {{
       version: 'xxx',
       edition: 'Standard',
@@ -39,7 +39,7 @@ describe 'msoffice', type: :define do
 
     it do
       expect {
-        should contain_msoffice__package("microsoft office 2010")
+        should contain_msoffice__package('microsoft office 2010')
       }.to raise_error
     end
   end
@@ -49,7 +49,7 @@ describe 'msoffice', type: :define do
       let :title do "msoffice for #{version}" end
       let(:params) {{
         version: version,
-        edition: "fubar",
+        edition: 'fubar',
         sp: '1',
         license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         products: ['Word'],
@@ -64,8 +64,8 @@ describe 'msoffice', type: :define do
     end
   end
 
-  describe "installing with unknown sp" do
-    let :title do "msoffice unknown sp version" end
+  describe 'installing with unknown sp' do
+    let :title do 'msoffice unknown sp version' end
     let(:params) {{
       version: '2010',
       edition: 'Standard',
@@ -76,16 +76,16 @@ describe 'msoffice', type: :define do
 
     it do
       expect {
-        should contain_msoffice__package("microsoft office 2010")
+        should contain_msoffice__package('microsoft office 2010')
       }.to raise_error
     end
   end
 
-  describe "incorrect license key" do
-    let :title do "msoffice with incorrect license key" end
+  describe 'incorrect license key' do
+    let :title do 'msoffice with incorrect license key' end
     let(:params) {{
       version: '2010',
-      edition: "Standard",
+      edition: 'Standard',
       sp: '1',
       license_key: 'XXXXX-XXXXX-XXXX-XXXXX-XXXXX',
       products: ['Word'],
@@ -94,17 +94,17 @@ describe 'msoffice', type: :define do
 
     it do
       expect {
-        should contain_msoffice__package("microsoft office 2010")
+        should contain_msoffice__package('microsoft office 2010')
       }.to raise_error
     end
   end
 
-  describe "incorrect arch" do
-    let :title do "msoffice with incorrect arch" end
+  describe 'incorrect arch' do
+    let :title do 'msoffice with incorrect arch' end
     let(:params) {{
       arch: 'fubar',
       version: '2010',
-      edition: "Standard",
+      edition: 'Standard',
       sp: '1',
       license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       products: ['Word'],
@@ -113,17 +113,17 @@ describe 'msoffice', type: :define do
 
     it do
       expect {
-        should contain_msoffice__package("microsoft office 2010")
+        should contain_msoffice__package('microsoft office 2010')
       }.to raise_error
     end
   end
 
-  describe "incorrect ensure" do
-    let :title do "msoffice with incorrect ensure" end
+  describe 'incorrect ensure' do
+    let :title do 'msoffice with incorrect ensure' end
     let(:params) {{
       ensure: 'fubar',
       version: '2010',
-      edition: "Standard",
+      edition: 'Standard',
       sp: '1',
       license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
       products: ['Word'],
@@ -132,18 +132,18 @@ describe 'msoffice', type: :define do
 
     it do
       expect {
-        should contain_msoffice__package("microsoft office 2010")
+        should contain_msoffice__package('microsoft office 2010')
       }.to raise_error
     end
   end
 
   $lcid_strings.keys.each do |lang_code|
     describe "valid country: #{lang_code}" do
-      let :title do "msoffice with valid countries" end
+      let :title do 'msoffice with valid countries' end
       let(:params) {{
         lang_code: lang_code,
         version: '2010',
-        edition: "Standard",
+        edition: 'Standard',
         sp: '1',
         license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
         products: ['Word'],
@@ -152,7 +152,7 @@ describe 'msoffice', type: :define do
 
       it do
         expect {
-          should contain_msoffice__package("microsoft office 2010")
+          should contain_msoffice__package('microsoft office 2010')
         }.to_not raise_error
       end
     end
@@ -222,7 +222,7 @@ describe 'msoffice', type: :define do
         deployment_root: '\\test-server\packages'
       }}
 
-      it { should contain_msoffice__lip("microsoft lip de-de")}
+      it { should contain_msoffice__lip('microsoft lip de-de')}
     end
   end
 
@@ -240,7 +240,7 @@ describe 'msoffice', type: :define do
         deployment_root: '\\test-server\packages'
       }}
 
-      it { should_not contain_msoffice__lip("microsoft lip de-de")}
+      it { should_not contain_msoffice__lip('microsoft lip de-de')}
     end
   end
 end
