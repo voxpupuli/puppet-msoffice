@@ -62,7 +62,7 @@ define msoffice::package(
   $user_name = '',
 ) {
 
-  include msoffice::params
+  include ::msoffice::params
 
   validate_re($version,'^(2003|2007|2010|2013)$', 'The version agrument specified does not match a valid version of office')
 
