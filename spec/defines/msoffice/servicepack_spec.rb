@@ -92,26 +92,26 @@ describe 'msoffice::servicepack', type: :define do
     end
   end
 
- ['1', '2'].each do |sp|
-    version = '2010'
-    office_num = $office_versions[version]['version']
-    build = $office_versions[version]['service_packs'][sp]['build']
-    setup = $office_versions[version]['service_packs'][sp]['setup']['x86']
-    describe "installing office #{version} SP#{sp}" do
-      let :title do "SP#{sp} for office #{version}" end
-      let(:params) {{
-        arch: 'x86',
-        version: version,
-        sp: sp,
-        deployment_root: '\\test-server\packages'
-      }}
+  ['1', '2'].each do |sp|
+     version = '2010'
+     office_num = $office_versions[version]['version']
+     build = $office_versions[version]['service_packs'][sp]['build']
+     setup = $office_versions[version]['service_packs'][sp]['setup']['x86']
+     describe "installing office #{version} SP#{sp}" do
+       let :title do "SP#{sp} for office #{version}" end
+       let(:params) {{
+         arch: 'x86',
+         version: version,
+         sp: sp,
+         deployment_root: '\\test-server\packages'
+       }}
 
-      it { should contain_exec('install-sp').with(
-        'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",
-        'provider' => 'powershell',
-        'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-      )
-      }
-    end
-  end
+       it { should contain_exec('install-sp').with(
+         'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",
+         'provider' => 'powershell',
+         'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
+       )
+       }
+     end
+   end
 end
