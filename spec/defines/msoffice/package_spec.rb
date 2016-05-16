@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe 'msoffice::package', type: :define do
-  $temp_dir = 'C:\Windows\Temp'
 
-  $office_versions = { '2003' => {
+  office_versions = { '2003' => {
     'version' => '11',
     'editions' => {
       'Basic' => {
@@ -209,8 +208,8 @@ describe 'msoffice::package', type: :define do
     'ur' => '1056', 'uz-uz' => '2115', 'vi' => '1066', 'cy' => '1106', 'xh' => '1076', 'yi' => '1085', 'zu' => '1077'
   }
 
-  $office_versions['2013']['editions'].keys.each do |edition|
-    product = $office_versions['2013']['editions'][edition]['office_product']
+  office_versions['2013']['editions'].keys.each do |edition|
+    product = office_versions['2013']['editions'][edition]['office_product']
 
     describe "installing office 2013 #{edition}" do
       let :title do 'msoffice for 2013' end
@@ -234,8 +233,8 @@ describe 'msoffice::package', type: :define do
       }
     end
 
-    $office_versions['2013']['service_packs'].keys.each do |sp|
-      build = $office_versions['2013']['service_packs'][sp]['build']
+    office_versions['2013']['service_packs'].keys.each do |sp|
+      build = office_versions['2013']['service_packs'][sp]['build']
       describe "uninstalling office 2013 #{edition} SP#{sp}" do
         let :title do 'msoffice for 2013' end
         let(:params) {{
@@ -258,8 +257,8 @@ describe 'msoffice::package', type: :define do
     end
   end
 
-  $office_versions['2010']['editions'].keys.each do |edition|
-    product = $office_versions['2010']['editions'][edition]['office_product']
+  office_versions['2010']['editions'].keys.each do |edition|
+    product = office_versions['2010']['editions'][edition]['office_product']
 
     describe "installing office 2010 #{edition}" do
       let :title do 'msoffice for 2010' end
@@ -283,8 +282,8 @@ describe 'msoffice::package', type: :define do
       }
     end
 
-    $office_versions['2010']['service_packs'].keys.each do |sp|
-      build = $office_versions['2010']['service_packs'][sp]['build']
+    office_versions['2010']['service_packs'].keys.each do |sp|
+      build = office_versions['2010']['service_packs'][sp]['build']
       describe "uninstalling office 2010 #{edition} SP#{sp}" do
         let :title do 'msoffice for 2010' end
         let(:params) {{
@@ -307,8 +306,8 @@ describe 'msoffice::package', type: :define do
     end
   end
 
-  $office_versions['2007']['editions'].keys.each do |edition|
-    product = $office_versions['2007']['editions'][edition]['office_product']
+  office_versions['2007']['editions'].keys.each do |edition|
+    product = office_versions['2007']['editions'][edition]['office_product']
 
     describe "installing office 2007 #{edition}" do
       let :title do 'msoffice for 2007' end
@@ -332,8 +331,8 @@ describe 'msoffice::package', type: :define do
       }
     end
 
-    $office_versions['2007']['service_packs'].keys.each do |sp|
-      build = $office_versions['2007']['service_packs'][sp]['build']
+    office_versions['2007']['service_packs'].keys.each do |sp|
+      build = office_versions['2007']['service_packs'][sp]['build']
       describe "uninstalling office 2007 #{edition}" do
         let :title do 'msoffice for 2007' end
         let(:params) {{
@@ -356,8 +355,8 @@ describe 'msoffice::package', type: :define do
     end
   end
 
-  $office_versions['2003']['editions'].keys.each do |edition|
-    product = $office_versions['2003']['editions'][edition]['office_product']
+  office_versions['2003']['editions'].keys.each do |edition|
+    product = office_versions['2003']['editions'][edition]['office_product']
     describe "installing office 2003 #{edition}" do
       let :title do 'msoffice for 2003' end
       let(:params) {{
@@ -375,8 +374,8 @@ describe 'msoffice::package', type: :define do
       }
     end
 
-    $office_versions['2003']['service_packs'].keys.each do |sp|
-      build = $office_versions['2003']['service_packs'][sp]['build']
+    office_versions['2003']['service_packs'].keys.each do |sp|
+      build = office_versions['2003']['service_packs'][sp]['build']
       describe "uninstalling office 2003 #{edition}" do
         let :title do 'msoffice for 2003' end
         let(:params) {{
