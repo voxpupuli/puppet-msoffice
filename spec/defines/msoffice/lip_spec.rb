@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'msoffice::lip', type: :define do
-
   describe 'installing with unknown version' do
     let :title do 'lip with unknown version' end
     let(:params) {{
