@@ -27,7 +27,7 @@ Spec.configure do |c|
         endpoint = 'http://127.0.0.1:5985/wsman'
         c.winrm = ::WinRM::WinRMWebService.new(endpoint, :ssl, user: 'vagrant', pass: 'vagrant', basic_auth_only: true)
         c.winrm.set_timeout 300
-    end
+      end
 
       path = File.expand_path(File.dirname(__FILE__) + '/../').split('/')
       name = path[path.length - 1].split('-')[1]
