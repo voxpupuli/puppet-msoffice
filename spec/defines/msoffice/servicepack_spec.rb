@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+office_versions = YAML.load_file(Dir.pwd + '/spec/office_versions.yml')
+
 describe 'msoffice::servicepack', type: :define do
   let :hiera_data do
     {
@@ -50,9 +52,9 @@ describe 'msoffice::servicepack', type: :define do
 
   %w(1 2 3).each do |sp|
     version = '2003'
-    office_num = $office_versions[version]['version']
-    build = $office_versions[version]['service_packs'][sp]['build']
-    setup = $office_versions[version]['service_packs'][sp]['setup']
+    office_num = office_versions[version]['version']
+    build = office_versions[version]['service_packs'][sp]['build']
+    setup = office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
@@ -72,9 +74,9 @@ describe 'msoffice::servicepack', type: :define do
 
   %w(1 2 3).each do |sp|
     version = '2007'
-    office_num = $office_versions[version]['version']
-    build = $office_versions[version]['service_packs'][sp]['build']
-    setup = $office_versions[version]['service_packs'][sp]['setup']
+    office_num = office_versions[version]['version']
+    build = office_versions[version]['service_packs'][sp]['build']
+    setup = office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
@@ -94,9 +96,9 @@ describe 'msoffice::servicepack', type: :define do
 
   %w(1 2).each do |sp|
     version = '2010'
-    office_num = $office_versions[version]['version']
-    build = $office_versions[version]['service_packs'][sp]['build']
-    setup = $office_versions[version]['service_packs'][sp]['setup']['x86']
+    office_num = office_versions[version]['version']
+    build = office_versions[version]['service_packs'][sp]['build']
+    setup = office_versions[version]['service_packs'][sp]['setup']['x86']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
       let(:params) {{
