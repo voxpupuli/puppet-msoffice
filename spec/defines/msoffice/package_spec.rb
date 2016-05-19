@@ -4,7 +4,6 @@ office_versions = YAML.load_file(Dir.pwd + '/spec/office_versions.yml')
 lcid_strings = YAML.load_file(Dir.pwd + '/spec/lcid_strings.yml')
 
 describe 'msoffice::package', type: :define do
-
   office_versions['2013']['editions'].keys.each do |edition|
     product = office_versions['2013']['editions'][edition]['office_product']
 
