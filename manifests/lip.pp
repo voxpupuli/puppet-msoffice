@@ -42,7 +42,7 @@ define msoffice::lip(
   $deployment_root = ''
 ) {
 
-  include msoffice::params
+  include ::msoffice::params
 
   validate_re($version,'^(2003|2007|2010|2013)$', 'The version agrument specified does not match a valid version of office')
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
@@ -60,7 +60,7 @@ define msoffice::lip(
     command   => "& \"${lip_root}\\${setup}\" /q /norestart",
     provider  => powershell,
     logoutput => true,
-    onlyif    => "if (Get-Item -LiteralPath \'\\${lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${lang_id}\')) { exit 1 }"
+    onlyif    => "if (Get-Item -LiteralPath \'\\${lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${lang_id}\')) { exit 1 }",
   }
 
 }

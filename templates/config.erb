@@ -1,14 +1,14 @@
 <Configuration>
 
-	<AddLanguage Id="<%= lang_code %>" ShellTransform="Yes" />
+	<AddLanguage Id="<%= @lang_code %>" ShellTransform="Yes" />
 	<ARP ARPNOMODIFY="No" ARPNOREMOVE="No" />
 	<COMPANYNAME Value="<%= @company_name %>" />
     <Display Level="None" CompletionNotice="No" SupressModal="Yes" NoCancel="Yes" AcceptEula="Yes" />
 
-	<% if version == "2007" %>
-	<CCP_DRIVE Value="<%= office_root %>" />
+	<% if @version == "2007" %>
+	<CCP_DRIVE Value="<%= @office_root %>" />
 	<% end %>
-	<DistributionPoint Location="<%= office_root %>" />
+	<DistributionPoint Location="<%= @office_root %>" />
 
 	<Logging Type="Verbose" Path="<%= scope.lookupvar('msoffice::params::temp_dir') %>" Template="office_install.log" />
 	<% $product_hash = { "Access" => "ACCESSFiles", "Excel" => "EXCELFiles", "Groove" => "GrooveFiles",
@@ -19,7 +19,7 @@
 					   }
 	%>
 	<% $product_hash.each do |key, value|
-	     if products.include? key
+	     if @products.include? key
 	%>
 	<OptionState Id="<%= value %>" State="Local" Children="force" />
 	<%
@@ -29,7 +29,7 @@
 	<%	 end
 	   end
 	%>
-	<PIDKEY Value="<%= license_key %>" />
+	<PIDKEY Value="<%= @license_key %>" />
 	<USERNAME Value="<%= @user_name %>" />
 	<Setting Id="SETUP_REBOOT" Value="NEVER" />
 </Configuration>
