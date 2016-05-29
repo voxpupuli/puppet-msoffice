@@ -1,24 +1,24 @@
 # puppet-msoffice
 
-##Overview
+## Overview
 
 Puppet module to manage Microsoft Office on Windows (2003-2013)
 
-[![Build Status](https://secure.travis-ci.org/liamjbennett/puppet-msoffice.png)](http://travis-ci.org/liamjbennett/puppet-msoffice)
+[![Build Status](https://secure.travis-ci.org/voxpupuli/puppet-msoffice.png)](http://travis-ci.org/voxpupuli/puppet-msoffice)
 
-##Module Description
+## Module Description
 
 The purpose of this module is to install the Microsoft Office suite and configure it's many service packs, tools, utilities and registry options.
 
-##Setup
+## Setup
 
-###What msoffice affects
+### What msoffice affects
 
 * Installs packages for each office product
 * Installs package for the Service Pack (if configured)
 * Installs packages for each language pack (if configured)
 
-###Beginning with msoffice
+### Beginning with msoffice
 
   To install Word and Excel packages from Office 2010 SP1:
 
@@ -33,114 +33,150 @@ The purpose of this module is to install the Microsoft Office suite and configur
     }
 ```
 
-##Usage
+## Usage
 
-###Classes and Defined Types:
+### Classes and Defined Types:
 
-####Defined Type: `msoffice`
+#### Defined Type: `msoffice`
+
 The primary definition of the msoffice module. It will install office products, language packs and updates.
 
 **Parameters within `msoffice`:**
-#####`version`
+
+##### `version`
 The version of office to install
 
-#####`edition`
+##### `edition`
+
 The edition of office to install
 
-#####`sp`
+##### `sp`
+
 The service pack update to apply
 
-#####`license_key`
+##### `license_key`
+
 The license key required to install
 
-#####`arch`
+##### `arch`
+
 The architecture version of office
 
-#####`products`
+##### `products`
+
 The list of products to install as part of the office suite
 
-#####`lang_code`
+##### `lang_code`
+
 The language code of the default install language
 
-#####`ensure`
+##### `ensure`
+
 Ensure the existence of the office installation
 
-#####`deployment_root`
+##### `deployment_root`
+
 The network location where the office installation media is stored
 
-####Defined Type: `msoffice::package`
+#### Defined Type: `msoffice::package`
+
 The definition which installs the main office products.
 
 **Parameters within `msoffice::package`:**
-#####`version`
+
+##### `version`
+
 The version of office to install
 
-#####`edition`
+##### `edition`
+
 The edition of office to install
 
-#####`license_key`
+##### `license_key`
+
 The license key required to install
 
-#####`arch`
+##### `arch`
+
 The architecture version of office
 
-#####`lang_code`
+##### `lang_code`
+
 The language code of the default install language
 
-#####`products`
+##### `products`
+
 The list of products to install as part of the office suite
 
-#####`sp`
+##### `sp`
+
 The service pack update to apply
 
-#####`ensure`
+##### `ensure`
+
 Ensure the existence of the office installation
 
-#####`deployment_root`
+##### `deployment_root`
+
 The network location where the office installation media is stored
 
-####Defined Type: `msoffice::lip`
+#### Defined Type: `msoffice::lip`
+
 The definition which installs language interface packs into an existing office installation
 
 **Parameters within `msoffice::lip`:**
-#####`version`
+
+##### `version`
+
 The version of office that was installed
 
-#####`lang_code`
+##### `lang_code`
+
 The language code of the language to install
 
-#####`arch`
+##### `arch`
+
 The architecture version of office
 
-#####`deployment_root`
+##### `deployment_root`
+
 The network location where the office installation media is stored
 
-####Defined Type: `msoffice::servicepack`
+#### Defined Type: `msoffice::servicepack`
+
 The definition which installs service packs into an existing office installation
 
 **Parameters within `msoffice::servicepack`:**
-#####`version`
+
+##### `version`
+
 The version of office
 
-#####`sp`
+##### `sp`
+
 The service pack update to install
 
-#####`arch`
+##### `arch`
+
 The architecture version of office
 
-#####`deployment_root`
+##### `deployment_root`
+
 The network location where the office installation media is stored
 
-##Reference
+## Reference
 
-###Defined Types:
-#####Public Defined Types
+### Defined Types:
+
+##### Public Defined Types
+
 * [`msoffice`](#define_package): The core office suite installation
 * [`msoffice::package`](#define_package): The core office suite installation
 * [`msoffice::servicepack`](#define_servicepack): The service pack update for office
 * [`msoffice::lip`](#define_lip): The language interface pack for office
 
-##Limitations
+## Limitations
+
 This module is tested on the following platforms:
 
 * Windows 2008 R2
@@ -150,8 +186,8 @@ It is tested with the OSS version of Puppet only.
 Support for only RTM versions
 Support for only Retail/Volume editions
 
-##Development
+## Development
 
-###Contributing
+### Contributing
 
 Please read CONTRIBUTING.md for full details on contributing to this project.
