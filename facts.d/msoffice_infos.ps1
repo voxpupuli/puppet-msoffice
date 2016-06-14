@@ -60,6 +60,12 @@ function OfficeFullVersion()
     $excelNb = (Get-ItemProperty -Path $excelreg).'(default)'.Split('.')[2]
         
     $msodll = "C:\Program Files\Common Files\microsoft shared\OFFICE$excelNb\mso.dll"
+
+    #CTR/Office365
+    if(-not (Test-Path $msodll))
+    {
+        $msodll = "C:\Program Files\Microsoft Office $excelNb\root\vfs\ProgramFilesCommonX86\Microsoft Shared\OFFICE$excelNb\mso.dll"
+    }
         
     #x64 OS
     if($osbitness -eq "64-bit")
