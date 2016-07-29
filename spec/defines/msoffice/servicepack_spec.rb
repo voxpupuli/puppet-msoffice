@@ -18,9 +18,9 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect {
+      expect do
         should contain_exec('install-sp')
-      }.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The version agrument specified does not match a valid version of office' }
+      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The version agrument specified does not match a valid version of office' }
     end
   end
 
@@ -31,9 +31,9 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect {
+      expect do
         should contain_exec('install-sp')
-      }.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The service pack specified does not match 1-3' }
+      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The service pack specified does not match 1-3' }
     end
   end
 
@@ -44,9 +44,9 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect {
+      expect do
         should contain_exec('install-sp')
-      }.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The arch argument specified does not match x86 or x64' }
+      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The arch argument specified does not match x86 or x64' }
     end
   end
 
@@ -57,18 +57,21 @@ describe 'msoffice::servicepack', type: :define do
     setup = office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
-      let(:params) {{
-        version: version,
-        sp: sp,
-        deployment_root: '\\test-server\\packages'
-      }}
+      let(:params) do
+        {
+          version: version,
+          sp: sp,
+          deployment_root: '\\test-server\\packages'
+        }
+      end
 
-      it { should contain_exec('install-sp').with(
-        'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
-        'provider' => 'powershell',
-        'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
+      it do
+        should contain_exec('install-sp').with(
+          'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
+          'provider' => 'powershell',
+          'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
       )
-      }
+      end
     end
   end
 
@@ -79,18 +82,21 @@ describe 'msoffice::servicepack', type: :define do
     setup = office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
-      let(:params) {{
-        version: version,
-        sp: sp,
-        deployment_root: '\\test-server\packages'
-      }}
+      let(:params) do
+        {
+          version: version,
+          sp: sp,
+          deployment_root: '\\test-server\packages'
+        }
+      end
 
-      it { should contain_exec('install-sp').with(
-        'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
-        'provider' => 'powershell',
-        'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
+      it do
+        should contain_exec('install-sp').with(
+          'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
+          'provider' => 'powershell',
+          'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
       )
-      }
+      end
     end
   end
 
@@ -101,19 +107,22 @@ describe 'msoffice::servicepack', type: :define do
     setup = office_versions[version]['service_packs'][sp]['setup']['x86']
     describe "installing office #{version} SP#{sp}" do
       let :title do "SP#{sp} for office #{version}" end
-      let(:params) {{
-        arch: 'x86',
-        version: version,
-        sp: sp,
-        deployment_root: '\\test-server\packages'
-      }}
+      let(:params) do
+        {
+          arch: 'x86',
+          version: version,
+          sp: sp,
+          deployment_root: '\\test-server\packages'
+        }
+      end
 
-      it { should contain_exec('install-sp').with(
-        'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",
-        'provider' => 'powershell',
-        'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
+      it do
+        should contain_exec('install-sp').with(
+          'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",
+          'provider' => 'powershell',
+          'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
       )
-      }
+      end
     end
   end
 end
