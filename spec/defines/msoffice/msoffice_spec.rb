@@ -4,7 +4,9 @@ describe 'msoffice', type: :define do
   lcid_strings = YAML.load_file(Dir.pwd + '/spec/lcid_strings.yml')
 
   describe 'installing with unknown version' do
-    let :title do 'msoffice with unknown version' end
+    let :title do
+      'msoffice with unknown version'
+    end
     let(:params) do
       {
         version: 'xxx',
@@ -24,7 +26,9 @@ describe 'msoffice', type: :define do
 
   %w(2003 2007 2010 2013).each do |version|
     describe "installing #{version} with wrong edition" do
-      let :title do "msoffice for #{version}" end
+      let :title do
+        "msoffice for #{version}"
+      end
       let(:params) do
         {
           version: version,
@@ -45,7 +49,9 @@ describe 'msoffice', type: :define do
   end
 
   describe 'installing with unknown sp' do
-    let :title do 'msoffice unknown sp version' end
+    let :title do
+      'msoffice unknown sp version'
+    end
     let(:params) do
       {
         version: '2010',
@@ -64,7 +70,9 @@ describe 'msoffice', type: :define do
   end
 
   describe 'incorrect license key' do
-    let :title do 'msoffice with incorrect license key' end
+    let :title do
+      'msoffice with incorrect license key'
+    end
     let(:params) do
       {
         version: '2010',
@@ -84,7 +92,9 @@ describe 'msoffice', type: :define do
   end
 
   describe 'incorrect arch' do
-    let :title do 'msoffice with incorrect arch' end
+    let :title do
+      'msoffice with incorrect arch'
+    end
     let(:params) do
       {
         arch: 'fubar',
@@ -105,7 +115,9 @@ describe 'msoffice', type: :define do
   end
 
   describe 'incorrect ensure' do
-    let :title do 'msoffice with incorrect ensure' end
+    let :title do
+      'msoffice with incorrect ensure'
+    end
     let(:params) do
       {
         ensure: 'fubar',
@@ -127,7 +139,9 @@ describe 'msoffice', type: :define do
 
   lcid_strings.keys.each do |lang_code|
     describe "valid country: #{lang_code}" do
-      let :title do 'msoffice with valid countries' end
+      let :title do
+        'msoffice with valid countries'
+      end
       let(:params) do
         {
           lang_code: lang_code,
@@ -153,7 +167,9 @@ describe 'msoffice', type: :define do
     # rubocop yells at us when we put strings in the array
     version = version.to_s
     describe "installs the core package for #{version}" do
-      let :title do "office #{version}" end
+      let :title do
+        "office #{version}"
+      end
       let(:params) do
         {
           version: version,
@@ -169,7 +185,9 @@ describe 'msoffice', type: :define do
     end
 
     describe "installs the service pack when office #{version} present" do
-      let :title do "office #{version}" end
+      let :title do
+        "office #{version}"
+      end
       let(:params) do
         {
           ensure: 'present',
@@ -186,7 +204,9 @@ describe 'msoffice', type: :define do
     end
 
     describe "does not install the service pack when office #{version} absent" do
-      let :title do "office #{version}" end
+      let :title do
+        "office #{version}"
+      end
       let(:params) do
         {
           ensure: 'absent',
@@ -203,7 +223,9 @@ describe 'msoffice', type: :define do
     end
 
     describe "installs the lip when office #{version} present" do
-      let :title do "office #{version}" end
+      let :title do
+        "office #{version}"
+      end
       let(:params) do
         {
           lang_code: 'de-de',
@@ -221,7 +243,9 @@ describe 'msoffice', type: :define do
     end
 
     describe "does not install the lip when office #{version} present" do
-      let :title do "office #{version}" end
+      let :title do
+        "office #{version}"
+      end
       let(:params) do
         {
           lang_code: 'de-de',

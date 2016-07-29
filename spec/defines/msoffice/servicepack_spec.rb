@@ -12,7 +12,9 @@ describe 'msoffice::servicepack', type: :define do
   end
 
   describe 'installing with unknown version' do
-    let :title do 'servicepack for unknown version' end
+    let :title do
+      'servicepack for unknown version'
+    end
     let :params do
       { version: 'xxx', sp: '1' }
     end
@@ -25,7 +27,9 @@ describe 'msoffice::servicepack', type: :define do
   end
 
   describe 'installing with unknown sp' do
-    let :title do 'servicepack for unknown sp version' end
+    let :title do
+      'servicepack for unknown sp version'
+    end
     let :params do
       { version: '2010', sp: '5' }
     end
@@ -38,7 +42,9 @@ describe 'msoffice::servicepack', type: :define do
   end
 
   describe 'incorrect arch' do
-    let :title do 'servicepack with incorrect arch' end
+    let :title do
+      'servicepack with incorrect arch'
+    end
     let :params do
       { arch: 'fubar', version: '2010', sp: '1' }
     end
@@ -56,7 +62,9 @@ describe 'msoffice::servicepack', type: :define do
     build = office_versions[version]['service_packs'][sp]['build']
     setup = office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
-      let :title do "SP#{sp} for office #{version}" end
+      let :title do
+        "SP#{sp} for office #{version}"
+      end
       let(:params) do
         {
           version: version,
@@ -81,7 +89,9 @@ describe 'msoffice::servicepack', type: :define do
     build = office_versions[version]['service_packs'][sp]['build']
     setup = office_versions[version]['service_packs'][sp]['setup']
     describe "installing office #{version} SP#{sp}" do
-      let :title do "SP#{sp} for office #{version}" end
+      let :title do
+        "SP#{sp} for office #{version}"
+      end
       let(:params) do
         {
           version: version,
@@ -106,7 +116,9 @@ describe 'msoffice::servicepack', type: :define do
     build = office_versions[version]['service_packs'][sp]['build']
     setup = office_versions[version]['service_packs'][sp]['setup']['x86']
     describe "installing office #{version} SP#{sp}" do
-      let :title do "SP#{sp} for office #{version}" end
+      let :title do
+        "SP#{sp} for office #{version}"
+      end
       let(:params) do
         {
           arch: 'x86',

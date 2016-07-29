@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe 'msoffice::lip', type: :define do
   describe 'installing with unknown version' do
-    let :title do 'lip with unknown version' end
+    let :title do
+      'lip with unknown version'
+    end
     let(:params) do
       {
         version: 'xxx',
@@ -20,7 +22,9 @@ describe 'msoffice::lip', type: :define do
   end
 
   describe 'incorrect arch' do
-    let :title do 'lip with incorrect arch' end
+    let :title do
+      'lip with incorrect arch'
+    end
     let(:params) do
       {
         version: '2010',
@@ -42,7 +46,9 @@ describe 'msoffice::lip', type: :define do
     lip_reg_key = 'HKLM:\\SOFTWARE\\Microsoft\\Office\\14.0\\Common\\LanguageResources\\InstalledUIs'
     setup = "languageinterfacepack-x86-#{lang_code}.exe"
     describe "valid country: #{lang_code}" do
-      let :title do 'lip with valid countries' end
+      let :title do
+        'lip with valid countries'
+      end
       let(:params) do
         {
           version: '2010',

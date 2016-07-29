@@ -8,7 +8,9 @@ describe 'msoffice::package', type: :define do
     product = office_versions['2013']['editions'][edition]['office_product']
 
     describe "installing office 2013 #{edition}" do
-      let :title do 'msoffice for 2013' end
+      let :title do
+        'msoffice for 2013'
+      end
       let(:params) do
         {
           version: '2013',
@@ -36,7 +38,9 @@ describe 'msoffice::package', type: :define do
     office_versions['2013']['service_packs'].keys.each do |sp|
       build = office_versions['2013']['service_packs'][sp]['build']
       describe "uninstalling office 2013 #{edition} SP#{sp}" do
-        let :title do 'msoffice for 2013' end
+        let :title do
+          'msoffice for 2013'
+        end
         let(:params) do
           {
             ensure: 'absent',
@@ -64,7 +68,9 @@ describe 'msoffice::package', type: :define do
     product = office_versions['2010']['editions'][edition]['office_product']
 
     describe "installing office 2010 #{edition}" do
-      let :title do 'msoffice for 2010' end
+      let :title do
+        'msoffice for 2010'
+      end
       let(:params) do
         {
           version: '2010',
@@ -92,7 +98,9 @@ describe 'msoffice::package', type: :define do
     office_versions['2010']['service_packs'].keys.each do |sp|
       build = office_versions['2010']['service_packs'][sp]['build']
       describe "uninstalling office 2010 #{edition} SP#{sp}" do
-        let :title do 'msoffice for 2010' end
+        let :title do
+          'msoffice for 2010'
+        end
         let(:params) do
           {
             ensure: 'absent',
@@ -120,7 +128,9 @@ describe 'msoffice::package', type: :define do
     product = office_versions['2007']['editions'][edition]['office_product']
 
     describe "installing office 2007 #{edition}" do
-      let :title do 'msoffice for 2007' end
+      let :title do
+        'msoffice for 2007'
+      end
       let(:params) do
         {
           version: '2007',
@@ -148,7 +158,9 @@ describe 'msoffice::package', type: :define do
     office_versions['2007']['service_packs'].keys.each do |sp|
       build = office_versions['2007']['service_packs'][sp]['build']
       describe "uninstalling office 2007 #{edition}" do
-        let :title do 'msoffice for 2007' end
+        let :title do
+          'msoffice for 2007'
+        end
         let(:params) do
           {
             ensure: 'absent',
@@ -175,7 +187,9 @@ describe 'msoffice::package', type: :define do
   office_versions['2003']['editions'].keys.each do |edition|
     product = office_versions['2003']['editions'][edition]['office_product']
     describe "installing office 2003 #{edition}" do
-      let :title do 'msoffice for 2003' end
+      let :title do
+        'msoffice for 2003'
+      end
       let(:params) do
         {
           version: '2003',
@@ -197,7 +211,9 @@ describe 'msoffice::package', type: :define do
     office_versions['2003']['service_packs'].keys.each do |sp|
       build = office_versions['2003']['service_packs'][sp]['build']
       describe "uninstalling office 2003 #{edition}" do
-        let :title do 'msoffice for 2003' end
+        let :title do
+          'msoffice for 2003'
+        end
         let(:params) do
           {
             ensure: 'absent',
@@ -222,7 +238,9 @@ describe 'msoffice::package', type: :define do
   end
 
   describe 'installing unknown version' do
-    let :title do 'msoffice for unknown version' end
+    let :title do
+      'msoffice for unknown version'
+    end
     let(:params) do
       {
         version: 'xxx',
@@ -241,7 +259,9 @@ describe 'msoffice::package', type: :define do
   end
 
   describe 'uninstalling unknown version' do
-    let :title do 'msoffice for unknown version' end
+    let :title do
+      'msoffice for unknown version'
+    end
     let(:params) do
       {
         ensure: 'absent',
@@ -262,7 +282,9 @@ describe 'msoffice::package', type: :define do
 
   %w(2003 2007 2010 2013).each do |version|
     describe "installing #{version} with wrong edition" do
-      let :title do "msoffice for #{version}" end
+      let :title do
+        "msoffice for #{version}"
+      end
       let(:params) do
         {
           version: version,
@@ -282,7 +304,9 @@ describe 'msoffice::package', type: :define do
   end
 
   describe 'incorrect license key' do
-    let :title do 'msoffice with incorrect license key' end
+    let :title do
+      'msoffice with incorrect license key'
+    end
     let(:params) do
       {
         version: '2010',
@@ -301,7 +325,9 @@ describe 'msoffice::package', type: :define do
   end
 
   describe 'incorrect arch' do
-    let :title do 'msoffice with incorrect arch' end
+    let :title do
+      'msoffice with incorrect arch'
+    end
     let(:params) do
       {
         arch: 'fubar',
@@ -321,7 +347,9 @@ describe 'msoffice::package', type: :define do
   end
 
   describe 'incorrect ensure' do
-    let :title do 'msoffice with incorrect ensure' end
+    let :title do
+      'msoffice with incorrect ensure'
+    end
     let(:params) do
       {
         ensure: 'fubar',
@@ -342,7 +370,9 @@ describe 'msoffice::package', type: :define do
 
   lcid_strings.keys.each do |lang_code|
     describe "valid country: #{lang_code}" do
-      let :title do 'msoffice with valid countries' end
+      let :title do
+        'msoffice with valid countries'
+      end
       let(:params) do
         {
           lang_code: lang_code,
@@ -363,7 +393,9 @@ describe 'msoffice::package', type: :define do
   end
 
   describe 'invalid country' do
-    let :title do 'msoffice with invalid countries' end
+    let :title do
+      'msoffice with invalid countries'
+    end
     let(:params) do
       {
         lang_code: 'fubar',
@@ -383,7 +415,9 @@ describe 'msoffice::package', type: :define do
   end
 
   describe 'incorrect sp' do
-    let :title do 'msoffice with incorrect sp' end
+    let :title do
+      'msoffice with incorrect sp'
+    end
     let(:params) do
       {
         sp: '5',
