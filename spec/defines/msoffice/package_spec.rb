@@ -25,13 +25,13 @@ describe 'msoffice::package', type: :define do
         should contain_exec('install-office').with(
           'command' => "\"\\\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /config \"C:\\Windows\\Temp\\office_config.xml\"",
           'provider' => 'windows'
-      )
+        )
       end
 
       it do
         should contain_exec('upgrade-office').with(
           'command' => "\"\\\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /modify #{product} /config \"C:\\Windows\\Temp\\office_config.xml\""
-      )
+        )
       end
     end
 
@@ -58,7 +58,7 @@ describe 'msoffice::package', type: :define do
             'command' => "& \"\\\\test-server\\packages\\OFFICE15\\#{edition}\\setup.exe\" /uninstall #{product} /config \"C:\\Windows\\Temp\\office_config.xml\"",
             'provider' => 'powershell',
             'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\15.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-        )
+          )
         end
       end
     end
@@ -85,13 +85,13 @@ describe 'msoffice::package', type: :define do
         should contain_exec('install-office').with(
           'command' => "\"\\\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /config \"C:\\Windows\\Temp\\office_config.xml\"",
           'provider' => 'windows'
-      )
+        )
       end
 
       it do
         should contain_exec('upgrade-office').with(
           'command' => "\"\\\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /modify #{product} /config \"C:\\Windows\\Temp\\office_config.xml\""
-      )
+        )
       end
     end
 
@@ -118,7 +118,7 @@ describe 'msoffice::package', type: :define do
             'command' => "& \"\\\\test-server\\packages\\OFFICE14\\#{edition}\\x86\\setup.exe\" /uninstall #{product} /config \"C:\\Windows\\Temp\\office_config.xml\"",
             'provider' => 'powershell',
             'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\14.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-        )
+          )
         end
       end
     end
@@ -145,13 +145,13 @@ describe 'msoffice::package', type: :define do
         should contain_exec('install-office').with(
           'command' => "\"\\\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /config \"C:\\Windows\\Temp\\office_config.xml\"",
           'provider' => 'windows'
-      )
+        )
       end
 
       it do
         should contain_exec('upgrade-office').with(
           'command' => "\"\\\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /modify #{product} /config \"C:\\Windows\\Temp\\office_config.xml\""
-      )
+        )
       end
     end
 
@@ -178,7 +178,7 @@ describe 'msoffice::package', type: :define do
             'command' => "& \"\\\\test-server\\packages\\OFFICE12\\#{edition}\\setup.exe\" /uninstall #{product} /config \"C:\\Windows\\Temp\\office_config.xml\"",
             'provider' => 'powershell',
             'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\12.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-        )
+          )
         end
       end
     end
@@ -204,7 +204,7 @@ describe 'msoffice::package', type: :define do
         should contain_exec('install-office').with(
           'command' => "\"\\\\test-server\\packages\\OFFICE11\\#{edition}\\SETUP.EXE\" /settings \"C:\\Windows\\Temp\\office_config.ini\"",
           'provider' => 'windows'
-      )
+        )
       end
     end
 
@@ -231,7 +231,7 @@ describe 'msoffice::package', type: :define do
             'command' => "& \"\\\\test-server\\packages\\OFFICE11\\#{edition}\\setup.exe\" /x #{product}.msi /qb",
             'provider' => 'powershell',
             'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\11.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-        )
+          )
         end
       end
     end

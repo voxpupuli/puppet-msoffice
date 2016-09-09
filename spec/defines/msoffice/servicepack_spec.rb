@@ -20,9 +20,8 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect do
-        should contain_exec('install-sp')
-      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The version agrument specified does not match a valid version of office' }
+      expect { should contain_exec('install-sp') }.
+        to raise_error(Puppet::Error, %r{The version agrument specified does not match a valid version of office})
     end
   end
 
@@ -35,9 +34,8 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect do
-        should contain_exec('install-sp')
-      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The service pack specified does not match 1-3' }
+      expect { should contain_exec('install-sp') }.
+        to raise_error(Puppet::Error, %r{The service pack specified does not match 1-3})
     end
   end
 
@@ -50,9 +48,8 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect do
-        should contain_exec('install-sp')
-      end.to raise_error(Puppet::Error) { |e| expect(e.to_s).to match 'The arch argument specified does not match x86 or x64' }
+      expect { should contain_exec('install-sp') }.
+        to raise_error(Puppet::Error, %r{The arch argument specified does not match x86 or x64})
     end
   end
 
@@ -78,7 +75,7 @@ describe 'msoffice::servicepack', type: :define do
           'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-      )
+        )
       end
     end
   end
@@ -105,7 +102,7 @@ describe 'msoffice::servicepack', type: :define do
           'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-      )
+        )
       end
     end
   end
@@ -133,7 +130,7 @@ describe 'msoffice::servicepack', type: :define do
           'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
-      )
+        )
       end
     end
   end
