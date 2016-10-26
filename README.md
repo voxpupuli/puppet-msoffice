@@ -1,4 +1,4 @@
-# puppet-msoffice
+# MS Office module for Puppet
 
 ## Overview
 
@@ -8,7 +8,8 @@ Puppet module to manage Microsoft Office on Windows (2003-2013)
 
 ## Module Description
 
-The purpose of this module is to install the Microsoft Office suite and configure it's many service packs, tools, utilities and registry options.
+The purpose of this module is to install the Microsoft Office suite and configure
+it's many service packs, tools, utilities and registry options.
 
 ## Setup
 
@@ -35,15 +36,17 @@ The purpose of this module is to install the Microsoft Office suite and configur
 
 ## Usage
 
-### Classes and Defined Types:
+### Classes and Defined Types
 
 #### Defined Type: `msoffice`
 
-The primary definition of the msoffice module. It will install office products, language packs and updates.
+The primary definition of the msoffice module. It will install office products,
+language packs and updates.
 
 **Parameters within `msoffice`:**
 
 ##### `version`
+
 The version of office to install
 
 ##### `edition`
@@ -166,16 +169,16 @@ The network location where the office installation media is stored
 
 ## Reference
 
-### Defined Types:
+### Defined Types
 
-##### Public Defined Types
+#### Public Defined Types
 
 * [`msoffice`](#define_package): The core office suite installation
 * [`msoffice::package`](#define_package): The core office suite installation
 * [`msoffice::servicepack`](#define_servicepack): The service pack update for office
 * [`msoffice::lip`](#define_lip): The language interface pack for office
 
-## Limitations
+i## Limitations
 
 This module is tested on the following platforms:
 
