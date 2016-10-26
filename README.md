@@ -1,10 +1,15 @@
 # MS Office module for Puppet
 
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-msoffice.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-msoffice)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-msoffice/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-msoffice)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+
 ## Overview
 
 Puppet module to manage Microsoft Office on Windows (2003-2013)
-
-[![Build Status](https://secure.travis-ci.org/voxpupuli/puppet-msoffice.png)](http://travis-ci.org/voxpupuli/puppet-msoffice)
 
 ## Module Description
 
