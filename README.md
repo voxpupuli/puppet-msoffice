@@ -7,6 +7,18 @@
 [![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
 [![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
 
+#### Table of Contents
+
+1. [Overview](#overview)
+2. [Module Description - What the module does and why it is useful](#module-description)
+3. [Setup - The basics of getting started with msoffice](#setup)
+    * [What msoffice affects](#what-msoffice-affects)
+    * [Beginning with msoffice](#beginning-with-msoffice)
+4. [Usage - Configuration options and additional functionality](#usage)
+5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
+
 ## Overview
 
 Puppet module to manage Microsoft Office on Windows (2003-2013)
@@ -183,7 +195,7 @@ The network location where the office installation media is stored
 * [`msoffice::servicepack`](#define_servicepack): The service pack update for office
 * [`msoffice::lip`](#define_lip): The language interface pack for office
 
-i## Limitations
+## Limitations
 
 This module is tested on the following platforms:
 
