@@ -1,14 +1,32 @@
-# puppet-msoffice
+# MS Office module for Puppet
+
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-msoffice.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-msoffice)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-msoffice/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-msoffice)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/msoffice.svg)](https://forge.puppetlabs.com/puppet/msoffice)
+
+#### Table of Contents
+
+1. [Overview](#overview)
+2. [Module Description - What the module does and why it is useful](#module-description)
+3. [Setup - The basics of getting started with msoffice](#setup)
+    * [What msoffice affects](#what-msoffice-affects)
+    * [Beginning with msoffice](#beginning-with-msoffice)
+4. [Usage - Configuration options and additional functionality](#usage)
+5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
 Puppet module to manage Microsoft Office on Windows (2003-2013)
 
-[![Build Status](https://secure.travis-ci.org/voxpupuli/puppet-msoffice.png)](http://travis-ci.org/voxpupuli/puppet-msoffice)
-
 ## Module Description
 
-The purpose of this module is to install the Microsoft Office suite and configure it's many service packs, tools, utilities and registry options.
+The purpose of this module is to install the Microsoft Office suite and configure
+it's many service packs, tools, utilities and registry options.
 
 ## Setup
 
@@ -35,15 +53,17 @@ The purpose of this module is to install the Microsoft Office suite and configur
 
 ## Usage
 
-### Classes and Defined Types:
+### Classes and Defined Types
 
 #### Defined Type: `msoffice`
 
-The primary definition of the msoffice module. It will install office products, language packs and updates.
+The primary definition of the msoffice module. It will install office products,
+language packs and updates.
 
 **Parameters within `msoffice`:**
 
 ##### `version`
+
 The version of office to install
 
 ##### `edition`
@@ -166,9 +186,9 @@ The network location where the office installation media is stored
 
 ## Reference
 
-### Defined Types:
+### Defined Types
 
-##### Public Defined Types
+#### Public Defined Types
 
 * [`msoffice`](#define_package): The core office suite installation
 * [`msoffice::package`](#define_package): The core office suite installation
