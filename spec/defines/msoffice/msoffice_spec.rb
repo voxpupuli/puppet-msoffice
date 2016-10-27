@@ -219,7 +219,7 @@ describe 'msoffice', type: :define do
         }
       end
 
-      it { is_expected.to_not contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
+      it { is_expected.not_to contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
     end
 
     describe "installs the lip when office #{version} present" do
@@ -259,7 +259,7 @@ describe 'msoffice', type: :define do
         }
       end
 
-      it { is_expected.to_not contain_msoffice__lip('microsoft lip de-de') }
+      it { is_expected.not_to contain_msoffice__lip('microsoft lip de-de') }
     end
   end
 end
