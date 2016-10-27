@@ -19,7 +19,7 @@ describe 'msoffice', type: :define do
 
     it do
       expect do
-        should contain_msoffice__package('microsoft office 2010')
+        is_expected.to contain_msoffice__package('microsoft office 2010')
       end.to raise_error
     end
   end
@@ -42,7 +42,7 @@ describe 'msoffice', type: :define do
 
       it do
         expect do
-          should contain_msoffice__package("microsoft office #{version}")
+          is_expected.to contain_msoffice__package("microsoft office #{version}")
         end.to raise_error
       end
     end
@@ -64,7 +64,7 @@ describe 'msoffice', type: :define do
 
     it do
       expect do
-        should contain_msoffice__package('microsoft office 2010')
+        is_expected.to contain_msoffice__package('microsoft office 2010')
       end.to raise_error
     end
   end
@@ -86,7 +86,7 @@ describe 'msoffice', type: :define do
 
     it do
       expect do
-        should contain_msoffice__package('microsoft office 2010')
+        is_expected.to contain_msoffice__package('microsoft office 2010')
       end.to raise_error
     end
   end
@@ -109,7 +109,7 @@ describe 'msoffice', type: :define do
 
     it do
       expect do
-        should contain_msoffice__package('microsoft office 2010')
+        is_expected.to contain_msoffice__package('microsoft office 2010')
       end.to raise_error
     end
   end
@@ -132,7 +132,7 @@ describe 'msoffice', type: :define do
 
     it do
       expect do
-        should contain_msoffice__package('microsoft office 2010')
+        is_expected.to contain_msoffice__package('microsoft office 2010')
       end.to raise_error
     end
   end
@@ -156,7 +156,7 @@ describe 'msoffice', type: :define do
 
       it do
         expect do
-          should contain_msoffice__package('microsoft office 2010')
+          is_expected.to contain_msoffice__package('microsoft office 2010')
         end.not_to raise_error
       end
     end
@@ -181,7 +181,7 @@ describe 'msoffice', type: :define do
         }
       end
 
-      it { should contain_msoffice__package("microsoft office #{version}") }
+      it { is_expected.to contain_msoffice__package("microsoft office #{version}") }
     end
 
     describe "installs the service pack when office #{version} present" do
@@ -200,7 +200,7 @@ describe 'msoffice', type: :define do
         }
       end
 
-      it { should contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
+      it { is_expected.to contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
     end
 
     describe "does not install the service pack when office #{version} absent" do
@@ -219,7 +219,7 @@ describe 'msoffice', type: :define do
         }
       end
 
-      it { should_not contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
+      it { is_expected.to_not contain_msoffice__servicepack("microsoft office #{version} servicepack 1") }
     end
 
     describe "installs the lip when office #{version} present" do
@@ -239,7 +239,7 @@ describe 'msoffice', type: :define do
         }
       end
 
-      it { should contain_msoffice__lip('microsoft lip de-de') }
+      it { is_expected.to contain_msoffice__lip('microsoft lip de-de') }
     end
 
     describe "does not install the lip when office #{version} present" do
@@ -259,7 +259,7 @@ describe 'msoffice', type: :define do
         }
       end
 
-      it { should_not contain_msoffice__lip('microsoft lip de-de') }
+      it { is_expected.to_not contain_msoffice__lip('microsoft lip de-de') }
     end
   end
 end
