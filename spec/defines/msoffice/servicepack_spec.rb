@@ -20,7 +20,7 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect { should contain_exec('install-sp') }.
+      expect { is_expected.to contain_exec('install-sp') }.
         to raise_error(Puppet::Error, %r{The version agrument specified does not match a valid version of office})
     end
   end
@@ -34,7 +34,7 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect { should contain_exec('install-sp') }.
+      expect { is_expected.to contain_exec('install-sp') }.
         to raise_error(Puppet::Error, %r{The service pack specified does not match 1-3})
     end
   end
@@ -48,7 +48,7 @@ describe 'msoffice::servicepack', type: :define do
     end
 
     it do
-      expect { should contain_exec('install-sp') }.
+      expect { is_expected.to contain_exec('install-sp') }.
         to raise_error(Puppet::Error, %r{The arch argument specified does not match x86 or x64})
     end
   end
@@ -71,7 +71,7 @@ describe 'msoffice::servicepack', type: :define do
       end
 
       it do
-        should contain_exec('install-sp').with(
+        is_expected.to contain_exec('install-sp').with(
           'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
@@ -98,7 +98,7 @@ describe 'msoffice::servicepack', type: :define do
       end
 
       it do
-        should contain_exec('install-sp').with(
+        is_expected.to contain_exec('install-sp').with(
           'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\#{setup}\" /q /norestart",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
@@ -126,7 +126,7 @@ describe 'msoffice::servicepack', type: :define do
       end
 
       it do
-        should contain_exec('install-sp').with(
+        is_expected.to contain_exec('install-sp').with(
           'command' => "& \"\\test-server\\packages\\OFFICE#{office_num}\\SPs\\x86\\#{setup}\" /q /norestart",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\#{office_num}.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"

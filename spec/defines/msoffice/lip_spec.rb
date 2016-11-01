@@ -15,7 +15,7 @@ describe 'msoffice::lip', type: :define do
     end
 
     it do
-      expect { should contain_exec('install-lip') }.
+      expect { is_expected.to contain_exec('install-lip') }.
         to raise_error(Puppet::Error, %r{The version agrument specified does not match a valid version of office})
     end
   end
@@ -34,7 +34,7 @@ describe 'msoffice::lip', type: :define do
     end
 
     it do
-      expect { should contain_exec('install-lip') }.
+      expect { is_expected.to contain_exec('install-lip') }.
         to raise_error(Puppet::Error, %r{The arch argument specified does not match x86 or x64})
     end
   end
@@ -57,7 +57,7 @@ describe 'msoffice::lip', type: :define do
       end
 
       it do
-        should contain_exec('install-lip').with(
+        is_expected.to contain_exec('install-lip').with(
           'command' => "& \"#{lip_root}\\#{setup}\" /q /norestart",
           'provider' => 'powershell',
           'onlyif' => "if (Get-Item -LiteralPath \'\\#{lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'1031\')) { exit 1 }"
