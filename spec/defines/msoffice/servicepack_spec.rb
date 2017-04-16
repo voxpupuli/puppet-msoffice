@@ -53,7 +53,7 @@ describe 'msoffice::servicepack', type: :define do
     end
   end
 
-  %w(1 2 3).each do |sp|
+  %w[1 2 3].each do |sp|
     version = '2003'
     office_num = office_versions[version]['version']
     build = office_versions[version]['service_packs'][sp]['build']
@@ -80,7 +80,7 @@ describe 'msoffice::servicepack', type: :define do
     end
   end
 
-  %w(1 2 3).each do |sp|
+  %w[1 2 3].each do |sp|
     version = '2007'
     office_num = office_versions[version]['version']
     build = office_versions[version]['service_packs'][sp]['build']
@@ -107,7 +107,7 @@ describe 'msoffice::servicepack', type: :define do
     end
   end
 
-  %w(1 2).each do |sp|
+  %w[1 2].each do |sp|
     version = '2010'
     office_num = office_versions[version]['version']
     build = office_versions[version]['service_packs'][sp]['build']

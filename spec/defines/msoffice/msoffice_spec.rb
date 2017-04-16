@@ -24,7 +24,7 @@ describe 'msoffice', type: :define do
     end
   end
 
-  %w(2003 2007 2010 2013).each do |version|
+  %w[2003 2007 2010 2013].each do |version|
     describe "installing #{version} with wrong edition" do
       let :title do
         "msoffice for #{version}"
