@@ -193,6 +193,36 @@ class msoffice::params {
         },
       },
     },
+    '2016' => {
+      'version' => '16',
+      'editions' => {
+        'Home and Student' => {
+          'products' => ['Word','Excel','Powerpoint','OneNote'],
+          'office_product' => 'Home and Student',
+        },
+        'Home and Business' => {
+          'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook'],
+          'office_product' => 'Home and Business',
+        },
+        'Standard' => {
+          'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher'],
+          'office_product' => 'Standardr',
+        },
+        'Professional' => {
+          'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher','Access'],
+          'office_product' => 'Pro',
+        },
+        'Professional Plus' => {
+          'products' => ['Word','Excel','Powerpoint','OneNote', 'Outlook','Publisher','Access', 'InfoPath', 'Lync'],
+          'office_product' => 'ProPlus',
+        },
+      },
+      'service_packs' => {
+        '0' => {
+          'build' => '16.0.4466.1001',
+        },
+      },
+    },
   }
 
   $lcid_strings = {

@@ -21,7 +21,7 @@
 
 ## Overview
 
-Puppet module to manage Microsoft Office on Windows (2003-2013)
+Puppet module to manage Microsoft Office on Windows (2003-2016)
 
 ## Module Description
 

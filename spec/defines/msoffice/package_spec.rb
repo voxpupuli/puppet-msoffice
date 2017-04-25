@@ -4,6 +4,66 @@ office_versions = YAML.load_file(Dir.pwd + '/spec/office_versions.yml')
 lcid_strings = YAML.load_file(Dir.pwd + '/spec/lcid_strings.yml')
 
 describe 'msoffice::package', type: :define do
+  office_versions['2016']['editions'].keys.each do |edition|
+    product = office_versions['2016']['editions'][edition]['office_product']
+
+    describe "installing office 2016 #{edition}" do
+      let :title do
+        'msoffice for 2016'
+      end
+      let(:params) do
+        {
+          version: '2016',
+          edition: edition,
+          license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+          products: ['Word'],
+          deployment_root: '\\\\test-server\\packages'
+        }
+      end
+
+      it do
+        is_expected.to contain_exec('install-office').with(
+          'command' => "\"\\\\test-server\\packages\\OFFICE16\\#{edition}\\setup.exe\" /config \"C:\\Windows\\Temp\\office_config.xml\"",
+          'provider' => 'windows'
+        )
+      end
+
+      it do
+        is_expected.to contain_exec('upgrade-office').with(
+          'command' => "\"\\\\test-server\\packages\\OFFICE16\\#{edition}\\setup.exe\" /modify #{product} /config \"C:\\Windows\\Temp\\office_config.xml\""
+        )
+      end
+    end
+
+    office_versions['2016']['service_packs'].keys.each do |sp|
+      build = office_versions['2016']['service_packs'][sp]['build']
+      describe "uninstalling office 2016 #{edition} SP#{sp}" do
+        let :title do
+          'msoffice for 2016'
+        end
+        let(:params) do
+          {
+            ensure: 'absent',
+            version: '2016',
+            edition: edition,
+            sp: sp,
+            license_key: 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX',
+            products: ['Word'],
+            deployment_root: '\\\\test-server\\packages'
+          }
+        end
+
+        it do
+          is_expected.to contain_exec('uninstall-office').with(
+            'command' => "& \"\\\\test-server\\packages\\OFFICE16\\#{edition}\\setup.exe\" /uninstall #{product} /config \"C:\\Windows\\Temp\\office_config.xml\"",
+            'provider' => 'powershell',
+            'onlyif' => "if (Get-Item -LiteralPath \'\\HKLM:\\SOFTWARE\\Microsoft\\Office\\16.0\\Common\\ProductVersion\' -ErrorAction SilentlyContinue).GetValue(\'#{build}\')) { exit 1 }"
+          )
+        end
+      end
+    end
+  end
+
   office_versions['2013']['editions'].keys.each do |edition|
     product = office_versions['2013']['editions'][edition]['office_product']
 
@@ -280,7 +340,7 @@ describe 'msoffice::package', type: :define do
     end
   end
 
-  %w[2003 2007 2010 2013].each do |version|
+  %w[2003 2007 2010 2013 2016].each do |version|
     describe "installing #{version} with wrong edition" do
       let :title do
         "msoffice for #{version}"

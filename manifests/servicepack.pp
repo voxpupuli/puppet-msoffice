@@ -39,7 +39,7 @@ define msoffice::servicepack(
 
   include ::msoffice::params
 
-  validate_re($version,'^(2003|2007|2010|2013)$', 'The version agrument specified does not match a valid version of office')
+  validate_re($version,'^(2003|2007|2010|2013|2016)$', 'The version agrument specified does not match a valid version of office')
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
   validate_re($sp,'^([1-3])$','The service pack specified does not match 1-3')
 
