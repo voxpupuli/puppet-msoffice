@@ -98,7 +98,7 @@ define msoffice::package(
           content => template('msoffice/setup.ini.erb'),
           mode    => '0755',
           owner   => 'Administrator',
-          group   => 'Administrators',
+          group   => 'S-1-5-32-544',
         }
 
         exec { 'install-office':
@@ -115,7 +115,7 @@ define msoffice::package(
           content => template('msoffice/config.erb'),
           mode    => '0755',
           owner   => 'Administrator',
-          group   => 'Administrators',
+          group   => 'S-1-5-32-544',
         }
 
         exec { 'install-office':
