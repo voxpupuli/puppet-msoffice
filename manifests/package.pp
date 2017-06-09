@@ -97,7 +97,7 @@ define msoffice::package(
         file { "${msoffice::params::temp_dir}\\office_config.ini":
           content => template('msoffice/setup.ini.erb'),
           mode    => '0755',
-          owner   => 'Administrator',
+          owner   => $facts['windows_accounts']['Administrator'],
           group   => 'S-1-5-32-544',
         }
 
@@ -114,7 +114,7 @@ define msoffice::package(
         file { "${msoffice::params::temp_dir}\\office_config.xml":
           content => template('msoffice/config.erb'),
           mode    => '0755',
-          owner   => 'Administrator',
+          owner   => $facts['windows_accounts']['Administrator'],
           group   => 'S-1-5-32-544',
         }
 
