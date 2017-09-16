@@ -64,12 +64,12 @@ define msoffice::package(
 
   include ::msoffice::params
 
-  validate_re($version,'^(2003|2007|2010|2013)$', 'The version agrument specified does not match a valid version of office')
+  validate_re($version,'^(2003|2007|2010|2013)$', 'The version argument specified does not match a valid version of office')
 
   $edition_regex = join(keys($msoffice::params::office_versions[$version]['editions']), '|')
   validate_re($edition,"^${edition_regex}$", 'The edition argument does not match a valid edition for the specified version of office')
 
-  validate_re($license_key,'^[a-zA-Z0-9]{5}(-[a-zA-Z0-9]{5}){4}$', 'The license_key argument speicifed is not correctly formatted')
+  validate_re($license_key,'^[a-zA-Z0-9]{5}(-[a-zA-Z0-9]{5}){4}$', 'The license_key argument specified is not correctly formatted')
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
 
   $lang_regex = join(keys($msoffice::params::lcid_strings), '|')
