@@ -16,7 +16,7 @@ describe 'msoffice::lip', type: :define do
 
     it do
       expect { is_expected.to contain_exec('install-lip') }.
-        to raise_error(Puppet::Error, %r{The version agrument specified does not match a valid version of office})
+        to raise_error(Puppet::Error, %r{The version argument specified does not match a valid version of office})
     end
   end
 
