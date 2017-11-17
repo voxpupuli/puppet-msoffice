@@ -64,7 +64,7 @@ define msoffice::package(
 
   include ::msoffice::params
 
-  validate_re($version,'^(2003|2007|2010|2013)$', 'The version argument specified does not match a valid version of office')
+  validate_re($version,'^(2003|2007|2010|2013|2016)$', 'The version argument specified does not match a valid version of office')
 
   $edition_regex = join(keys($msoffice::params::office_versions[$version]['editions']), '|')
   validate_re($edition,"^${edition_regex}$", 'The edition argument does not match a valid edition for the specified version of office')
