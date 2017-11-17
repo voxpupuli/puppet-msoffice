@@ -4,8 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v3.0.0](https://github.com/voxpupuli/puppet-msoffice/tree/v3.0.0) (2017-11-15)
+## [v3.1.0](https://github.com/voxpupuli/puppet-msoffice/tree/v3.1.0) (2017-11-17)
+[Full Changelog](https://github.com/voxpupuli/puppet-msoffice/compare/v3.0.0...v3.1.0)
 
+**Implemented enhancements:**
+
+- Add support for Office 2016 [\#49](https://github.com/voxpupuli/puppet-msoffice/pull/49) ([mkszuba](https://github.com/mkszuba))
+
+**Merged pull requests:**
+
+- bump puppet version dependency to \>= 4.7.1 \< 6.0.0 [\#60](https://github.com/voxpupuli/puppet-msoffice/pull/60) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v3.0.0](https://github.com/voxpupuli/puppet-msoffice/tree/v3.0.0) (2017-11-15)
 [Full Changelog](https://github.com/voxpupuli/puppet-msoffice/compare/v2.2.0...v3.0.0)
 
 **Fixed bugs:**
@@ -14,8 +24,8 @@ These should not affect the functionality of the module.
 
 **Merged pull requests:**
 
+- release 3.0.0 [\#57](https://github.com/voxpupuli/puppet-msoffice/pull/57) ([bastelfreak](https://github.com/bastelfreak))
 - Update package.pp [\#55](https://github.com/voxpupuli/puppet-msoffice/pull/55) ([bradh](https://github.com/bradh))
-- release 2.2.0 [\#43](https://github.com/voxpupuli/puppet-msoffice/pull/43) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [v2.2.0](https://github.com/voxpupuli/puppet-msoffice/tree/v2.2.0) (2017-01-13)
 
