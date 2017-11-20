@@ -44,10 +44,10 @@ it's many service packs, tools, utilities and registry options.
     msoffice { 'office 2010':
       version     => '2010',
       edition     => 'Professional Pro',
-      sp          => '1'
+      sp          => '1',
       license_key => 'XXX-XXX-XXX-XXX-XXX',
-      products    => ['Word,'Excel]
-      ensure      => present,
+      products    => ['Word,'Excel'],
+      ensure      => present
     }
 ```
 
