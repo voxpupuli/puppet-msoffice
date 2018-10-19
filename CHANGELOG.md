@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.1.2](https://github.com/voxpupuli/puppet-msoffice/tree/v3.1.2) (2018-10-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-msoffice/compare/v3.1.1...v3.1.2)
+
+**Merged pull requests:**
+
+- modulesync 2.2.0 and allow puppet 6.x [\#74](https://github.com/voxpupuli/puppet-msoffice/pull/74) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.1.1](https://github.com/voxpupuli/puppet-msoffice/tree/v3.1.1) (2018-09-06)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-msoffice/compare/v3.1.0...v3.1.1)
