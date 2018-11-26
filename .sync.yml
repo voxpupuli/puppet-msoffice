@@ -3,37 +3,13 @@
   secure: "ipf89t6lX7jEAkiNl1YnDrsNmVvf5BObDMWMHtN8NvILgzToxpTWoRo8/+XQ5uXRKHPq4HGh/J57QyF6UKwO4A910aGogRPNGNo/eSdec6T2kF6wXnggQToB/3Y2dg7ClMuu68BErVM2OtrhzZJLEuFC1gcNRRl8a3/5YGi7Z8I="
 spec/spec_helper.rb:
   spec:overrides: "require 'yaml'"
-spec/acceptance/nodesets/docker/centos-5.yml:
-  unmanaged: true
-spec/acceptance/nodesets/docker/centos-6.yml:
-  unmanaged: true
-spec/acceptance/nodesets/docker/centos-7.yml:
-  unmanaged: true
-spec/acceptance/nodesets/docker/debian-7.yml:
-  unmanaged: true
-spec/acceptance/nodesets/docker/debian-8.yml:
-  unmanaged: true
-spec/acceptance/nodesets/docker/ubuntu-12.04.yml:
-  unmanaged: true
-spec/acceptance/nodesets/docker/ubuntu-14.04.yml:
-  unmanaged: true
-spec/acceptance/nodesets/docker/ubuntu-16.04.yml:
-  unmanaged: true
-spec/acceptance/nodesets/centos-511-x64.yml:
-  unmanaged: true
-spec/acceptance/nodesets/centos-66-x64-pe.yml:
-  unmanaged: true
-spec/acceptance/nodesets/centos-66-x64.yml:
-  unmanaged: true
-spec/acceptance/nodesets/centos-72-x64.yml:
-  unmanaged: true
-spec/acceptance/nodesets/debian-78-x64.yml:
-  unmanaged: true
-spec/acceptance/nodesets/debian-82-x64.yml:
-  unmanaged: true
-spec/acceptance/nodesets/ubuntu-server-1204-x64.yml:
-  unmanaged: true
-spec/acceptance/nodesets/ubuntu-server-1404-x64.yml:
-  unmanaged: true
-spec/acceptance/nodesets/ubuntu-server-1604-x64.yml:
-  unmanaged: true
+spec/acceptance/nodesets/ec2/amazonlinux-2016091.yml:
+  delete: true
+spec/acceptance/nodesets/ec2/rhel-73-x64.yml:
+  delete: true
+spec/acceptance/nodesets/ec2/sles-12sp2-x64.yml:
+  delete: true
+spec/acceptance/nodesets/ec2/ubuntu-1604-x64.yml:
+  delete: true
+spec/acceptance/nodesets/archlinux-2-x64.yml:
+  delete: true
