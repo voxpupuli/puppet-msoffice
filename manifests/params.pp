@@ -8,7 +8,6 @@
 # It sets variables according to platform
 #
 class msoffice::params {
-
   $temp_dir = 'C:\Windows\Temp'
   $comp_name = ''
   $user_name = ''

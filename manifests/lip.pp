@@ -35,13 +35,12 @@
 #      arch      => 'x64'
 #    }
 #
-define msoffice::lip(
+define msoffice::lip (
   $version,
   $lang_code,
   $arch = 'x86',
   $deployment_root = ''
 ) {
-
   include msoffice::params
 
   validate_re($version,'^(2003|2007|2010|2013|2016)$', 'The version argument specified does not match a valid version of office')
@@ -62,5 +61,4 @@ define msoffice::lip(
     logoutput => true,
     onlyif    => "if (Get-Item -LiteralPath \'\\${lip_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${lang_id}\')) { exit 1 }",
   }
-
 }
