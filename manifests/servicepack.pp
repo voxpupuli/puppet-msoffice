@@ -30,19 +30,17 @@
 #     arch    => 'x64'
 #   }
 #
-define msoffice::servicepack(
+define msoffice::servicepack (
   $version,
   $sp,
   $arch = 'x86',
   $deployment_root = ''
 ) {
-
   include msoffice::params
 
   validate_re($version,'^(2003|2007|2010|2013|2016)$', 'The version argument specified does not match a valid version of office')
   validate_re($arch,'^(x86|x64)$', 'The arch argument specified does not match x86 or x64')
   validate_re($sp,'^([1-3])$','The service pack specified does not match 1-3')
-
 
   $office_build = $msoffice::params::office_versions[$version]['service_packs'][$sp]['build']
   $office_num = $msoffice::params::office_versions[$version]['version']

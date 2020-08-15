@@ -48,7 +48,7 @@
 #     ensure      => present
 #   }
 #
-define msoffice::package(
+define msoffice::package (
   $version,
   $edition,
   $license_key,
@@ -61,7 +61,6 @@ define msoffice::package(
   $company_name = '',
   $user_name = '',
 ) {
-
   include msoffice::params
 
   validate_re($version,'^(2003|2007|2010|2013|2016)$', 'The version argument specified does not match a valid version of office')
@@ -156,5 +155,5 @@ define msoffice::package(
         onlyif    => "if (Get-Item -LiteralPath \'\\${office_reg_key}\' -ErrorAction SilentlyContinue).GetValue(\'${office_build}\')) { exit 1 }",
       }
     }
-  } else { }
+  } else {}
 }
