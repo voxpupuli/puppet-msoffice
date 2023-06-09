@@ -1,3 +1,5 @@
+**This module is deprecated. Do not use it anymore**
+
 # MS Office module for Puppet
 
 [![Build Status](https://travis-ci.org/voxpupuli/puppet-msoffice.png?branch=master)](https://travis-ci.org/voxpupuli/puppet-msoffice)
